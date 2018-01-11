@@ -8,7 +8,6 @@ For this assignment, you must build a moderately simple single-page application.
 This first assignment is due on Monday, January 29, 2018 by midnight.  By the due date, you must submit the following:
 * Your complete source tree, placed in the "source" directory
 * A compiled binary (*.APK file), placed in the "binaries" directory
-* [Contribution guidelines for this project](docs/CONTRIBUTING.md)
 * [A completed Design Document](Design Document.md)
 * [A completed Post Mortem](Post Mortem.md) (due one day later; January 30)
 
