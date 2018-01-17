@@ -1,0 +1,14 @@
+//Jack Kinne
+
+1. create pull request at github.  
+
+2.  confirm you are pulling to your spring 2018 branch, from adam's spring 2018 branch.
+
+3.  confirm pull.
+
+4.  tortoise git open -- "git sync."
+
+5.  select pull.
+
+6.  profit.
+
