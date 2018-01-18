@@ -14,7 +14,5 @@ In order to pull the changes Adam makes to the 2018-Spring Repo
 8. click Merge
 
 
-Steps 4-5 are odd. If you input the base fork/head fork correctly (flip the above), there is no need to switch the base. 
 
-
-ad
+Steps 4-5 are odd. If you input the 
