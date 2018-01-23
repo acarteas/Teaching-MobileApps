@@ -45,19 +45,22 @@ namespace App1
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int TestButtona = 2131034112;
+			public const int PossibleAnswerA = 2131034112;
 			
 			// aapt resource value: 0x7f050001
-			public const int TestButtonb = 2131034113;
+			public const int PossibleAnswerB = 2131034113;
 			
 			// aapt resource value: 0x7f050002
-			public const int TestButtonc = 2131034114;
+			public const int PossibleAnswerC = 2131034114;
 			
 			// aapt resource value: 0x7f050003
-			public const int TestButtond = 2131034115;
+			public const int PossibleAnswerD = 2131034115;
 			
 			// aapt resource value: 0x7f050004
-			public const int editText1 = 2131034116;
+			public const int QuestionText = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int ScoreBoard = 2131034117;
 			
 			static Id()
 			{
