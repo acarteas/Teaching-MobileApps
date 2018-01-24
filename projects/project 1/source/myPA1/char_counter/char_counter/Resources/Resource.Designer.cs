@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("App2.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("char_counter.Resource", IsApplication=true)]
 
-namespace App2
+namespace char_counter
 {
 	
 	
@@ -45,10 +45,7 @@ namespace App2
 		{
 			
 			// aapt resource value: 0x7f050000
-			public const int Toplabel = 2131034112;
-			
-			// aapt resource value: 0x7f050001
-			public const int editText1 = 2131034113;
+			public const int myButton = 2131034112;
 			
 			static Id()
 			{
@@ -95,8 +92,11 @@ namespace App2
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040001
+			public const int app_name = 2130968577;
+			
 			// aapt resource value: 0x7f040000
-			public const int app_name = 2130968576;
+			public const int hello = 2130968576;
 			
 			static String()
 			{
