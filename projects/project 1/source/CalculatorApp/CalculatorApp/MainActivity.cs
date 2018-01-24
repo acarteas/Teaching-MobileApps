@@ -1,13 +1,15 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using System;
+using System.Collections;
 
 namespace CalculatorApp
 {
     [Activity(Label = "CalculatorApp", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
-        int count = 0;
+        Stack calc_stack = new Stack();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -18,16 +20,16 @@ namespace CalculatorApp
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            //Button button = FindViewById<Button>(Resource.Id.myButton);
 
-            var label = FindViewById<TextView>(Resource.Id.textView1);
-            button.Click += delegate 
-            {
-                count++;
-                label.Text = $"You clicked {count} times";
+            var resultsView = FindViewById<TextView>(Resource.Id.textView1);
 
-            };
-        }
+            Button bttn1 = FindViewById<Button>(Resource.Id.button_one);
+            
+           
+
+
+
       
     }
 }
