@@ -26,9 +26,27 @@ namespace App1
             TextView Question = FindViewById<TextView>(Resource.Id.QuestionText);
             TextView Score = FindViewById<TextView>(Resource.Id.ScoreBoard);
 
-            //these both are keeping the basic code given to test the bottom 2 buttons
+            
             AnswerA.Click += delegate { AnswerA.Text = string.Format("{0} clicks!", count++); };
-            AnswerB.Click += delegate { AnswerA.Text = string.Format("{0} clicks!", count++); };
+
+            //testing another click event that involves altering the text of the question
+            AnswerB.Click += delegate
+            {
+                //code for psuedo random number generator for c# from:
+                //https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-int-number-in-c
+                Random rand = new Random();
+
+                //should give number a somewhat random number to help choose a random 
+                int number = rand.Next(10);
+
+                //has 5 random questions depending on what teh number was
+                if(number >= 0 && number < 5)
+                {
+                    Question.Text = string.Format("Who Lives In A Pinapple Under The Sea?");
+                }
+
+            };
+
 
             //these at first should add 1-2 points to the score box below them each time the buttons are clicked
             AnswerC.Click += delegate { Score.Text = string.Format("{0} Points", count++); };

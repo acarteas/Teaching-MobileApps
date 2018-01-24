@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:rowCount="6"
     android:columnCount="3"
+	android:background = "@drawable/TestBackground"
     android:minWidth="25px"
     android:minHeight="25px">
     <Button
