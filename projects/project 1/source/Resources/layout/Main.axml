@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="Enter Phoneword:"
+        android:text="Enter Expression:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,12 +15,33 @@
         android:id="@+id/PhoneNumberText"
         android:text="1-800-XAMARIN" />
     <Button
-        android:text="TRANSLATE"
+        android:text="Scramble!"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TranslateButton" />
-    <TextView
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/TranslatedPhoneWord" />
+        android:rowCount="2"
+        android:columnCount="4"
+        android:id="@+id/gridLayout2">
+        <Button
+            android:text="Button1"
+            android:id="@+id/button1" />
+        <Button
+            android:text="Mystery"
+            android:id="@+id/mystery" />
+        <Button
+            android:text="Button2"
+            android:id="@+id/button2" />
+        <Button
+            android:text="Button3"
+            android:id="@+id/button3" />
+    </GridLayout>
+    <TextView
+        android:text="Yo it's scrambled hee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TranslatedPhoneWord"
+        android:textSize="26dip" />
 </LinearLayout>
