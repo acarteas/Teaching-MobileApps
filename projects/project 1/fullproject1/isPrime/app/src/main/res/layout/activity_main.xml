@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.wmd42.isprime.MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
@@ -47,6 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
