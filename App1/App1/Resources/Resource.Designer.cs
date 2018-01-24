@@ -92,7 +92,13 @@ namespace App1
 		{
 			
 			// aapt resource value: 0x7f040000
-			public const int Main = 2130968576;
+			public const int layout1 = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int layout2 = 2130968577;
+			
+			// aapt resource value: 0x7f040002
+			public const int Main = 2130968578;
 			
 			static Layout()
 			{

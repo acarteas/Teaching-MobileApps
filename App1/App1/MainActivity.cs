@@ -8,7 +8,19 @@ namespace App1
     public class MainActivity : Activity
     {
         int count = 1;
-
+        /*void objectIdNumbers()
+        {
+            // Get our button from the layout resource,
+            // and attach an event to it
+            //named and retrieved the 4 buttons and both text boxes id #'s and gave them a variable name
+            Button AnswerA = FindViewById<Button>(Resource.Id.PossibleAnswerA);
+            Button AnswerB = FindViewById<Button>(Resource.Id.PossibleAnswerB);
+            Button AnswerC = FindViewById<Button>(Resource.Id.PossibleAnswerC);
+            Button AnswerD = FindViewById<Button>(Resource.Id.PossibleAnswerD);
+            TextView Question = FindViewById<TextView>(Resource.Id.QuestionText);
+            TextView Score = FindViewById<TextView>(Resource.Id.ScoreBoard);
+        }*/
+            
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -26,31 +38,56 @@ namespace App1
             TextView Question = FindViewById<TextView>(Resource.Id.QuestionText);
             TextView Score = FindViewById<TextView>(Resource.Id.ScoreBoard);
 
+            //start the questions when the a button is clicked
+            AnswerA.Click += start;
             
-            AnswerA.Click += delegate { AnswerA.Text = string.Format("{0} clicks!", count++); };
-
-            //testing another click event that involves altering the text of the question
-            AnswerB.Click += delegate
-            {
-                //code for psuedo random number generator for c# from:
-                //https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-int-number-in-c
-                Random rand = new Random();
-
-                //should give number a somewhat random number to help choose a random 
-                int number = rand.Next(10);
-
-                //has 5 random questions depending on what teh number was
-                if(number >= 0 && number < 5)
-                {
-                    Question.Text = string.Format("Who Lives In A Pinapple Under The Sea?");
-                }
-
-            };
-
+            //just changes the pointless button's text once and keeps it to this like a bad joke
+            AnswerB.Click += delegate { AnswerB.Text = string.Format("Told you."); };
 
             //these at first should add 1-2 points to the score box below them each time the buttons are clicked
-            AnswerC.Click += delegate { Score.Text = string.Format("{0} Points", count++); };
-            AnswerD.Click += delegate { Score.Text = string.Format("{0} Points", count++); };
+            AnswerC.Click += delegate { Score.Text = string.Format("{0} Points", count += 1); };
+            AnswerD.Click += delegate { Score.Text = string.Format("{0} Points", count += 2); };
+        }
+        
+        
+        private void start(object sender, System.EventArgs e)
+        {
+
+            Button AnswerA = FindViewById<Button>(Resource.Id.PossibleAnswerA);
+            Button AnswerB = FindViewById<Button>(Resource.Id.PossibleAnswerB);
+            Button AnswerC = FindViewById<Button>(Resource.Id.PossibleAnswerC);
+            Button AnswerD = FindViewById<Button>(Resource.Id.PossibleAnswerD);
+            TextView Question = FindViewById<TextView>(Resource.Id.QuestionText);
+            TextView Score = FindViewById<TextView>(Resource.Id.ScoreBoard);
+            count = 0;
+
+
+            //set object as a button 
+
+
+            if (clicked != null)
+            {
+                Question.Text = string.Format("Who Lives In A Pineapple Under The Sea?");
+                AnswerA.Text = string.Format("Gary");
+                AnswerB.Text = string.Format("Patrick");
+                AnswerC.Text = string.Format("Gingy");
+                AnswerD.Text = string.Format("Non of the Above");
+
+                if(AnswerA.)
+                {
+                    Score.Text = string.Format("{0} Points", count++);
+                }
+                
+                AnswerA.Click += questionTwo;
+                AnswerB.Click += questionTwo;
+                AnswerC.Click += questionTwo;
+                AnswerD.Click += questionTwo;
+            }
+
+            private void questionTwo(object sender, System.EventArgs e)
+            {
+                
+            }
         }
     }
 }
