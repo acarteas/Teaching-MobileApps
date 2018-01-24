@@ -4,6 +4,19 @@ Complete description and overview.  This is where you describe in a brief, yet c
 
 ***
 This is a word scrambler. With a custom scramble algorithm, tt takes an expression of words and scrambles the letters according to the user's choice of buttons. This application may implemented in a scenario where a user may enjoy watching letters and words get mixed, processed and blended up. 
+
+
+
+
+
+
+Each button will assign a specific task
+
+
+Button 1: move 3rd word down 10
+Button 2: shift left once
+Button 3: shift right once
+Mystery Button: Get the first letter of the string; assign it a number a=1,b=2,...; shift the first word of the expression that many WORDS over
 ***
 
 
