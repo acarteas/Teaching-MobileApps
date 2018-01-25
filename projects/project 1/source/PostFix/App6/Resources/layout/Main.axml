@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <TextView
+        android:text="0.00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/calculatorAccumulator"
+        android:background="#FFFFFF"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:textSize="48dp" />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="252.5dp"
+        android:rowCount="5"
+        android:columnCount="4"
+        android:id="@+id/gridLayout1"
+        android:layout_marginBottom="0.0dp">
+        <Button
+            android:text="7"
+            android:id="@+id/seven"
+            android:textSize="35dp" />
+        <Button
+            android:text="8"
+            android:id="@+id/eight"
+            android:textSize="35dp" />
+        <Button
+            android:text="9"
+            android:id="@+id/nine"
+            android:textSize="35dp" />
+        <Button
+            android:text="/"
+            android:id="@+id/div"
+            android:textSize="35dp" />
+        <Button
+            android:text="4"
+            android:id="@+id/four"
+            android:textSize="35dp" />
+        <Button
+            android:text="5"
+            android:id="@+id/five"
+            android:textSize="35dp" />
+        <Button
+            android:text="6"
+            android:id="@+id/six"
+            android:textSize="35dp" />
+        <Button
+            android:text="*"
+            android:id="@+id/mult"
+            android:textSize="35dp" />
+        <Button
+            android:text="1"
+            android:id="@+id/one"
+            android:textSize="35dp" />
+        <Button
+            android:text="2"
+            android:id="@+id/two"
+            android:textSize="35dp" />
+        <Button
+            android:text="3"
+            android:id="@+id/three"
+            android:textSize="35dp" />
+        <Button
+            android:text="-"
+            android:id="@+id/minus"
+            android:textSize="35dp" />
+        <Button
+            android:text="."
+            android:id="@+id/dot"
+            android:textSize="35dp" />
+        <Button
+            android:text="="
+            android:id="@+id/equal"
+            android:textSize="35dp" />
+        <Button
+            android:text="+"
+            android:id="@+id/addition"
+            android:textSize="35dp" />
+        <Button
+            android:text="0"
+            android:id="@+id/zero"
+            android:textSize="35dp" />
+    </GridLayout>
+    <Button
+        android:text="CLEAR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/clear"
+        android:textSize="35dp" />
+</LinearLayout>
