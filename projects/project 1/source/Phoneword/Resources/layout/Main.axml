@@ -27,7 +27,7 @@
         android:id="@+id/gridLayout2">
         <Button
             android:text="Button1"
-            android:id="@+id/button1" />
+            android:id="@+id/AlphaButton" />
         <Button
             android:text="Mystery"
             android:id="@+id/mystery" />

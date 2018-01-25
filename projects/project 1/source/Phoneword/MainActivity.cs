@@ -23,12 +23,13 @@ namespace Phoneword
             EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);
             TextView translatedPhoneWord = FindViewById<TextView>(Resource.Id.TranslatedPhoneWord);
             Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
-
+            //
+            Button alphaButton = FindViewById<Button>(Resource.Id.AlphaButton);
             // Add code to translate number
             translateButton.Click += (sender, e) =>
             {
                 // Translate user’s alphanumeric phone number to numeric
-                string translatedNumber = Core.PhonewordTranslator.ToNumber(phoneNumberText.Text);
+                string translatedNumber = Core.ExpressionScrambler.ToNumber(phoneNumberText.Text);
                 if (string.IsNullOrWhiteSpace(translatedNumber))
                 {
                     translatedPhoneWord.Text = string.Empty;
@@ -38,6 +39,22 @@ namespace Phoneword
                     translatedPhoneWord.Text = translatedNumber;
                 }
             };
+
+            alphaButton.Click += (sender, e) =>
+            {
+                // Translate user’s alphanumeric phone number to numeric
+                string scrambledExpression = Core.ExpressionScrambler.ToAlpha(phoneNumberText.Text);
+                if (string.IsNullOrWhiteSpace(scrambledExpression))
+                {
+                    translatedPhoneWord.Text = string.Empty;
+                }
+                else
+                {
+                    translatedPhoneWord.Text = scrambledExpression;
+                }
+            };
+
+
         }
     }
 }

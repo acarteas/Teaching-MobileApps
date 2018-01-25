@@ -2,7 +2,7 @@
 using System;
 namespace Core
 {
-    public static class PhonewordTranslator
+    public static class ExpressionScrambler
     {
         public static string ToNumber(string raw)
         {
@@ -50,6 +50,37 @@ namespace Core
                 return 8;
             else if ("WXYZ".Contains(c))
                 return 9;
+            return null;
+        }
+
+        public static string ToAlpha(string raw)
+        {
+            if (string.IsNullOrWhiteSpace(raw))
+                return "";
+            else
+                raw = raw.ToUpperInvariant();
+
+            var newExpr = new StringBuilder();
+            foreach (var c in raw)
+            {
+                if ("abcdefghijklmnopqrstuvxyz".Contains(c))
+                {
+                    newExpr.Append(c);
+                }
+                else
+                {
+                    var result = TranslateToAlpha(c);
+                    if (result != null)
+                        newExpr.Append(result);
+                }
+            }
+            return newExpr.ToString();
+        }
+
+        static string TranslateToAlpha(char c)
+        {
+            if ("~".Contains(c))
+                return "a";
             return null;
         }
     }

@@ -44,6 +44,9 @@ namespace Phoneword
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050004
+			public const int AlphaButton = 2131034116;
+			
 			// aapt resource value: 0x7f050001
 			public const int PhoneNumberText = 2131034113;
 			
@@ -52,9 +55,6 @@ namespace Phoneword
 			
 			// aapt resource value: 0x7f050008
 			public const int TranslatedPhoneWord = 2131034120;
-			
-			// aapt resource value: 0x7f050004
-			public const int button1 = 2131034116;
 			
 			// aapt resource value: 0x7f050006
 			public const int button2 = 2131034118;
