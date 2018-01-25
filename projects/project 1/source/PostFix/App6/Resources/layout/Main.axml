@@ -6,8 +6,14 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <TextView
-        android:text="0.00"
+        android:text=""
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:textSize="30dp" />
+    <TextView
+        android:text="0.00"
+        android:layout_width="385.0dp"
         android:layout_height="wrap_content"
         android:id="@+id/calculatorAccumulator"
         android:background="#FFFFFF"
@@ -15,12 +21,19 @@
         android:gravity="center"
         android:textAlignment="gravity"
         android:textSize="48dp" />
-    <GridLayout
+    <TextView
+        android:text=""
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        android:textSize="30dp" />
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="252.5dp"
         android:rowCount="5"
         android:columnCount="4"
         android:id="@+id/gridLayout1"
+        android:layout_gravity="center"
         android:layout_marginBottom="0.0dp">
         <Button
             android:text="7"
@@ -75,8 +88,8 @@
             android:id="@+id/dot"
             android:textSize="35dp" />
         <Button
-            android:text="="
-            android:id="@+id/equal"
+            android:text="_"
+            android:id="@+id/space"
             android:textSize="35dp" />
         <Button
             android:text="+"
@@ -87,10 +100,25 @@
             android:id="@+id/zero"
             android:textSize="35dp" />
     </GridLayout>
-    <Button
-        android:text="CLEAR"
+    <TextView
+        android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/clear"
-        android:textSize="35dp" />
+        android:id="@+id/textView1"
+        android:textSize="10dp" />
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:rowCount="1"
+        android:columnCount="1"
+        android:id="@+id/gridLayout2"
+        android:layout_gravity="center"
+        android:layout_marginBottom="0.0dp">
+        <Button
+            android:text="CLEAR"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/clear"
+            android:textSize="35dp" />
+    </GridLayout>
 </LinearLayout>
