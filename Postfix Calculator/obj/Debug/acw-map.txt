@@ -1,0 +1,4 @@
+Postfix_Calculator.MainActivity, Postfix Calculator;md59ad37b1718297bae8eeeb4094a547e98.MainActivity
+Postfix_Calculator.MainActivity, Postfix Calculator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md59ad37b1718297bae8eeeb4094a547e98.MainActivity
+Postfix_Calculator.MainActivity;md59ad37b1718297bae8eeeb4094a547e98.MainActivity
+postfix_calculator.MainActivity;md59ad37b1718297bae8eeeb4094a547e98.MainActivity
