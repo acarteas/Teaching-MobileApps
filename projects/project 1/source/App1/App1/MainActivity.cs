@@ -59,6 +59,7 @@ namespace App1
 
             two.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '2';
                 this.str_output += '2';
                 input.Text = this.str_output;
@@ -66,6 +67,7 @@ namespace App1
 
             three.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '3';
                 this.str_output += '3';
                 input.Text = this.str_output;
@@ -73,6 +75,7 @@ namespace App1
 
             four.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '4';
                 this.str_output += '4';
                 input.Text = this.str_output;
@@ -80,6 +83,7 @@ namespace App1
 
             five.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '5';
                 this.str_output += '5';
                 input.Text = this.str_output;
@@ -87,6 +91,7 @@ namespace App1
 
             six.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '6';
                 this.str_output += '6';
                 input.Text = this.str_output;
@@ -94,6 +99,7 @@ namespace App1
 
             seven.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '7';
                 this.str_output += '7';
                 input.Text = this.str_output;
@@ -101,6 +107,7 @@ namespace App1
 
             eight.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '8';
                 this.str_output += '8';
                 input.Text = this.str_output;
@@ -108,6 +115,7 @@ namespace App1
 
             nine.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '9';
                 this.str_output += '9';
                 input.Text = this.str_output;
@@ -115,6 +123,7 @@ namespace App1
 
             zero.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input += '0';
                 this.str_output += '0';
                 input.Text = this.str_output;
@@ -122,6 +131,7 @@ namespace App1
 
             clear.Click += delegate
             {
+                myVib.Vibrate(30);
                 this.str_input = null;
                 this.str_output = null;
                 input.Text = this.str_input;
@@ -129,6 +139,7 @@ namespace App1
 
             enter.Click += delegate
             {
+                myVib.Vibrate(30);
                 if (int.TryParse(this.str_input, out rh))
                 {
                     if (sign == '+')
@@ -136,7 +147,7 @@ namespace App1
                         total = lh + rh;
 
                         total.ToString();
-                        
+
                         str_output += " = ";
                         str_output += total;
                         input.Text = str_output;
@@ -160,13 +171,23 @@ namespace App1
                         input.Text = str_output;
                     }
 
-                    else
+                    else if (sign == '/')
                     {
                         total = lh / rh;
 
                         str_output += " = ";
                         str_output += total;
                         input.Text = str_output;
+                    }
+
+                    else
+                    {
+                        if (int.TryParse(this.str_input, out total)) 
+                        {
+                            str_output += " = ";
+                            str_output += total;
+                            input.Text = str_output;
+                        }
                     }
                 }
 
@@ -177,10 +198,10 @@ namespace App1
 
             add.Click += delegate
             {
-
+                myVib.Vibrate(30);
                 //if (!lh_full)
                 //{
-                    if (int.TryParse(this.str_input, out lh))
+                if (int.TryParse(this.str_input, out lh))
                     {
                         lh_full = true;
                     }
@@ -204,9 +225,10 @@ namespace App1
 
             minus.Click += delegate
             {
+                myVib.Vibrate(30);
                 //if (!lh_full)
                 //{
-                    if (int.TryParse(this.str_input, out lh))
+                if (int.TryParse(this.str_input, out lh))
                     {
                         lh_full = true;
                     }
@@ -220,9 +242,10 @@ namespace App1
 
             multiply.Click += delegate
             {
+                myVib.Vibrate(30);
                 //if (!lh_full)
                 //{
-                    if (int.TryParse(this.str_input, out lh))
+                if (int.TryParse(this.str_input, out lh))
                     {
                         lh_full = true;
                     }
@@ -236,9 +259,10 @@ namespace App1
 
             divide.Click += delegate
             {
+                myVib.Vibrate(30);
                 //if (!lh_full)
                 //{
-                    if (int.TryParse(this.str_input, out lh))
+                if (int.TryParse(this.str_input, out lh))
                     {
                         lh_full = true;
                     }
