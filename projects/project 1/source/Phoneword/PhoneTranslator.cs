@@ -32,24 +32,60 @@ namespace Core
         {
             return keyString.IndexOf(c) >= 0;
         }
-        static int? TranslateToNumber(char c)
+        static string TranslateToNumber(char c)
         {
-            if ("ABC".Contains(c))
-                return 2;
-            else if ("DEF".Contains(c))
-                return 3;
-            else if ("GHI".Contains(c))
-                return 4;
-            else if ("JKL".Contains(c))
-                return 5;
-            else if ("MNO".Contains(c))
-                return 6;
-            else if ("PQRS".Contains(c))
-                return 7;
-            else if ("TUV".Contains(c))
-                return 8;
-            else if ("WXYZ".Contains(c))
-                return 9;
+            if ("A".Contains(c))
+                return "2";
+            else if ("B".Contains(c))
+                return "3";
+            else if ("C".Contains(c))
+                return "4";
+            else if ("D".Contains(c))
+                return "5";
+            else if ("E".Contains(c))
+                return "6";
+            else if ("F".Contains(c))
+                return "7";
+            else if ("G".Contains(c))
+                return "8";
+            else if ("H".Contains(c))
+                return "9";
+            else if ("I".Contains(c))
+                return "10!";
+            else if ("J".Contains(c))
+                return "11!";
+            else if ("K".Contains(c))
+                return "12!";
+            else if ("L".Contains(c))
+                return "13!";
+            else if ("M".Contains(c))
+                return "14!";
+            else if ("N".Contains(c))
+                return "15!";
+            else if ("O".Contains(c))
+                return "16!";
+            else if ("P".Contains(c))
+                return "17!";
+            else if ("Q".Contains(c))
+                return "18!";
+            else if ("R".Contains(c))
+                return "19!";
+            else if ("S".Contains(c))
+                return "20!";
+            else if ("T".Contains(c))
+                return "21!";
+            else if ("U".Contains(c))
+                return "22!";
+            else if ("V".Contains(c))
+                return "23!";
+            else if ("W".Contains(c))
+                return "24!";
+            else if ("X".Contains(c))
+                return "25!";
+            else if ("Y".Contains(c))
+                return "26!";
+            else if ("Z".Contains(c))
+                return "27!";
             return null;
         }
 
@@ -79,7 +115,7 @@ namespace Core
 
         static string TranslateToAlpha(char c)
         {
-            if ("123".Contains(c))
+            if ("0123".Contains(c))
                 return "a";
             else if ("456".Contains(c))
                 return "k";
