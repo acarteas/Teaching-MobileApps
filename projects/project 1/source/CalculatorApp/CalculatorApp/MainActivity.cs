@@ -10,6 +10,7 @@ namespace CalculatorApp
     public class MainActivity : Activity
     {
         Stack calc_stack = new Stack();
+        int count = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -18,17 +19,23 @@ namespace CalculatorApp
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
             //Button button = FindViewById<Button>(Resource.Id.myButton);
 
-            var resultsView = FindViewById<TextView>(Resource.Id.textView1);
+            // TextView resultsView = FindViewById<TextView>(Resource.Id.textView1);
 
+            //declares button to use
+            //TODO: declare the rest of the buttons
             Button bttn1 = FindViewById<Button>(Resource.Id.button_one);
-            
-           
+
+            //declare the view to edit
+            EditText results = FindViewById<TextView>(Resource.Id.results);
+
+            bttn1.click += count++;
 
 
+
+
+        }
 
       
     }
