@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System;
 namespace Core
 {
@@ -63,7 +63,7 @@ namespace Core
             var newExpr = new StringBuilder();
             foreach (var c in raw)
             {
-                if ("abcdefghijklmnopqrstuvxyz".Contains(c))
+                if (" abcdefghijklmnopqrstuvwxyz".Contains(c))
                 {
                     newExpr.Append(c);
                 }
@@ -79,9 +79,15 @@ namespace Core
 
         static string TranslateToAlpha(char c)
         {
-            if ("~".Contains(c))
+            if ("123".Contains(c))
                 return "a";
+            else if ("456".Contains(c))
+                return "k";
+            else if ("789".Contains(c))
+                return "z";
             return null;
+       
+
         }
     }
 }
