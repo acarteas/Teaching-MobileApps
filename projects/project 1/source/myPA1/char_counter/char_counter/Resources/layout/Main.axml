@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <TextView
-        android:text="Enter the text to be counted" 
+        android:text="Enter the text to be counted"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,9 +21,8 @@
         android:textAlignment="gravity"
         android:textSize="20dp" />
     <TextView
-        android:text="Total number of characters: "
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/myButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2" />
+        android:text="Clear" />
 </LinearLayout>
