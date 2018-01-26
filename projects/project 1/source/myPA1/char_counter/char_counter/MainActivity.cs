@@ -17,7 +17,7 @@ namespace char_counter
             SetContentView(Resource.Layout.Main);
 
 
-            var stuff = FindViewById<TextView>(Resource.Id.toBeCounted);
+            Text stuff = FindViewById<TextView>(Resource.Id.toBeCounted);
 
             Button button = FindViewById<Button>(Resource.Id.myButton);
 
