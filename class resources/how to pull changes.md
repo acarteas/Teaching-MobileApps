@@ -12,3 +12,7 @@ In order to pull the changes Adam makes to the 2018-Spring Repo
 6. click Create Pull Request
 7. click Create
 8. click Merge
+
+
+
+Steps 4-5 are odd. If you input the 
