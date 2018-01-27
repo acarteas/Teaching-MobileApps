@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:columnCount="5"
     android:rowCount="5"
     android:orientation="horizontal"
@@ -15,15 +15,6 @@
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp" />
-    <Button
-        android:text="("
-        android:id="@+id/button_lParenthesis"
-        android:layout_width="75dp"
-         />
-    <Button
-        android:text=")"
-        android:id="@+id/button_rParenthesis"
-        android:layout_width="75dp" />
     <Button
         android:text="(-)"
         android:id="@+id/button_negative"
@@ -81,14 +72,8 @@
         android:id="@+id/button_nine"
         android:layout_width="75dp" />
     <Button
-        android:text="c"
-        android:id="@+id/button_clear"
-        android:layout_width="75dp"
-        android:layout_height="100"
-        android:layout_rowSpan="2" />
-    <Button
         android:text="+"
-        android:id="@+id/button_plus"
+        android:id="@+id/button_add"
         android:layout_width="75dp" />
     <Button
         android:text="-"
