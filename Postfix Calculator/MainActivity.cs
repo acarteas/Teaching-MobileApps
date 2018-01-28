@@ -36,11 +36,9 @@ namespace Postfix_Calculator
 
             void calculate()
             {
-                Stack<int> input_stack = new Stack<int>();
-                Queue<int> input_queue = new Queue<int>();
-
-                Queue<int> temp_queue = new Queue<int>();
-                string test = editInput.Text;
+                Queue<char> operator_queue = new Queue<char>();
+                Queue<int> number_queue = new Queue<int>();
+                char operator_char = '$';
                 int total = 0;
                 string current_number = "";
 
@@ -49,101 +47,89 @@ namespace Postfix_Calculator
                     switch (editInput.Text[i])
                     {
                         case '+':
-                            /*
+                    
                             //need to check for anything in current_number in case they didnt add a space between last number and +
                             if (current_number != "")
                             {
-                                input_stack.Push(Int32.Parse(current_number));
-                                current_number = "";
-                            }
-                            
-                            for (int j = 0; j <= input_stack.Count; j++)
-                            {
-                                total = total + input_stack.Pop();
-                            }
-
-                            input_stack.Push(total);
-                            */
-
-                            if (current_number != "")
-                            {
-                                input_queue.Enqueue(Int32.Parse(current_number));
+                                number_queue.Enqueue(Int32.Parse(current_number));
                                 current_number = "";
                             }
 
-                            for (int j = 0; j <= input_queue.Count; j++)
-                            {
-                                total = total + input_queue.Dequeue();
-                            }
-
-                            input_queue.Enqueue(total);
-
-
-
+                            operator_queue.Enqueue('+');
                             break;
 
                         case '-':
                             if (current_number != "")
                             {
-                                input_queue.Enqueue(Int32.Parse(current_number));
+                                number_queue.Enqueue(Int32.Parse(current_number));
                                 current_number = "";
                             }
 
-                            //todo: if doing multiple items, maybe check if total is empty before setting it to the first item in queue
-                            total = input_queue.Dequeue();
-
-                            for (int j = 1; j <= input_queue.Count; j++)
-                            {
-                                total = total - input_queue.Dequeue();
-                            }
-
-                            input_queue.Enqueue(total);
-
+                            operator_queue.Enqueue('-');
                             break;
 
                         case '*':
                             if (current_number != "")
                             {
-                                input_queue.Enqueue(Int32.Parse(current_number));
+                                number_queue.Enqueue(Int32.Parse(current_number));
                                 current_number = "";
                             }
 
-                            total = input_queue.Dequeue();
-
-                            for (int j = 1; j <= input_queue.Count; j++)
-                            {
-                                total = total * input_queue.Dequeue();
-                            }
-
-                            input_queue.Enqueue(total);
+                            operator_queue.Enqueue('*');
                             break;
 
                         case '/':
                             if (current_number != "")
                             {
-                                input_queue.Enqueue(Int32.Parse(current_number));
+                                number_queue.Enqueue(Int32.Parse(current_number));
                                 current_number = "";
                             }
 
-                            //todo: if doing multiple items, maybe check if total is empty before setting it to the first item in queue
-                            total = input_queue.Dequeue();
-
-                            for (int j = 1; j <= input_queue.Count; j++)
-                            {
-                                total = total / input_queue.Dequeue();
-                            }
-
-                            input_queue.Enqueue(total);
-
+                            operator_queue.Enqueue('/');
                             break;
                         case ' ':
-                            input_queue.Enqueue(Int32.Parse(current_number));
-                            current_number = "";
+                            if (current_number != "")
+                            {
+                                number_queue.Enqueue(Int32.Parse(current_number));
+                                current_number = "";
+                            }
+                            
                             break;
                         default:
                             current_number = current_number + editInput.Text[i];
                             break;
                     }
+                }
+
+                //have opeartors and numbers, now calculate
+                total = number_queue.Dequeue();
+
+                while(number_queue.Count != 0)
+                {
+                    if (operator_queue.Count != 0)
+                    {
+                        operator_char = operator_queue.Dequeue();
+                    }
+
+                    switch (operator_char)
+                    {
+                        case '+':
+                            total = total + number_queue.Dequeue();
+                            break;
+
+                        case '-':
+                            total = total - number_queue.Dequeue();
+                            break;
+
+                        case '*':
+                            total = total * number_queue.Dequeue();
+                            break;
+
+                        case '/':
+                            total = total / number_queue.Dequeue();
+                            break;
+                    }
+
                 }
 
                 textResult.Text = total.ToString();
