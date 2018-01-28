@@ -45,7 +45,64 @@ namespace Postfix_Calculator
 		{
 			
 			// aapt resource value: 0x7f050002
-			public const int btnEquals = 2131034114;
+			public const int btnClear = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int btnCopy = 2131034115;
+			
+			// aapt resource value: 0x7f050014
+			public const int btnDecimal = 2131034132;
+			
+			// aapt resource value: 0x7f050005
+			public const int btnDivide = 2131034117;
+			
+			// aapt resource value: 0x7f050007
+			public const int btnEight = 2131034119;
+			
+			// aapt resource value: 0x7f050015
+			public const int btnEquals = 2131034133;
+			
+			// aapt resource value: 0x7f05000b
+			public const int btnFive = 2131034123;
+			
+			// aapt resource value: 0x7f05000a
+			public const int btnFour = 2131034122;
+			
+			// aapt resource value: 0x7f05000d
+			public const int btnMinus = 2131034125;
+			
+			// aapt resource value: 0x7f050009
+			public const int btnMultiply = 2131034121;
+			
+			// aapt resource value: 0x7f050004
+			public const int btnNegative = 2131034116;
+			
+			// aapt resource value: 0x7f050008
+			public const int btnNine = 2131034120;
+			
+			// aapt resource value: 0x7f05000e
+			public const int btnOne = 2131034126;
+			
+			// aapt resource value: 0x7f050011
+			public const int btnPlus = 2131034129;
+			
+			// aapt resource value: 0x7f050006
+			public const int btnSeven = 2131034118;
+			
+			// aapt resource value: 0x7f05000c
+			public const int btnSix = 2131034124;
+			
+			// aapt resource value: 0x7f050012
+			public const int btnSpace = 2131034130;
+			
+			// aapt resource value: 0x7f050010
+			public const int btnThree = 2131034128;
+			
+			// aapt resource value: 0x7f05000f
+			public const int btnTwo = 2131034127;
+			
+			// aapt resource value: 0x7f050013
+			public const int btnZero = 2131034131;
 			
 			// aapt resource value: 0x7f050001
 			public const int edtTextInput = 2131034113;
@@ -98,17 +155,74 @@ namespace Postfix_Calculator
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f040014
+			public const int app_name = 2130968596;
 			
 			// aapt resource value: 0x7f040000
-			public const int equals = 2130968576;
+			public const int clear = 2130968576;
 			
-			// aapt resource value: 0x7f040002
-			public const int input = 2130968578;
+			// aapt resource value: 0x7f040001
+			public const int copy = 2130968577;
+			
+			// aapt resource value: 0x7f040012
+			public const int @decimal = 2130968594;
 			
 			// aapt resource value: 0x7f040003
-			public const int result = 2130968579;
+			public const int divide = 2130968579;
+			
+			// aapt resource value: 0x7f040005
+			public const int eight = 2130968581;
+			
+			// aapt resource value: 0x7f040013
+			public const int equals = 2130968595;
+			
+			// aapt resource value: 0x7f040009
+			public const int five = 2130968585;
+			
+			// aapt resource value: 0x7f040008
+			public const int four = 2130968584;
+			
+			// aapt resource value: 0x7f040015
+			public const int input = 2130968597;
+			
+			// aapt resource value: 0x7f04000b
+			public const int minus = 2130968587;
+			
+			// aapt resource value: 0x7f040007
+			public const int multiply = 2130968583;
+			
+			// aapt resource value: 0x7f040002
+			public const int negative = 2130968578;
+			
+			// aapt resource value: 0x7f040006
+			public const int nine = 2130968582;
+			
+			// aapt resource value: 0x7f04000c
+			public const int one = 2130968588;
+			
+			// aapt resource value: 0x7f04000f
+			public const int plus = 2130968591;
+			
+			// aapt resource value: 0x7f040016
+			public const int result = 2130968598;
+			
+			// aapt resource value: 0x7f040004
+			public const int seven = 2130968580;
+			
+			// aapt resource value: 0x7f04000a
+			public const int six = 2130968586;
+			
+			// aapt resource value: 0x7f040010
+			public const int space = 2130968592;
+			
+			// aapt resource value: 0x7f04000e
+			public const int three = 2130968590;
+			
+			// aapt resource value: 0x7f04000d
+			public const int two = 2130968589;
+			
+			// aapt resource value: 0x7f040011
+			public const int zero = 2130968593;
 			
 			static String()
 			{

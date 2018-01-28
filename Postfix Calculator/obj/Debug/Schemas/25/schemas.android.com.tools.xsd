@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>1/22/2018 4:34:45 PM</xs:documentation>
+    <xs:documentation>1/28/2018 1:46:11 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -209,9 +209,28 @@
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="@string/app_name" />
+            <xs:enumeration value="@string/clear" />
+            <xs:enumeration value="@string/copy" />
+            <xs:enumeration value="@string/decimal" />
+            <xs:enumeration value="@string/divide" />
+            <xs:enumeration value="@string/eight" />
             <xs:enumeration value="@string/equals" />
+            <xs:enumeration value="@string/five" />
+            <xs:enumeration value="@string/four" />
             <xs:enumeration value="@string/input" />
+            <xs:enumeration value="@string/minus" />
+            <xs:enumeration value="@string/multiply" />
+            <xs:enumeration value="@string/negative" />
+            <xs:enumeration value="@string/nine" />
+            <xs:enumeration value="@string/one" />
+            <xs:enumeration value="@string/plus" />
             <xs:enumeration value="@string/result" />
+            <xs:enumeration value="@string/seven" />
+            <xs:enumeration value="@string/six" />
+            <xs:enumeration value="@string/space" />
+            <xs:enumeration value="@string/three" />
+            <xs:enumeration value="@string/two" />
+            <xs:enumeration value="@string/zero" />
             <xs:enumeration value="@android:string/cancel" />
             <xs:enumeration value="@android:string/copy" />
             <xs:enumeration value="@android:string/copyUrl" />

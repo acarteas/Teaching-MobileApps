@@ -38,11 +38,10 @@ C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\R.
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\uploadflags.txt
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll.mdb
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\android\assets\Postfix Calculator.dll.mdb
-C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
+bin\Debug\System.pdb
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb
-bin\Debug\System.pdb
 bin\Debug\System.Xml.pdb
 bin\Debug\System.Net.Http.pdb
 bin\Debug\System.Runtime.Serialization.pdb

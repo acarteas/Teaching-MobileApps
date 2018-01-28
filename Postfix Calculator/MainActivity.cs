@@ -25,6 +25,8 @@ namespace Postfix_Calculator
             EditText editInput = FindViewById<EditText>(Resource.Id.edtTextInput);
             TextView textResult = FindViewById<TextView>(Resource.Id.txtResult);
 
+            textResult.Text = "0";
+
             //button.AfterTextChanged += doSomethingWithButton;
 
             //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
