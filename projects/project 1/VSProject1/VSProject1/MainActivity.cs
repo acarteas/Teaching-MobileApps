@@ -6,16 +6,19 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace VSProject1
 {
 	[Activity(Label = "VSProject1", MainLauncher = true, Icon = "@drawable/icon")]
 	public class MainActivity : Activity
 	{
+        static readonly List<string> historyList = new List<string>();
+        private Vibrator myVib;
 
-		private Vibrator myVib;
 
-		protected override void OnCreate(Bundle savedInstanceState)
+
+        protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
 
@@ -25,18 +28,30 @@ namespace VSProject1
 			// Set our view from the "main" layout resource
 			SetContentView(Resource.Layout.Main);
 
-			Button button = FindViewById<Button>(Resource.Id.button1);
+			Button button = FindViewById<Button>(Resource.Id.translateButton);
 
 			button.Click += ButtonClick1;
 
-		}
+
+            /*
+            //translation history stuff
+            Button translationHistoryButton = FindViewById<Button>(Resource.Id.translationHistoryButton1);
+
+            // Add code to translate number
+            string translated = string.Empty;
+            translationHistoryButton.Click += (sender, e) =>
+            {
+                // Translate user’s alphanumeric phone number to numeric
+                translated = phoneNumberText;
+               
+                    translatedPhoneWord.Text = translated;
+                    historyList.Add(translated);
+                    translationHistoryButton.Enabled = true;       
+            };
+            */
+        }
 
 
-		private void MenuSetup()
-		{
-			//delete the old stuff, setup a new menu..
-
-		}
 
 
 		private void ButtonClick1(object sender, System.EventArgs e)

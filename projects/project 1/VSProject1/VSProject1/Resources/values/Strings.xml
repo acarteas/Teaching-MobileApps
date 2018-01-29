@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Mobile Apps P 1</string>
+  <string name="app_name">MA P 1</string>
+  <string name="translationHistory">Translation History</string>
   <string name="buttonChoice">Row</string>
 </resources>

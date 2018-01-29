@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:src="@drawable/hood"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView1"
-        android:layout_marginLeft="0.0dp" />
-    <TextView
-        android:text="Hello Traveller, and welcome!"
-        android:layout_width="match_parent"
-        android:layout_height="275.5dp"
-        android:id="@+id/textView1" />
+<GridLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/gridLayout1"
+    p1:layout_gravity="center"
+    p1:columnCount="10"
+    p1:rowCount="4"
+    p1:orientation="horizontal">
     <Button
-        android:tag="@string/buttonChoice"
-        android:text="Press Me"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button1" />
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/switch1"
-        android:text="I am a sliding switch" />
-</LinearLayout>
+        p1:text="Translate the Cipher"
+        p1:layout_column="1"
+        p1:layout_row="1"
+        p1:id="@+id/translateButton" />
+    <EditText
+        p1:inputType="Type your text here.  We will encrypt it for you!"
+        p1:id="@+id/editText1"
+        p1:layout_column="0"
+        p1:layout_row="0"
+        p1:text="mutliline text field." />
+    <Button
+        p1:text="@string/translationHistory"
+        p1:layout_column="0"
+        p1:layout_row="2"
+        p1:id="@+id/translationHistoryButton1"
+        p1:enabled="false" />
+</GridLayout>
