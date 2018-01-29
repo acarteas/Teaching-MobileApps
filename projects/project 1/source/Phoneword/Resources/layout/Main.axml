@@ -26,14 +26,14 @@
         android:columnCount="4"
         android:id="@+id/gridLayout2">
         <Button
-            android:text="Button1"
+            android:text="Try This"
             android:id="@+id/AlphaButton" />
         <Button
             android:text="Mystery"
-            android:id="@+id/mystery" />
+            android:id="@+id/Mystery" />
         <Button
-            android:text="Button2"
-            android:id="@+id/button2" />
+            android:text="!!!!!!?"
+            android:id="@+id/ExclamButton" />
         <Button
             android:text="Button3"
             android:id="@+id/button3" />
