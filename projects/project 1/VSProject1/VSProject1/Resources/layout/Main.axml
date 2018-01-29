@@ -5,23 +5,32 @@
     p1:id="@+id/gridLayout1"
     p1:layout_gravity="center"
     p1:columnCount="10"
-    p1:rowCount="4"
+    p1:rowCount="5"
     p1:orientation="horizontal">
-    <Button
-        p1:text="Translate the Cipher"
-        p1:layout_column="1"
-        p1:layout_row="1"
-        p1:id="@+id/translateButton" />
     <EditText
-        p1:inputType="Type your text here.  We will encrypt it for you!"
+        p1:inputType="textMultiLine"
         p1:id="@+id/editText1"
         p1:layout_column="0"
         p1:layout_row="0"
-        p1:text="mutliline text field." />
+        p1:hint="Type your text here.  We will encrypt it for you!" />
     <Button
-        p1:text="@string/translationHistory"
+        p1:text="Translate the Cipher"
+        p1:layout_column="0"
+        p1:layout_row="1"
+        p1:id="@+id/translateButton" />
+    <Button
+        p1:text="@string/Decrypt"
         p1:layout_column="0"
         p1:layout_row="2"
-        p1:id="@+id/translationHistoryButton1"
-        p1:enabled="false" />
+        p1:id="@+id/decryptButton" />
+    <SeekBar
+        p1:id="@+id/seekBar1"
+        p1:layout_column="0"
+        p1:layout_row="3"
+        p1:layout_columnSpan="3" />
+    <TextView
+        p1:text="Text"
+        p1:layout_column="0"
+        p1:layout_row="4"
+        p1:id="@+id/textView1" />
 </GridLayout>
