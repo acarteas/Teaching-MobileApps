@@ -10,15 +10,17 @@
     <TextView
         android:text="Results"
         android:id="@+id/calc_results"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
+        android:layout_columnSpan="5"
+        android:layout_width="match_parent" />
+    <TextView
+        android:text="Results"
+        android:id="@+id/calc_results"
+        android:layout_height="35dp"
         android:layout_columnSpan="5"
         android:layout_width="match_parent"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp" />
-    <Button
-        android:text="(-)"
-        android:id="@+id/button_negative"
-        android:layout_width="75dp" />
     <Button
         android:text="0"
         android:id="@+id/button_zero"
@@ -28,8 +30,12 @@
         android:id="@+id/button_delete"
         android:layout_width="75dp" />
     <Button
-        android:text="Clear"
+        android:text="C"
         android:id="@+id/button_clear"
+        android:layout_width="75dp" />
+    <Button
+        android:text="CE"
+        android:id="@+id/button_clear_entry"
         android:layout_width="75dp" />
     <Button
         android:text="Mod"

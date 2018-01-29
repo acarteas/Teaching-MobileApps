@@ -49,17 +49,45 @@ namespace CalculatorApp
            // bttn1.Click += new EventHandler(this.Button_click);
 
         }
-        //Event Handler
-        private void Button_click(object sender, System.EventArgs e)
+        //Event Handler: Adds the button clicked onto the TextView and the Stack
+        private void add_button_click(object sender, System.EventArgs e)
         {
             Button a_button = sender as Button;
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
             results.Text += (a_button);
-            calc_stack.Push(a_button);
         }
 
-        
+        //Event Handler: Clears the TextView
+        private void text_clear_button(object sender, System.EventArgs e)
+        {
+            Button a_button = sender as Button;
+            TextView results = FindViewById<TextView>(Resource.Id.calc_results);
+            results.Text += " ";
+        }
+
+        //Event Handler: Clears the TextView and the Stack
+        private void all_clear_button(object sender, System.EventArgs e)
+        {
+            Button a_button = sender as Button;
+            TextView results = FindViewById<TextView>(Resource.Id.calc_results);
+            results.Text += " ";
+            calc_stack.Clear();
+        }
+       
+        //Deletes a character from the TextView
+        private void delete_button(object sender, System.EventArgs e)
+        {
+            Button a_button = sender as Button;
+            TextView results = FindViewById<TextView>(Resource.Id.calc_results);
+            string text = results.Text;
+            text.Remove(text.Length - 1);
+            results.Text += text;
+        }
+
+
+
 
     }
+
 }
 
