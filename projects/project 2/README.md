@@ -10,7 +10,7 @@ After having obtained an image (either via the camera or through your pone's gal
 
 ![Second View](view2.png)
 
-Included in this folder is the most recent writeup from [PA #1 in CS 211](./CS211 PA1.pdf).  It explains how to apply a lot of different image effects.  For the purposes of this assignment, you only need to apply the "basic" image manipulations (remove red/green/blue, negate red/green/blue, grayscale, high contrast, add noise).
+Included in this folder is the most recent writeup from [the first PA in CS 211](./CS211-PA1.pdf).  It explains how to apply a lot of different image effects.  For the purposes of this assignment, you only need to apply the "basic" image manipulations (remove red/green/blue, negate red/green/blue, grayscale, high contrast, add noise).
 
 
 ## Deliverables
