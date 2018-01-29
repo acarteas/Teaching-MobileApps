@@ -43,7 +43,9 @@
         android:layout_column="0"
         android:gravity="center"
         android:text="Are you ready to start?"
-        android:id="@+id/QuestionText" />
+        android:id="@+id/QuestionText"
+        android:clickable="false"
+        android:editable="false" />
     <TextView
         android:text="0"
         android:layout_row="5"
