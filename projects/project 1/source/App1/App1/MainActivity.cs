@@ -103,7 +103,6 @@ namespace App1
                 this.str_output += '8';
                 input_box.Text = this.str_output;
             };
-
             button9.Click += delegate
             {
                 myVib.Vibrate(25);
