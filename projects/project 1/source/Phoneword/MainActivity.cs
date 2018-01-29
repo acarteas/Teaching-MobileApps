@@ -25,6 +25,8 @@ namespace Phoneword
             Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);
             //
             Button alphaButton = FindViewById<Button>(Resource.Id.AlphaButton);
+            Button exclamButton = FindViewById<Button>(Resource.Id.ExclamButton);
+            Button keepButton = FindViewById<Button>(Resource.Id.keepButton);
             // Add code to translate number
             translateButton.Click += (sender, e) =>
             {
@@ -54,7 +56,24 @@ namespace Phoneword
                 }
             };
 
+            exclamButton.Click += (sender, e) =>
+            {
+                string scrambledExpression = Core.ExpressionScrambler.GetExclam(phoneNumberText.Text);
+                if (string.IsNullOrWhiteSpace(scrambledExpression))
+                {
+                    translatedPhoneWord.Text = string.Empty;
+                }
+                else
+                {
+                    translatedPhoneWord.Text = scrambledExpression;
+                }
+            };
 
+            keepButton.Click += (sender, e) =>
+            {
+                phoneNumberText.Text = translatedPhoneWord.Text;
+            };
+            
         }
     }
 }

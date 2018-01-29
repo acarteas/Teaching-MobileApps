@@ -1,5 +1,8 @@
 using System.Text;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 namespace Core
 {
     public static class ExpressionScrambler
@@ -113,6 +116,8 @@ namespace Core
             return newExpr.ToString();
         }
 
+
+
         static string TranslateToAlpha(char c)
         {
             if ("0123".Contains(c))
@@ -122,8 +127,73 @@ namespace Core
             else if ("789".Contains(c))
                 return "z";
             return null;
-       
 
+
+        }
+
+        public static string GetExclam(string myString)
+        {
+
+            if (string.IsNullOrWhiteSpace(myString))
+                return "";
+            else
+                myString = myString.ToUpperInvariant();
+
+            int myStrLength = myString.Length;
+            var newExpr = new StringBuilder();
+            // Console.WriteLine(myStrLength);
+            //int b = 0;
+            for (int i = 0; i < myStrLength; i++)
+            {
+                //  Console.WriteLine("i is:" + i);
+                char c = myString[i];
+                //  Console.WriteLine("c is:" + c);
+
+                string lookAhead = myString.Substring(i, myStrLength - i); //get the string from which to look ahead
+                CharEnumerator lookEnum = lookAhead.GetEnumerator();  // instantiate an enumerator
+                                                                      //  newExpr.Append(c); //append c
+                                                                      //  Console.WriteLine("lookAhead is: "+lookAhead);
+
+                if (i < (myStrLength - 2)) // Cannot Move two spaces if i < myString-2
+                {
+                    lookEnum.MoveNext();
+                    lookEnum.MoveNext();
+                    //save one over to first;
+                    char first = lookEnum.Current;
+                    lookEnum.MoveNext();
+                    char second = lookEnum.Current;
+                    // move the enumeration over twice!
+                    Console.WriteLine("Current lookEnum:" + lookEnum.Current);
+                    //if lookEnum.Current is "!", then 
+                    if (lookEnum.Current.ToString() == "!")
+                    {
+                        Console.WriteLine("Hello"); //This provees RIGHT NOW that this works. okayy
+                        //once in here, change the digit to a letter in the alphabet!!
+                        newExpr.Append(c);
+                        newExpr.Append(first);
+                        newExpr.Append(second);
+                        // newExpr.append(c);
+
+                        return newExpr.ToString();
+                        // add code here
+
+                    }
+                    else
+                    {
+                        return newExpr.ToString();
+                    }
+                }
+                
+                else
+                {
+                    newExpr.Append(c);
+
+                    return newExpr.ToString();
+                }
+
+
+            }
+            return newExpr.ToString();
         }
     }
 }

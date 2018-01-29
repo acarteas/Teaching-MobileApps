@@ -13,7 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/PhoneNumberText"
-        android:text="1-800-XAMARIN" />
+        android:text="Exclam an Expression !!!11!!" />
+    <Button
+        android:text="Keep"
+        android:id="@+id/keepButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <Button
         android:text="Scramble!"
         android:layout_width="match_parent"
@@ -26,22 +31,19 @@
         android:columnCount="4"
         android:id="@+id/gridLayout2">
         <Button
-            android:text="Button1"
+            android:text="Try This"
             android:id="@+id/AlphaButton" />
         <Button
             android:text="Mystery"
-            android:id="@+id/mystery" />
+            android:id="@+id/Mystery" />
         <Button
-            android:text="Button2"
-            android:id="@+id/button2" />
-        <Button
-            android:text="Button3"
-            android:id="@+id/button3" />
+            android:text="!!!!!!?"
+            android:id="@+id/ExclamButton" />
     </GridLayout>
     <TextView
-        android:text="Yo it's scrambled hee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TranslatedPhoneWord"
-        android:textSize="26dip" />
+        android:textSize="26dip"
+        android:text="Nice!" />
 </LinearLayout>
