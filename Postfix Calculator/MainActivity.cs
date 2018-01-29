@@ -21,9 +21,83 @@ namespace Postfix_Calculator
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.btnEquals);
+            
             EditText editInput = FindViewById<EditText>(Resource.Id.edtTextInput);
             TextView textResult = FindViewById<TextView>(Resource.Id.txtResult);
+
+
+            //handle buttons
+            Button btnClear = FindViewById<Button>(Resource.Id.btnClear);
+            Button btnCopy = FindViewById<Button>(Resource.Id.btnCopy);
+            Button btnNegative = FindViewById<Button>(Resource.Id.btnNegative);
+            Button btnDivide = FindViewById<Button>(Resource.Id.btnDivide);
+            Button btnSeven = FindViewById<Button>(Resource.Id.btnSeven);
+            Button btnEight = FindViewById<Button>(Resource.Id.btnEight);
+            Button btnNine = FindViewById<Button>(Resource.Id.btnNine);
+            Button btnMultiply = FindViewById<Button>(Resource.Id.btnMultiply);
+            Button btnFour = FindViewById<Button>(Resource.Id.btnFour);
+            Button btnFive = FindViewById<Button>(Resource.Id.btnFive);
+            Button btnSix = FindViewById<Button>(Resource.Id.btnSix);
+            Button btnMinus = FindViewById<Button>(Resource.Id.btnMinus);
+            Button btnOne = FindViewById<Button>(Resource.Id.btnOne);
+            Button btnTwo = FindViewById<Button>(Resource.Id.btnTwo);
+            Button btnThree = FindViewById<Button>(Resource.Id.btnThree);
+            Button btnPlus = FindViewById<Button>(Resource.Id.btnPlus);
+            Button btnSpace = FindViewById<Button>(Resource.Id.btnSpace);
+            Button btnZero= FindViewById<Button>(Resource.Id.btnZero);
+            Button btnDecimal = FindViewById<Button>(Resource.Id.btnDecimal);
+            Button btnEquals = FindViewById<Button>(Resource.Id.btnEquals);
+
+            btnClear.Click += delegate
+            {
+                editInput.Text = "";
+                textResult.Text = "0";
+            };
+
+            btnCopy.Click += delegate
+            {
+                //i may not use this button, placeholder for something else
+            };
+
+            btnNegative.Click += delegate
+            {
+                //todo
+            };
+
+            btnDivide.Click += delegate
+            {
+                if (editInput.Text[editInput.Text.Length - 1] == ' ')
+                {
+                    editInput.Text = editInput.Text + "\\ ";
+                }
+                else
+                {
+                    editInput.Text = editInput.Text + " \\ ";
+                }
+            };
+
+            btnEquals.Click += delegate
+            {
+                calculate();
+            };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             textResult.Text = "0";
 
@@ -31,10 +105,7 @@ namespace Postfix_Calculator
 
             //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
 
-            button.Click += delegate
-            {
-                calculate();
-            };
+            
 
             void calculate()
             {
@@ -89,14 +160,15 @@ namespace Postfix_Calculator
 
                             operator_queue.Enqueue('/');
                             break;
+
                         case ' ':
                             if (current_number != "")
                             {
                                 number_queue.Enqueue(Int32.Parse(current_number));
                                 current_number = "";
                             }
-                            
                             break;
+
                         default:
                             current_number = current_number + editInput.Text[i];
                             break;
