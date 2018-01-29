@@ -1,14 +1,15 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-
 namespace calculator
 {
     [Activity(Label = "Calculator", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
+        char op;
         bool is_num = false;
+        
+
         void handler()
         {
             is_num = true;

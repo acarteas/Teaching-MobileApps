@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace Calculator
 {
-    [Activity(Label = "Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Calculator", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         private void Listen(Android.Views.View view)
