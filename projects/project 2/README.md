@@ -14,7 +14,7 @@ Included in this folder is the most recent writeup from [the first PA in CS 211]
 
 
 ## Deliverables
-This first assignment is due on Monday, February 12, 2018 by midnight.  By the due date, you must submit the following:
+This assignment is due on Monday, February 12, 2018 by midnight.  By the due date, you must submit the following:
 * Your complete source tree, placed in the "source" directory
 * A compiled binary (*.APK file), placed in the "binaries" directory
 * [A completed Design Document](./DesignDocument.md)
