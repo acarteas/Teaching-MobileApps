@@ -12,6 +12,7 @@ namespace CalculatorApp
         Stack calc_stack = new Stack();
         int count = 0;
 
+        //create the buttons?
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -33,7 +34,7 @@ namespace CalculatorApp
             Button bttn6 = FindViewById<Button>(Resource.Id.button_six);
             Button bttn7 = FindViewById<Button>(Resource.Id.button_seven);
             Button bttn8 = FindViewById<Button>(Resource.Id.button_eight);
-            Button bttn9 = FindViewById<Button>(Resource.Id.button_nine;
+            Button bttn9 = FindViewById<Button>(Resource.Id.button_nine);
             Button bttn_multiply = FindViewById<Button>(Resource.Id.button_one);
             Button bttn_divide = FindViewById<Button>(Resource.Id.button_one);
             Button bttn_subract = FindViewById<Button>(Resource.Id.button_one);
@@ -47,29 +48,18 @@ namespace CalculatorApp
             //created delagate instance and added it to click event
            // bttn1.Click += new EventHandler(this.Button_click);
 
-            bttn1.Click += delegate
-            {
-                results.Text = "1";
-                calc_stack.Push("1");
-            };
-
-
-            /*
-            //Event Handler
-            public void Button_click(object sender, EventArgs e)
-            {
-                results.Text = "1";
-            }
-
-    */
-
-
-
-
-
+        }
+        //Event Handler
+        private void Button_click(object sender, System.EventArgs e)
+        {
+            Button a_button = sender as Button;
+            TextView results = FindViewById<TextView>(Resource.Id.calc_results);
+            results.Text += (a_button);
+            calc_stack.Push(a_button);
         }
 
-      
+        
+
     }
 }
 
