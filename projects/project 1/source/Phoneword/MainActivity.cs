@@ -26,10 +26,7 @@ namespace Phoneword
             //
             Button alphaButton = FindViewById<Button>(Resource.Id.AlphaButton);
             Button exclamButton = FindViewById<Button>(Resource.Id.ExclamButton);
-<<<<<<< HEAD
             Button keepButton = FindViewById<Button>(Resource.Id.keepButton);
-=======
->>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
             // Add code to translate number
             translateButton.Click += (sender, e) =>
             {
@@ -71,10 +68,6 @@ namespace Phoneword
                     translatedPhoneWord.Text = scrambledExpression;
                 }
             };
-<<<<<<< HEAD
-=======
-
->>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
 
             keepButton.Click += (sender, e) =>
             {

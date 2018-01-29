@@ -53,12 +53,6 @@ namespace Phoneword
 			// aapt resource value: 0x7f050006
 			public const int Mystery = 2131034118;
 			
-			// aapt resource value: 0x7f050006
-			public const int ExclamButton = 2131034118;
-			
-			// aapt resource value: 0x7f050005
-			public const int Mystery = 2131034117;
-			
 			// aapt resource value: 0x7f050001
 			public const int PhoneNumberText = 2131034113;
 			
@@ -68,21 +62,12 @@ namespace Phoneword
 			// aapt resource value: 0x7f050008
 			public const int TranslatedPhoneWord = 2131034120;
 			
-<<<<<<< HEAD
 			// aapt resource value: 0x7f050004
 			public const int gridLayout2 = 2131034116;
 			
 			// aapt resource value: 0x7f050002
 			public const int keepButton = 2131034114;
 			
-=======
-			// aapt resource value: 0x7f050007
-			public const int button3 = 2131034119;
-			
-			// aapt resource value: 0x7f050003
-			public const int gridLayout2 = 2131034115;
-			
->>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
 			// aapt resource value: 0x7f050000
 			public const int textView1 = 2131034112;
 			
