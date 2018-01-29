@@ -12,7 +12,7 @@
         android:id="@+id/textView1"
         android:textSize="30dp" />
     <TextView
-        android:text="0.00"
+        android:text=""
         android:layout_width="385.0dp"
         android:layout_height="wrap_content"
         android:id="@+id/calculatorAccumulator"
