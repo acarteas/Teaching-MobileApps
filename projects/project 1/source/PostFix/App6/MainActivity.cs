@@ -8,8 +8,8 @@ namespace App6
     public class MainActivity : Activity
     {
         string _display = "0.00";
-        string _num1, _num2 = "";
-        int numb1, numb2, int_display = 0;
+        string _num1, _num2, _temp = "";
+        double numb1, numb2, int_display = 0.0;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -58,67 +58,78 @@ namespace App6
 
         private void _clicked(object sender, System.EventArgs e)
         {
-            Button _clicked = sender as Button;
-            string _temp = "";
-            string clicked = _clicked.Id.ToString();
+            Button clicked_ = sender as Button;
+            string clicked = clicked_.Id.ToString();
+            //_display = clicked_.Id.ToString();
             if (clicked == null)
             {
                 return;
             }
-            if (clicked == "one")
+            if (clicked == "2130968587")
             {
                 _temp += "1";
+                _display = _temp;
             }
-            if (clicked == "two")
+            if (clicked == "2130968588")
             {
                 _temp += "2";
+                _display = _temp;
             }
-            if (clicked == "three")
+            if (clicked == "2130968589")
             {
                 _temp += "3";
+                _display = _temp;
             }
-            if (clicked == "four")
+            if (clicked == "2130968583")
             {
                 _temp += "4";
+                _display = _temp;
             }
-            if (clicked == "five")
+            if (clicked == "2130968584")
             {
                 _temp += "5";
+                _display = _temp;
             }
-            if (clicked == "six")
+            if (clicked == "2130968585")
             {
                 _temp += "6";
+                _display = _temp;
             }
-            if (clicked == "seven")
+            if (clicked == "2130968579")
             {
                 _temp += "7";
+                _display = _temp;
             }
-            if (clicked == "eight")
+            if (clicked == "2130968580")
             {
                 _temp += "8";
+                _display = _temp;
             }
-            if (clicked == "nine")
+            if (clicked == "2130968581")
             {
                 _temp += "9";
+                _display = _temp;
             }
-            if (clicked == "zero")
+            if (clicked == "2130968594")
             {
                 _temp += "0";
+                _display = _temp;
             }
-            if (clicked == "dot")
+            if (clicked == "2130968591")
             {
                 _temp += ".";
+                _display = _temp;
             }
-            if (clicked == "plus")
+            if (clicked == "2130968593")
             {
-                numb1 = int.Parse(_num1);
+                numb1 = double.Parse(_num1);
                 numb2 = int.Parse(_num2);
                 int_display = numb1 + numb2;
                 _num1 = int_display.ToString();
                 _num2 = "";
                 _display = int_display.ToString();
             }
-            if (clicked == "minus")
+            if (clicked == "2130968590")
             {
                 numb1 = int.Parse(_num1);
                 numb2 = int.Parse(_num2);
@@ -127,7 +138,7 @@ namespace App6
                 _num2 = "";
                 _display = int_display.ToString();
             }
-            if (clicked == "mult")
+            if (clicked == "2130968586")
             {
                 numb1 = int.Parse(_num1);
                 numb2 = int.Parse(_num2);
@@ -136,7 +147,7 @@ namespace App6
                 _num2 = "";
                 _display = int_display.ToString();
             }
-            if (clicked == "div")
+            if (clicked == "2130968582")
             {
                 numb1 = int.Parse(_num1);
                 numb2 = int.Parse(_num2);
@@ -145,15 +156,16 @@ namespace App6
                 _num2 = "";
                 _display = int_display.ToString();
             }
-            if (clicked == "clear")
+            if (clicked == "2130968596")
             {
                 _num1 = "";
                 _num2 = "";
                 _display = "0.00";
             }
-            if (clicked == "space")
+            if (clicked == "2130968592")
             {
                 _num1 = _temp;
+                _temp = "";
             }
             else
             {
