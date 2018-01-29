@@ -1,15 +1,18 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-
+ 
 namespace App1
 {
     [Activity(Label = "Postfix Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
+         
         string str_input = null;
         string str_output = null;
-        string input_box; 
+        string input_box;
+        float total = 0; 
+        private Vibrator myVib;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -17,7 +20,7 @@ namespace App1
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
+            myVib = (Vibrator)GetSystemService(VibratorService);
             // Get our button from the layout resource,
             // and attach an event to it
             Button button1  = FindViewById<Button>(Resource.Id.Button1);
@@ -36,9 +39,7 @@ namespace App1
             Button buttonMultiply = FindViewById<Button>(Resource.Id.ButtonMultiply);
             Button buttonDivide = FindViewById<Button>(Resource.Id.ButtonDivide);
             Button buttonInvert = FindViewById<Button>(Resource.Id.ButtonInvert);
-            
-            var input_box = FindViewById(Resource.Id.calculatorbox);
-
+            var input_box = FindViewById<TextView>(Resource.Id.calculatorbox);
 
             button1.Click += delegate
             {
@@ -128,34 +129,42 @@ namespace App1
             buttonADD.Click += delegate
             {
                 myVib.Vibrate(25);
-                this.str_input += '1';
-                this.str_output += '1';
+                this.str_input += '+';
+                this.str_output += '+';
                 input_box.Text = this.str_output;
             };
 
             buttonSubtract.Click += delegate
             {
                 myVib.Vibrate(25);
-                this.str_input += '1';
-                this.str_output += '1';
+                this.str_input += '-';
+                this.str_output += '-';
                 input_box.Text = this.str_output;
             };
 
             buttonDivide.Click += delegate
             {
                 myVib.Vibrate(25);
-                this.str_input += '1';
-                this.str_output += '1';
+                this.str_input += '/';
+                this.str_output += '/';
                 input_box.Text = this.str_output;
             };
 
-            buttonInvert.Click += delegate
-            {
-                myVib.Vibrate(25);
-                this.str_input += '1';
-                this.str_output += '1';
-                input_box.Text = this.str_output;
-            };
+            //buttonInvert.Click += delegate
+            //{
+            //    myVib.Vibrate(25);
+            //    if(this.str_input = "+")
+            //    {
+            //        this.str_output = '-'; 
+            //        else if(this.str_input = '-')
+            //        {
+            //            this.str_input = '+';
+            //        }
+            //    }
+
+              
+            //    input_box.Text = this.str_output;
+            //};
 
 
         }
