@@ -60,11 +60,17 @@ namespace char_counter
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050005
+			public const int ClearButton = 2131034117;
+			
 			// aapt resource value: 0x7f050000
 			public const int MainPageLayout = 2131034112;
 			
+			// aapt resource value: 0x7f050004
+			public const int printnum = 2131034116;
+			
 			// aapt resource value: 0x7f050003
-			public const int myButton = 2131034115;
+			public const int printthing = 2131034115;
 			
 			// aapt resource value: 0x7f050001
 			public const int textView1 = 2131034113;

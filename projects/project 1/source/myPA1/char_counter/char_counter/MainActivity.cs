@@ -17,12 +17,30 @@ namespace char_counter
             SetContentView(Resource.Layout.Main);
 
 
-            Text stuff = FindViewById<TextView>(Resource.Id.toBeCounted);
 
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            string len, myresult;
+            Button clear = FindViewById<Button>(Resource.Id.ClearButton);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!\nClick to Clear", stuff.Length); };
+            EditText localtext = FindViewById<EditText>(Resource.Id.toBeCounted);
 
+
+
+            localtext.TextChanged += delegate
+            {
+                len = FindViewById<EditText>(Resource.Id.toBeCounted).Text.ToString();
+                myresult = FindViewById<TextView>(Resource.Id.printnum).ToString();
+                len = len.Length.ToString();
+
+                myresult = len + " characters long";
+
+                FindViewById<TextView>(Resource.Id.printnum).Text = myresult;
+            };
+
+            clear.Click += delegate
+            {
+                FindViewById<EditText>(Resource.Id.toBeCounted).Text = "";
+                FindViewById<TextView>(Resource.Id.printnum).Text = "0 characters long";
+            };
         }
     }
 }
