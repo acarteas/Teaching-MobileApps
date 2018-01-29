@@ -13,12 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/PhoneNumberText"
+<<<<<<< HEAD
         android:text="Exclam an Expression !!!11!!" />
     <Button
         android:text="Keep"
         android:id="@+id/keepButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+=======
+        android:text="1-800-XAMARIN" />
+>>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
     <Button
         android:text="Scramble!"
         android:layout_width="match_parent"
@@ -39,6 +43,7 @@
         <Button
             android:text="!!!!!!?"
             android:id="@+id/ExclamButton" />
+<<<<<<< HEAD
     </GridLayout>
     <TextView
         android:layout_width="match_parent"
@@ -46,4 +51,16 @@
         android:id="@+id/TranslatedPhoneWord"
         android:textSize="26dip"
         android:text="Nice!" />
+=======
+        <Button
+            android:text="Button3"
+            android:id="@+id/button3" />
+    </GridLayout>
+    <TextView
+        android:text="Yo it's scrambled hee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TranslatedPhoneWord"
+        android:textSize="26dip" />
+>>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
 </LinearLayout>

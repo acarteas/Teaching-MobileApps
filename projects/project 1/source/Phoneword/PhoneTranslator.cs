@@ -180,20 +180,32 @@ namespace Core
                     }
                     else
                     {
+<<<<<<< HEAD
                         return newExpr.ToString();
+=======
+                        break;
+>>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
                     }
                 }
                 
                 else
                 {
+<<<<<<< HEAD
                     newExpr.Append(c);
 
                     return newExpr.ToString();
+=======
+                    return myString;
+>>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
                 }
 
 
             }
+<<<<<<< HEAD
             return newExpr.ToString();
+=======
+            return null;
+>>>>>>> a1c27dd8211fcd71a68ce5225832624d474f9104
         }
     }
 }
