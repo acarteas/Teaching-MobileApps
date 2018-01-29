@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/MainPageLayout"
+    android:id="@+id/MainPageLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -166,7 +166,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
         <Button
-            android:tag="@string/calculator_number"
+            android:tag="@string/calculator_operation"
             android:id="@+id/calcButtonDecimal"
             android:text="."
             android:layout_weight="1"
