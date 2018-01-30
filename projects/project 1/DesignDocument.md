@@ -1,3 +1,5 @@
+# NOTE
+I created 2 applications. First, I created a character counter app to introduce me to C# and Xamarin. This app while being very simple, functions flawlessly. I then developed my calculator app. This app demonstrates my abilities to make apps but lacks correct functionality. The calculator app shows my aptitude, not my skills. The character counter app shows my current skills and aptitude to learn and develop more.
 # Calculator
 Simple Postfix calculator. This calculator accepts single digit numbers and performs as a Reverse Polish simple four function calculator. It must be used strictly correctly otherwise it will error. This application serves scientists and other users of post fix notation who can adhere to rigid standards. 
 
