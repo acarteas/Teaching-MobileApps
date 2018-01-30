@@ -120,17 +120,34 @@ namespace Core
 
         static string TranslateToAlpha(char c)
         {
-            if ("0123".Contains(c))
-                return "a";
-            else if ("456".Contains(c))
-                return "k";
-            else if ("789".Contains(c))
-                return "z";
+            if ("0".Contains(c))
+                return "abc!";
+            else if ("1".Contains(c))
+                return "def";
+            else if ("2".Contains(c))
+                return "ghi!";
+            else if ("4".Contains(c))
+                return "jklm!";
+            else if ("5".Contains(c))
+                return "nmpq!";
+            else if ("6".Contains(c))
+                return "rst!";
+            else if ("8".Contains(c))
+                return "wxy!";
+            else if (" ".Contains(c))
+                return "z!";
+            else if ("!".Contains(c))
+                return "all exclams";
             return null;
 
 
         }
 
+
+       /*
+        This function goes through the expression and selects the two-digit letters as indicated by an "!" symbol. 
+
+        */
         public static string GetExclam(string myString)
         {
 
@@ -163,7 +180,7 @@ namespace Core
                     lookEnum.MoveNext();
                     char second = lookEnum.Current;
                     // move the enumeration over twice!
-                    Console.WriteLine("Current lookEnum:" + lookEnum.Current);
+                    //Console.WriteLine("Current lookEnum:" + lookEnum.Current);
                     //if lookEnum.Current is "!", then 
                     if (lookEnum.Current.ToString() == "!")
                     {
@@ -174,26 +191,33 @@ namespace Core
                         newExpr.Append(second);
                         // newExpr.append(c);
 
-                        return newExpr.ToString();
+                        //return newExpr.ToString();
                         // add code here
 
                     }
                     else
                     {
-                        return newExpr.ToString();
+                        newExpr = newExpr;
+                        //newExpr.Append(c); //append just c because not a double digit
                     }
                 }
 
                 else
                 {
-                    newExpr.Append(c);
+                    newExpr.Append(c); //append just c because towards the end/not a double digit.
 
-                    return newExpr.ToString();
+
                 }
 
 
             }
             return newExpr.ToString();
         }
+
+
+       /*  public static string Mystery(string myString)
+         {
+
+         }*/
     }
 }
