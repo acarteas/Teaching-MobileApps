@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import junit.framework.Test;
+
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void reset(View view){
+        isclicked = false;
+        TextView topbox = (TextView) findViewById(R.id.instructionsText);
+        EditText inbox = (EditText) findViewById(R.id.Input);
+        topbox.setText("You reset the fame! \n Please enter in a new word");
+        inbox.setText("");
+    }
 
     public void clicked(View view) {
         TextView badgues = (TextView) findViewById(R.id.badGuess);
@@ -82,17 +91,18 @@ public class MainActivity extends AppCompatActivity {
 
         //this will run when it is not the first button usage
         else {
+            String test = inbox.getText().toString();
 
-            char userentry = (inbox.getText().toString()).charAt(0);
+            Log.i("guess", test);
             // check to make sure that the entered char is not a blank
 
-            if (userentry == ' ' || inbox.getText().toString() == "") {
+            if (test.length() < 1) {
                 topbox.setText("Please enter a single letter before pressing the button");
                 inbox.setText("");
             }
 
             else {
-
+                char userentry = inbox.getText().toString().charAt(0);
                 // will branch here if the entered character is not in the string
                 if (ourword.indexOf(userentry) == -1 && chances > 0) {
                     //check to make sure this wasnt their last chance
@@ -102,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
                         //displays chances left
                         numgues.setText((CharSequence) String.format("You have %d chances left", chances));
 
+                        //clear Inbox
+                        inbox.setText("");
                         //add guessed letter to guesshistory and display it
                         guesshistory = guesshistory + userentry + " ";
                         badgues.setText(guesshistory);
@@ -113,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         isclicked = false;
                         Button ender = (Button) findViewById(R.id.button);
                         ender.setText("PLAY AGAIN");
+                        inbox.setText("");
                     }
 
                 }

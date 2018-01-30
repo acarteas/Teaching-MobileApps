@@ -93,6 +93,15 @@
             android:onClick="clicked"
             android:text="Press Here"
             android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chancesLeft"
+            android:layout_centerHorizontal="true"
+            android:onClick="reset"
+            android:text="Reset" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
