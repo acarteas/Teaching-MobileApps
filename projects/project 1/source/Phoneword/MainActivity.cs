@@ -27,6 +27,7 @@ namespace Phoneword
             Button alphaButton = FindViewById<Button>(Resource.Id.AlphaButton);
             Button exclamButton = FindViewById<Button>(Resource.Id.ExclamButton);
             Button keepButton = FindViewById<Button>(Resource.Id.keepButton);
+            Button mysteryButton = FindViewById<Button>(Resource.Id.Mystery);
             // Add code to translate number
             translateButton.Click += (sender, e) =>
             {
@@ -73,7 +74,12 @@ namespace Phoneword
             {
                 phoneNumberText.Text = translatedPhoneWord.Text;
             };
-            
+
+
+            mysteryButton.Click += (sender, e) =>
+            {
+                phoneNumberText.Text = "Mysteri, duh!";
+            };
         }
     }
 }
