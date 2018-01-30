@@ -47,11 +47,11 @@ namespace CalculatorApp
 			// aapt resource value: 0x7f05000e
 			public const int button_add = 2131034126;
 			
-			// aapt resource value: 0x7f050002
-			public const int button_clear = 2131034114;
-			
 			// aapt resource value: 0x7f050003
-			public const int button_clear_entry = 2131034115;
+			public const int button_clear = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int button_clear_entry = 2131034116;
 			
 			// aapt resource value: 0x7f050011
 			public const int button_divide = 2131034129;
@@ -67,9 +67,6 @@ namespace CalculatorApp
 			
 			// aapt resource value: 0x7f050008
 			public const int button_four = 2131034120;
-			
-			// aapt resource value: 0x7f050004
-			public const int button_mod = 2131034116;
 			
 			// aapt resource value: 0x7f050010
 			public const int button_multiply = 2131034128;
@@ -95,11 +92,14 @@ namespace CalculatorApp
 			// aapt resource value: 0x7f050006
 			public const int button_two = 2131034118;
 			
+			// aapt resource value: 0x7f050002
+			public const int button_zero = 2131034114;
+			
 			// aapt resource value: 0x7f050001
-			public const int button_zero = 2131034113;
+			public const int calc_results = 2131034113;
 			
 			// aapt resource value: 0x7f050000
-			public const int calc_results = 2131034112;
+			public const int final_results = 2131034112;
 			
 			static Id()
 			{

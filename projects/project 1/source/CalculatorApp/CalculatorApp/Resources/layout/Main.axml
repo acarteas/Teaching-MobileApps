@@ -7,12 +7,18 @@
     android:orientation="horizontal"
     android:minWidth="25px"
     android:minHeight="25px">
-    <TextView
+  <TextView
+       android:id="@+id/final_results"
+       android:layout_height="45dp"
+       android:layout_columnSpan="5"
+       android:layout_width="match_parent" />
+  <TextView
         android:id="@+id/calc_results"
         android:layout_height="55dp"
         android:layout_columnSpan="5"
         android:layout_width="match_parent" />
-    <Button
+  
+  <Button
         android:text="0"
         android:id="@+id/button_zero"
         android:layout_width="75dp" />
@@ -23,10 +29,6 @@
     <Button
         android:text="CE"
         android:id="@+id/button_clear_entry"
-        android:layout_width="75dp" />
-    <Button
-        android:text="Mod"
-        android:id="@+id/button_mod"
         android:layout_width="75dp" />
     <Button
         android:text="1"
