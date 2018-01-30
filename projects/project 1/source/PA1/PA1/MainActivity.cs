@@ -16,6 +16,8 @@ namespace PA1
     {
         char cur_math_expr = ' ';
         float last_num = 0;
+        bool decimal_present = false;
+       
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -62,7 +64,7 @@ namespace PA1
             b8.Click += AddNum;
             b9.Click += AddNum;
             b0.Click += AddNum;
-            bdot.Click += AddNum;
+            bdot.Click += DotAdd;
 
 
             bclear.Click += ClearText;
@@ -127,7 +129,17 @@ namespace PA1
                 }
                 
             }
+            
            
+        }
+
+        public void DotAdd(object sender, EventArgs e)
+        {
+            TextView to_edit = FindViewById<TextView>(Resource.Id.IOtext);
+            if (to_edit.Text.Contains(".") == false)
+            {
+                AddNum(sender, e);
+            }
         }
 
         public void Backspace(object sender, EventArgs e)
@@ -135,6 +147,10 @@ namespace PA1
             TextView to_edit = FindViewById<TextView>(Resource.Id.IOtext);
             if(to_edit.Text[0] != '0')
             {
+                if(to_edit.Text[to_edit.Text.Length - 1] == '.')
+                {
+                    decimal_present = false;
+                }
                 to_edit.Text = to_edit.Text.Substring(0, (to_edit.Text.Length - 1));
             }
            
