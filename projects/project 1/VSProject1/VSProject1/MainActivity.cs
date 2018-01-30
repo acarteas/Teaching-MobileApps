@@ -13,15 +13,15 @@ using System.Text;
 namespace VSProject1
 {
 	[Activity(Label = "VSProject1", MainLauncher = true, Icon = "@drawable/icon")]
+
 	public class MainActivity : Activity
 	{
         //not implemented for a history of previous codes.
         //static readonly List<string> historyList = new List<string>();
+
         private Vibrator myVib;
 
-        //seekbar stuff
-        SeekBar _seekBar;
-        TextView _seekvalue;
+
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -42,14 +42,8 @@ namespace VSProject1
             Button DecryptButton = FindViewById<Button>(Resource.Id.decryptButton);
             DecryptButton.Click += backtoEnglish;
 
-            //seek bar
-           
-            _seekBar = FindViewById<SeekBar>(Resource.Id.seekBar1);
-            _seekvalue = FindViewById<TextView>(Resource.Id.textView1);
 
-            //TODO:  add a event listener for the seek bar, and then update the cipher offset value for the calls!
-
-        }
+		}
 
 
 
@@ -75,8 +69,9 @@ namespace VSProject1
         private void translateMe(object sender, System.EventArgs e)
 		{
             //capture text from the box.
-            var editText = FindViewById<EditText>(Resource.Id.editText1);
-            string editTextString = editText.ToString();
+            EditText editText = (EditText)FindViewById<EditText>(Resource.Id.editText1);
+
+			var editTextString = editText.Text;
             editTextString = editTextString.ToLower();
 
             int offset = 1;
@@ -85,6 +80,10 @@ namespace VSProject1
 
             myVib.Vibrate(30);
 			Toast.MakeText(this.ApplicationContext, encodedString, ToastLength.Short).Show();
+			
+			//TODO: return and replace encordedString into a text box.
+
+			
 			//throw new System.NotImplementedException();
 		}
 
@@ -121,6 +120,11 @@ namespace VSProject1
             return new string(buffer);
 
         } //end cipher
-    }
-}
+
+
+
+		
+
+	}//end activity
+}//end project
 
