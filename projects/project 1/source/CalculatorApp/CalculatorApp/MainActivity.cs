@@ -35,17 +35,16 @@ namespace CalculatorApp
             Button bttn7 = FindViewById<Button>(Resource.Id.button_seven);
             Button bttn8 = FindViewById<Button>(Resource.Id.button_eight);
             Button bttn9 = FindViewById<Button>(Resource.Id.button_nine);
-            Button bttn_multiply = FindViewById<Button>(Resource.Id.button_one);
-            Button bttn_divide = FindViewById<Button>(Resource.Id.button_one);
-            Button bttn_subtract = FindViewById<Button>(Resource.Id.button_one);
-            Button bttn_add = FindViewById<Button>(Resource.Id.button_one);
+            Button bttn_multiply = FindViewById<Button>(Resource.Id.button_multiply);
+            Button bttn_divide = FindViewById<Button>(Resource.Id.button_divide);
+            Button bttn_subtract = FindViewById<Button>(Resource.Id.button_subtract);
+            Button bttn_add = FindViewById<Button>(Resource.Id.button_add);
             Button bttn_enter = FindViewById<Button>(Resource.Id.button_enter);
             Button bttn_clear = FindViewById<Button>(Resource.Id.button_clear);
             Button bttn_clear_entry = FindViewById<Button>(Resource.Id.button_clear_entry);
 
             //numbers
-            bttn0.Click += add_button_click;
-          
+            bttn0.Click += add_button_click;          
             bttn2.Click += add_button_click;
             bttn3.Click += add_button_click;
             bttn4.Click += add_button_click;
@@ -77,30 +76,32 @@ namespace CalculatorApp
             Button a_button = sender as Button;
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
 
-            if (a_button.Text == "+")
+            if (a_button.Text != null)
             {
-                results.Text += "+";
-            }
-            else if (a_button.Text == "-")
-            {
-                results.Text += "-";
+                if (a_button.Text == "+")
+                {
+                    results.Text += "+";
+                }
+                else if (a_button.Text == "-")
+                {
+                    results.Text += "-";
 
-            }
-            else if (a_button.Text == "*")
-            {
-                results.Text += "*";
+                }
+                else if (a_button.Text == "*")
+                {
+                    results.Text += "*";
 
-            }
-            else if (a_button.Text == "/")
-            {
-                results.Text += "/";
+                }
+                else if (a_button.Text == "/")
+                {
+                    results.Text += "/";
 
+                }
+                else
+                {
+                    results.Text += a_button.Text;
+                }
             }
-            else
-            {
-                results.Text += a_button.Text;
-            }
-
             //sets enter presses back to 0
             enter_count = 0;
         }
@@ -110,7 +111,7 @@ namespace CalculatorApp
         private void text_clear_button(object sender, System.EventArgs e)
         {
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
-            results.Text = " ";
+            results.Text = "";
         }
 
         //Clears the TextView and the Stack
@@ -119,8 +120,8 @@ namespace CalculatorApp
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
             TextView final = FindViewById<TextView>(Resource.Id.final_results);
 
-            results.Text = " ";
-            final.Text = " ";
+            results.Text = "";
+            final.Text = "";
             enter_count = 0;
             calc_stack.Clear();
             postfix_stack.Clear();
@@ -131,70 +132,99 @@ namespace CalculatorApp
         {
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
             TextView final = FindViewById<TextView>(Resource.Id.final_results);
-           // double output;
 
-           
-
-            enter_count += 1;
+            enter_count++;
 
             if (enter_count > 1)
             {
                 //translates the infix stack into a postfix stack
                 ITP(calc_stack);
-                //double.TryParse(final.Text, out output);
-             {
+
+                //double.TryParse(final.Text, out output);            
                     double num1 = System.Convert.ToDouble(postfix_stack.Pop());
                     double num2 = System.Convert.ToDouble(postfix_stack.Pop());
                     string oper = System.Convert.ToString(postfix_stack.Pop());
 
                     //does calculations and sends to the top TextView
-                    if (final.Text == "+")
+                    if (oper == "+")
                     {
                         final.Text = System.Convert.ToString(num1 + num2);
+                        calc_stack.Clear();
+                        calc_stack.Push(final.Text);
+                        postfix_stack.Clear();
                     }
-                    else if (final.Text == "-")
+                    else if (oper == "-")
                     {
                         final.Text = System.Convert.ToString(num1 - num2);
+                        calc_stack.Clear();
+                        calc_stack.Push(final.Text);
+                        postfix_stack.Clear();
                     }
-                    else if (final.Text == "*")
+                    else if (oper == "*")
                     {
                         final.Text = System.Convert.ToString(num1 * num2);
+                        calc_stack.Clear();
+                        calc_stack.Push(final.Text);
+                        postfix_stack.Clear();
                     }
-                    else if (final.Text == "/")
+                    else if (oper == "/")
                     {
                         final.Text = System.Convert.ToString(num1 / num2);
+                        calc_stack.Clear();
+                        calc_stack.Push(final.Text);
+                        postfix_stack.Clear();
                     }
                     else
                     {
-                      
-                        calc_stack.Push(System.Convert.ToDouble(final.Text));
-                        
-                    }
-                }
+                    final.Text = "Error: No operator found.";
+                      //calc_stack.Clear();
+                      //postfix_stack.Clear();
+
+
+                     }
             }
             else
             {
                //pushes text from the first textView into the top TextView
                 final.Text += results.Text;
-                results.Text = " ";
-                calc_stack.Push((System.Convert.ToDouble(final.Text)));
+                calc_stack.Push(results.Text);
+                results.Text = "";
                 
+                //if (final.Text == "+")
+                //{
+                //    calc_stack.Push(final.Text);
+                //}
+                //else if (final.Text == "-")
+                //{
+                //    calc_stack.Push(final.Text);
+                //}
+                //else if (final.Text == "*")
+                //{
+                //    calc_stack.Push(final.Text);
+                //}
+                //else if (final.Text == "/")
+                //{
+                //    calc_stack.Push(final.Text);
+                //}
+                //else
+                //{
+                   
+                //}
         
             }
 
         }
         
         //Infix to Postfix parser
-        private void ITP(Stack post_stack)
+        private void ITP(Stack previous_stack)
         {        
-            string oper_holder = " ";
-                  
-            double num1 = -1.0;
-            double num2 = -1.0;
+            string oper_holder = " ";                 
+            string num1 = "-1.0";
+            string num2 = "-1.0";
 
-            while (post_stack.Count != 0)
+            while (previous_stack.Count != 0)
             {
-                string some_string = System.Convert.ToString(post_stack.Pop());
+                string some_string = System.Convert.ToString(previous_stack.Pop());
 
                 if (some_string == "+")
                 {
@@ -212,21 +242,20 @@ namespace CalculatorApp
                 {
                     oper_holder = "/";
                 }
-                else if(num1 == 1.0)
+                else
                 {
-                    if(num1 == -1.0)
-                    {
-                        //change to int
-                        num1 = System.Convert.ToDouble(some_string);
+                    if(num1 == "-1.0")
+                    {                        
+                        num1 = some_string;
                     }
                     else
                     {
-                        num2 = System.Convert.ToDouble(some_string);
+                        num2 = some_string;
                     }
                 }             
             }
 
-            if (oper_holder != " " && num2 != -1.0)
+            if (oper_holder != " " && num2 != "-1.0")
             {
                 postfix_stack.Push(oper_holder);
                 postfix_stack.Push(num1);
@@ -235,11 +264,6 @@ namespace CalculatorApp
 
         }
         
-
-
-
-
-
     }
 
 }

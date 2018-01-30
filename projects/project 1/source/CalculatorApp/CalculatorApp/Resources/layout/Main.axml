@@ -7,53 +7,35 @@
     android:orientation="horizontal"
     android:minWidth="25px"
     android:minHeight="25px">
-  <TextView
-       android:id="@+id/final_results"
-       android:layout_height="45dp"
-       android:layout_columnSpan="5"
-       android:layout_width="match_parent" />
-  <TextView
+    <TextView
+        android:id="@+id/final_results"
+        android:layout_height="45dp"
+        android:layout_columnSpan="5"
+        android:layout_width="match_parent"
+        android:background="#b75819"
+        android:backgroundTint="#fff8f8ff"
+        android:layout_marginTop="5dp" />
+    <TextView
         android:id="@+id/calc_results"
         android:layout_height="55dp"
         android:layout_columnSpan="5"
-        android:layout_width="match_parent" />
-  
-  <Button
-        android:text="0"
-        android:id="@+id/button_zero"
-        android:layout_width="75dp" />
+        android:layout_width="match_parent"
+        android:backgroundTint="#fff8f8ff"
+        android:foregroundTint="#00000000"
+        android:background="#efe1e1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
     <Button
         android:text="C"
         android:id="@+id/button_clear"
-        android:layout_width="75dp" />
+        android:layout_width="150dp"
+        android:layout_columnSpan="2"
+        android:foregroundTint="#00000000" />
     <Button
         android:text="CE"
         android:id="@+id/button_clear_entry"
-        android:layout_width="75dp" />
-    <Button
-        android:text="1"
-        android:id="@+id/button_one"
-        android:layout_width="75dp" />
-    <Button
-        android:text="2"
-        android:id="@+id/button_two"
-        android:layout_width="75dp" />
-    <Button
-        android:text="3"
-        android:id="@+id/button_three"
-        android:layout_width="75dp" />
-    <Button
-        android:text="4"
-        android:id="@+id/button_four"
-        android:layout_width="75dp" />
-    <Button
-        android:text="5"
-        android:id="@+id/button_five"
-        android:layout_width="75dp" />
-    <Button
-        android:text="6"
-        android:id="@+id/button_six"
-        android:layout_width="75dp" />
+        android:layout_width="225dp"
+        android:layout_columnSpan="3" />
     <Button
         android:text="7"
         android:id="@+id/button_seven"
@@ -69,22 +51,62 @@
     <Button
         android:text="+"
         android:id="@+id/button_add"
-        android:layout_width="75dp" />
+        android:layout_width="75dp"
+        android:background="#e87e2e"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp" />
     <Button
         android:text="-"
         android:id="@+id/button_subtract"
+        android:layout_width="75dp"
+        android:background="#e87e2e" />
+    <Button
+        android:text="4"
+        android:id="@+id/button_four"
         android:layout_width="75dp" />
     <Button
-        android:text="*"
-        android:id="@+id/button_multiply"
+        android:text="5"
+        android:id="@+id/button_five"
+        android:layout_width="75dp" />
+    <Button
+        android:text="6"
+        android:id="@+id/button_six"
         android:layout_width="75dp" />
     <Button
         android:text="/"
         android:id="@+id/button_divide"
+        android:layout_width="75dp"
+        android:background="#e87e2e"
+        android:layout_marginBottom="5dp" />
+    <Button
+        android:text="*"
+        android:id="@+id/button_multiply"
+        android:layout_width="75dp"
+        android:background="#e87e2e" />
+    <Button
+        android:text="1"
+        android:id="@+id/button_one"
+        android:layout_width="75dp" />
+    <Button
+        android:text="2"
+        android:id="@+id/button_two"
+        android:layout_width="75dp" />
+    <Button
+        android:text="3"
+        android:id="@+id/button_three"
         android:layout_width="75dp" />
     <Button
         android:text="Enter"
         android:id="@+id/button_enter"
-        android:layout_width="match_parent"
-        android:layout_columnSpan="5" />
+        android:layout_width="150dp"
+        android:layout_height="96dp"
+        android:layout_columnSpan="2"
+        android:layout_rowSpan="2"
+        android:background="#efe1e1"
+        android:backgroundTint="#ffa52a2a" />
+    <Button
+        android:text="0"
+        android:id="@+id/button_zero"
+        android:layout_width="225dp"
+        android:layout_columnSpan="3" />
 </GridLayout>
