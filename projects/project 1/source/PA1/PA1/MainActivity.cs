@@ -98,6 +98,7 @@ namespace PA1
                 if (to_edit.Text[0] != '-')
                 {
                     to_edit.Text = "-" + to_edit.Text;
+                    
                 }
                 else
                 {
@@ -186,6 +187,7 @@ namespace PA1
             {
                 float temp = Calculation(last_num, cur_num, cur_math_expr);
                 to_edit.Text = temp.ToString();
+                cur_math_expr = '=';
             }
             else
             {
