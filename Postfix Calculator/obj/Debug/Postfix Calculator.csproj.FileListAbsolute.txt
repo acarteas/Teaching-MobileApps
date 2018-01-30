@@ -38,7 +38,7 @@ C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\R.
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\uploadflags.txt
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll.mdb
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\android\assets\Postfix Calculator.dll.mdb
-C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
+F:\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb

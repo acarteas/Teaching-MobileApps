@@ -1,13 +1,13 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
-using System.Collections;
+using Android.Text;
 using System;
 using System.Collections.Generic;
 
 namespace Postfix_Calculator
 {
-    [Activity(Label = "Postfix_Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Postfix Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
         //int count = 1;
@@ -24,7 +24,6 @@ namespace Postfix_Calculator
             
             EditText editInput = FindViewById<EditText>(Resource.Id.edtTextInput);
             TextView textResult = FindViewById<TextView>(Resource.Id.txtResult);
-
 
             //handle buttons
             Button btnClear = FindViewById<Button>(Resource.Id.btnClear);
@@ -66,37 +65,109 @@ namespace Postfix_Calculator
 
             btnDivide.Click += delegate
             {
-                if (editInput.Text[editInput.Text.Length - 1] == ' ')
-                {
-                    editInput.Text = editInput.Text + "\\ ";
+                if (TextUtils.IsEmpty(editInput.Text))
+                    {
+                    editInput.Append("\\ ");
                 }
                 else
                 {
-                    editInput.Text = editInput.Text + " \\ ";
+                    editInput.Append(" \\ ");
                 }
+            };
+            
+            btnSeven.Click += delegate
+            {
+                editInput.Append("7");
+            };
+
+            btnEight.Click += delegate
+            {
+                editInput.Append("8");
+            };
+
+            btnNine.Click += delegate
+            {
+                editInput.Append("9");
+            };
+
+            btnMultiply.Click += delegate
+            {
+                if (TextUtils.IsEmpty(editInput.Text))
+                {
+                    editInput.Append("* ");
+                }
+                else
+                {
+                    editInput.Append(" * ");
+                }
+            };
+
+            btnFour.Click += delegate
+            {
+                editInput.Append("4");
+            };
+
+            btnFive.Click += delegate
+            {
+                editInput.Append("5");
+            };
+
+            btnSix.Click += delegate
+            {
+                editInput.Append("6");
+            };
+
+            btnMinus.Click += delegate
+            {
+                if (TextUtils.IsEmpty(editInput.Text))
+                {
+                    editInput.Append("- ");
+                }
+                else
+                {
+                    editInput.Append(" - ");
+                }
+            };
+
+            btnOne.Click += delegate
+            {
+                editInput.Append("1");
+            };
+
+            btnTwo.Click += delegate
+            {
+                editInput.Append("2");
+            };
+
+            btnThree.Click += delegate
+            {
+                editInput.Append("3");
+            };
+
+            btnPlus.Click += delegate
+            {
+                if (TextUtils.IsEmpty(editInput.Text))
+                {
+                    editInput.Append("+ ");
+                }
+                else
+                {
+                    editInput.Append(" + ");
+                }
+            };
+
+            btnSpace.Click += delegate
+            {
+                editInput.Append(" ");
             };
 
             btnEquals.Click += delegate
             {
-                calculate();
+                if (!TextUtils.IsEmpty(editInput.Text))
+                {
+                    calculate();
+                }
             };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             textResult.Text = "0";
@@ -104,8 +175,6 @@ namespace Postfix_Calculator
             //button.AfterTextChanged += doSomethingWithButton;
 
             //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
-
-            
 
             void calculate()
             {
