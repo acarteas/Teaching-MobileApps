@@ -188,31 +188,8 @@ namespace CalculatorApp
                //pushes text from the first textView into the top TextView
                 final.Text += results.Text;
                 calc_stack.Push(results.Text);
-                results.Text = "";
-                
-                //if (final.Text == "+")
-                //{
-                //    calc_stack.Push(final.Text);
-                //}
-                //else if (final.Text == "-")
-                //{
-                //    calc_stack.Push(final.Text);
-                //}
-                //else if (final.Text == "*")
-                //{
-                //    calc_stack.Push(final.Text);
-                //}
-                //else if (final.Text == "/")
-                //{
-                //    calc_stack.Push(final.Text);
-                //}
-                //else
-                //{
-                   
-                //}
-        
+                results.Text = "";          
             }
-
         }
         
         //Infix to Postfix parser
