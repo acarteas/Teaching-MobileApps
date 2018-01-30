@@ -3,6 +3,9 @@ using Android.Widget;
 using Android.OS;
 using System;
 using System.Data;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace PostFix
 {
@@ -46,7 +49,8 @@ namespace PostFix
 
             //text to recieve and display the button input
             TextView result = (TextView)FindViewById(Resource.Id.textView1);
-            string ToParse;
+            
+            
 
 
             num1.Click += delegate { result.Text = result.Text + num1.Text.ToString(); };
@@ -64,17 +68,66 @@ namespace PostFix
             op_mult.Click += delegate { result.Text = result.Text + op_mult.Text.ToString(); };
             op_sub.Click += delegate { result.Text = result.Text + op_sub.Text.ToString(); };
             op_add.Click += delegate { result.Text = result.Text + op_add.Text.ToString(); };
-            op_equal.Click += delegate { result.Text = result.Text + op_equal.Text.ToString(); };
+            //op_equal.Click += delegate { result.Text = result.Text + op_equal.Text.ToString(); };
 
             op_space.Click += delegate { result.Text = result.Text + op_space.Text.ToString(); };
             op_clear.Click += delegate { result.Text = result.Text + op_clear.Text.ToString(); };
             op_dot.Click += delegate { result.Text = result.Text + op_dot.Text.ToString(); };
 
+            double Calculate(Stack<string> ToCalculate)
+            {
+                double number1, number2;
+                string[] ToCalc = ToCalculate.ToArray();
 
-            //button.Click += delegate
-            //{
-            //    //Your code
-            //};
+                number1 = double(ToCalculate.ElementAt(0));
+                number2 = double.Parse(ToCalculate.ElementAt(1));
+
+                //number1 = double.Parse(ToCalc[0]);
+               // number2 = double.Parse(ToCalc[1]);
+
+                if (ToCalculate.ElementAt(2) == "/")
+                {
+                    return (number1 / number2);
+                }
+
+                if (ToCalculate.ElementAt(2) == "*")
+                {
+                    return (number1 * number2);
+                }
+
+                if (ToCalculate.ElementAt(2) == "+")
+                {
+                    return (number1 + number2);
+                }
+
+                if (ToCalculate.ElementAt(2) == "-")
+                {
+                    return (number1 - number2);
+                }
+
+                else return 0;
+
+            };
+
+            op_equal.Click += delegate
+            {
+                string ToParse = result.ToString();
+                Stack<string> ToAdd = new Stack<string>();
+                double answer;
+
+                //Use a dilemeter to separate integer values from operator values
+
+                char delimiter = ' ';
+                string[] substrings = ToParse.Split(delimiter);
+                foreach (var substring in substrings)
+                {
+                        ToAdd.Push(substring);
+                }
+
+                answer = Calculate(ToAdd);
+
+                result = (TextView)answer;
+            };
 
 
         }
