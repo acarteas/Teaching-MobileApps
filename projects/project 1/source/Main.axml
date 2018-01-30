@@ -28,6 +28,6 @@
         p1:id="@+id/editText2"
         p1:layout_column="0"
         p1:layout_row="3"
-        p1:maxLength="2"
+        p1:maxLength="1"
         p1:hint="Cipher OFFSET"/>
 </GridLayout>
