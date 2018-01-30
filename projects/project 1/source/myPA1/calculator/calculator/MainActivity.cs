@@ -1,23 +1,75 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using System.Collections.Generic;
+
 namespace calculator
 {
     [Activity(Label = "Calculator", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        char op;
-        bool is_num = false;
-        
+        Stack<double> mystack = new Stack<double>();
+        double op2, op1;
+        double answer;
+        double result;
+        int count = 0;
 
-        void handler()
+       
+
+
+
+        double myfunct(string thing)
         {
-            is_num = true;
+            double num;
+            if(count >= 2)
+            {
+
+                if ((thing == "+") || (thing == "-") || (thing == "X") || (thing == "/"))
+                {
+                    op2 = mystack.Pop();
+                    op1 = mystack.Pop();
+                    if (thing == "+")
+                    {
+                        result = op1 + op2;
+                    }
+
+                    if (thing == "-")
+                    {
+                        result = op1 - op2;
+                    }
+
+                    if (thing == "X")
+                    {
+                        result = op1 * op2;
+                    }
+
+                    if (thing == "/")
+                    {
+                        result = op1 / op2;
+                    }
+
+                    mystack.Push(result);
+                    count--;
+                    count--;
+                    return result;
+                }
+            }
+
+            else if ((thing == "0") || (thing == "1") || (thing == "2") || (thing == "3") || (thing == "4") || (thing == "5") || (thing == "6") || (thing == "7") || (thing == "8") || (thing == "9"))
+            {
+                num = int.Parse(thing);
+                mystack.Push(num);
+                count++;
+                return num;
+            }
+            return 0;
         }
+ 
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
- 
+
+            
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
@@ -37,46 +89,64 @@ namespace calculator
             Button pressedsub = FindViewById<Button>(Resource.Id.Buttonsub);
             Button pressedmult = FindViewById<Button>(Resource.Id.Buttonmult);
             Button presseddiv = FindViewById<Button>(Resource.Id.Buttondiv);
+            TextView myans = FindViewById<TextView>(Resource.Id.result);
 
             pressed0.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("0").ToString();
             };
             pressed1.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("1").ToString();
             };
             pressed2.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("2").ToString();
             };
             pressed3.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("3").ToString();
+
             };
             pressed4.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("4").ToString();
             };
             pressed5.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("5").ToString();
             };
             pressed6.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("6").ToString();
             };
             pressed7.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("7").ToString();
             };
             pressed8.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("8").ToString();
             };
             pressed9.Click += delegate
             {
-                handler();
+                myans.Text = myfunct("9").ToString();
+            };
+            pressedplus.Click += delegate
+            {
+                myans.Text = myfunct("+").ToString();
+            };
+            pressedsub.Click += delegate
+            {
+                myans.Text = myfunct("-").ToString();
+            };
+            pressedmult.Click += delegate
+            {
+                myans.Text = myfunct("X").ToString();
+            };
+            presseddiv.Click += delegate
+            {
+                myans.Text = myfunct("/").ToString();
             };
         }
     }

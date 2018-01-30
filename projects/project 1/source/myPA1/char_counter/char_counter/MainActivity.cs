@@ -7,7 +7,6 @@ namespace char_counter
     [Activity(Label = "Character Counter", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 0;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
