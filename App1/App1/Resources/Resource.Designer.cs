@@ -72,11 +72,11 @@ namespace App1
 			// aapt resource value: 0x7f060003
 			public const int PossibleAnswerD = 2131099651;
 			
-			// aapt resource value: 0x7f060004
-			public const int QuestionText = 2131099652;
-			
 			// aapt resource value: 0x7f060005
-			public const int ScoreBoard = 2131099653;
+			public const int QuestionText = 2131099653;
+			
+			// aapt resource value: 0x7f060004
+			public const int ScoreBoard = 2131099652;
 			
 			static Id()
 			{
