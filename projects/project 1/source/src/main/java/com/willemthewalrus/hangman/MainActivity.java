@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         isclicked = false;
         TextView topbox = (TextView) findViewById(R.id.instructionsText);
         EditText inbox = (EditText) findViewById(R.id.Input);
-        topbox.setText("You reset the fame! \n Please enter in a new word");
+        topbox.setText("You reset the game! \n Please enter in a new word");
         inbox.setText("");
     }
 
