@@ -71,53 +71,61 @@ namespace PostFix
             //op_equal.Click += delegate { result.Text = result.Text + op_equal.Text.ToString(); };
 
             op_space.Click += delegate { result.Text = result.Text + op_space.Text.ToString(); };
-            op_clear.Click += delegate { result.Text = result.Text + op_clear.Text.ToString(); };
+            op_clear.Click += delegate { result.Text = ""; };
             op_dot.Click += delegate { result.Text = result.Text + op_dot.Text.ToString(); };
 
-            double Calculate(Stack<string> ToCalculate)
+            int Calculate(Stack<string> ToCalculate)
             {
-                double number1, number2;
-                string[] ToCalc = ToCalculate.ToArray();
 
-                number1 = double(ToCalculate.ElementAt(0));
-                number2 = double.Parse(ToCalculate.ElementAt(1));
-
+                int number1, number2;
                 //number1 = double.Parse(ToCalc[0]);
                // number2 = double.Parse(ToCalc[1]);
 
-                if (ToCalculate.ElementAt(2) == "/")
+                if (ToCalculate.Peek() == "/")
                 {
-                    return (number1 / number2);
+                    ToCalculate.Pop();
+                    number1 = Int32.Parse(ToCalculate.Pop());
+                    number2 = Int32.Parse(ToCalculate.Pop());
+                    return number2 / number1;
                 }
 
-                if (ToCalculate.ElementAt(2) == "*")
+                if (ToCalculate.Peek() == "*")
                 {
-                    return (number1 * number2);
+                    ToCalculate.Pop();
+                    number1 = Int32.Parse(ToCalculate.Pop());
+                    number2 = Int32.Parse(ToCalculate.Pop());
+                    return number1 * number2;
                 }
 
-                if (ToCalculate.ElementAt(2) == "+")
+                if (ToCalculate.Peek() == "+")
                 {
-                    return (number1 + number2);
+                    ToCalculate.Pop();
+                    number1 = Int32.Parse(ToCalculate.Pop());
+                    number2 = Int32.Parse(ToCalculate.Pop());
+                    return number1 + number2;
                 }
 
-                if (ToCalculate.ElementAt(2) == "-")
+                if (ToCalculate.Peek() == "-")
                 {
-                    return (number1 - number2);
+                    ToCalculate.Pop();
+                    number1 = Int32.Parse(ToCalculate.Pop());
+                    number2 = Int32.Parse(ToCalculate.Pop());
+                    return number1 - number2;
                 }
 
-                else return 0;
+                else return 2;
 
             };
 
             op_equal.Click += delegate
             {
-                string ToParse = result.ToString();
+                string ToParse = result.Text;
                 Stack<string> ToAdd = new Stack<string>();
-                double answer;
+                int answer;
 
                 //Use a dilemeter to separate integer values from operator values
 
-                char delimiter = ' ';
+                Char delimiter = ' ';
                 string[] substrings = ToParse.Split(delimiter);
                 foreach (var substring in substrings)
                 {
@@ -126,7 +134,14 @@ namespace PostFix
 
                 answer = Calculate(ToAdd);
 
-                result = (TextView)answer;
+                String stringdouble = answer.ToString();
+
+                result.Text = stringdouble;
+                ;
+
+                
+
+
             };
 
 
