@@ -10,8 +10,7 @@ namespace CalculatorApp
     public class MainActivity : Activity
     {
         Stack calc_stack = new Stack();
-        int count = 0;
-
+        int enter_count = 0;
         //create the buttons?
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,52 +36,159 @@ namespace CalculatorApp
             Button bttn9 = FindViewById<Button>(Resource.Id.button_nine);
             Button bttn_multiply = FindViewById<Button>(Resource.Id.button_one);
             Button bttn_divide = FindViewById<Button>(Resource.Id.button_one);
-            Button bttn_subract = FindViewById<Button>(Resource.Id.button_one);
+            Button bttn_subtract = FindViewById<Button>(Resource.Id.button_one);
             Button bttn_add = FindViewById<Button>(Resource.Id.button_one);
-            Button bttn_equal = FindViewById<Button>(Resource.Id.button_equal);
+            Button bttn_enter = FindViewById<Button>(Resource.Id.button_enter);
             Button bttn_clear = FindViewById<Button>(Resource.Id.button_clear);
             Button bttn_mod = FindViewById<Button>(Resource.Id.button_mod);
-            Button bttn_delete = FindViewById<Button>(Resource.Id.button_delete);
-           
+            Button bttn_clear_entry = FindViewById<Button>(Resource.Id.button_clear_entry);
 
-            //created delagate instance and added it to click event
-           // bttn1.Click += new EventHandler(this.Button_click);
+            //numbers
+            bttn0.Click += add_button_click;
+            bttn1.Click += add_button_click;
+            bttn2.Click += add_button_click;
+            bttn3.Click += add_button_click;
+            bttn4.Click += add_button_click;
+            bttn5.Click += add_button_click;
+            bttn6.Click += add_button_click;
+            bttn7.Click += add_button_click;
+            bttn8.Click += add_button_click;
+            bttn9.Click += add_button_click;
 
+            //operations
+            bttn_multiply.Click += add_button_click;
+            bttn_divide.Click += add_button_click;
+            bttn_add.Click += add_button_click;
+            bttn_subtract.Click += add_button_click;
+            bttn_mod.Click += add_button_click;
+
+            //clear, delete, clear entry
+            bttn_clear.Click += all_clear_button;
+            bttn_clear_entry.Click += text_clear_button;
+
+            //enter click
+            bttn_enter.Click += add_button_click;
         }
-        //Event Handler: Adds the button clicked onto the TextView and the Stack
+
+        //Adds the button clicked onto the TextView and the Stack
         private void add_button_click(object sender, System.EventArgs e)
         {
             Button a_button = sender as Button;
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
-            results.Text += (a_button);
+            results.Text += a_button.Text;
+            enter_count = 0;
         }
 
-        //Event Handler: Clears the TextView
+        //Clears the TextView
         private void text_clear_button(object sender, System.EventArgs e)
         {
-            Button a_button = sender as Button;
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
-            results.Text += " ";
+            results.Text = " ";
         }
 
-        //Event Handler: Clears the TextView and the Stack
+        //Clears the TextView and the Stack
         private void all_clear_button(object sender, System.EventArgs e)
         {
             Button a_button = sender as Button;
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
             results.Text += " ";
+            enter_button = 0;
             calc_stack.Clear();
         }
-       
-        //Deletes a character from the TextView
-        private void delete_button(object sender, System.EventArgs e)
+
+        //Enter button, sends 
+        private void enter_button(object sender, System.EventArgs e)
         {
-            Button a_button = sender as Button;
             TextView results = FindViewById<TextView>(Resource.Id.calc_results);
-            string text = results.Text;
-            text.Remove(text.Length - 1);
-            results.Text += text;
+            double output;
+            double num1;
+            double num2;
+
+            enter_count += 1;
+
+            if (enter_count > 1)
+            {
+                double.TryParse(results.Text, out output)
+             {
+                    if (results.Text == "+")
+                    {
+                        results.Text = (num1 + num2).Tostring();
+                    }
+                    else if (results.Text == "-")
+                    {
+                        results.Text = (num1 - num2).Tostring();
+                    }
+                    else if (results.Text == "*")
+                    {
+                        results.Text = (num1 * num2).Tostring();
+                    }
+                    else if (results.Text == "/")
+                    {
+                        results.Text = (num1 / num2).Tostring();
+                    }
+                    else
+                    {
+                        calc_stack.Push(System.Convert.ToDouble(results.Text));
+
+                    }
+                }
+            }
+
         }
+        
+        //Infix to Postfix parser
+        private void ITP()
+        {
+            Stack postfix_stack = new Stack();
+            string oper_holder;
+            string some_string = calc_stack.Pop();
+
+         
+            double num1 = -1.0;
+            double num2 = -1.0;
+
+            while (calc_stack.Count != 0)
+            {
+                if (some_string == "+")
+                {
+                    oper_holder = "+";
+                }
+                else if (some_string == "-")
+                {
+                    oper_holder = "-";
+                }
+                else if (some_string == "*")
+                {
+                    oper_holder = "*";
+                }
+                else if (some_string == "/")
+                {
+                    oper_holder = "/";
+                }
+                else
+                {
+                    if(num1 == -1.0)
+                    {
+                        //change to int
+                        num1 = some_string;
+                    }
+                    else
+                    {
+                        num2 = some_string;
+                    }
+                }
+
+
+            }
+
+
+
+
+
+
+        }
+        
+
 
 
 
