@@ -8,9 +8,9 @@ So far, this calculator serves the purpose of meeting the homework requirements.
 
 
 ## System Design 
-This is where you specify all of the system's requirements.  This section should accurately portray the complete operation of your application.  Provide scenarios, use cases, system requirements, and diagrams/screenshots of the system.
 System Requirements: 
 Must have an adroid device that uses Android 7.0 - API Level 24. The device must have available RAM of 700. 
+Must have android Noiget and above. 
 
 
 ## Usage
