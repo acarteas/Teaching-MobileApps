@@ -36,7 +36,7 @@ namespace PA1
             Button b8 = FindViewById<Button>(Resource.Id.eightbutton);
             Button b9 = FindViewById<Button>(Resource.Id.ninebutton);
             Button b0 = FindViewById<Button>(Resource.Id.zerobutton);
-            Button bdot = FindViewById<Button>(Resource.Id.zerobutton);
+            Button bdot = FindViewById<Button>(Resource.Id.dotbutton);
 
             Button bclear = FindViewById<Button>(Resource.Id.clearbutton);
 
@@ -46,6 +46,7 @@ namespace PA1
             Button bmultiply = FindViewById<Button>(Resource.Id.multiplybutton);
 
             Button bnegate = FindViewById<Button>(Resource.Id.negatebutton);
+            Button bback = FindViewById<Button>(Resource.Id.backbutton);
 
             Button bequal = FindViewById<Button>(Resource.Id.equalbutton);
             
@@ -61,6 +62,7 @@ namespace PA1
             b8.Click += AddNum;
             b9.Click += AddNum;
             b0.Click += AddNum;
+            bdot.Click += AddNum;
 
 
             bclear.Click += ClearText;
@@ -73,6 +75,8 @@ namespace PA1
             bequal.Click += EqualTime;
 
             bnegate.Click += Negate;
+
+            bback.Click += Backspace;
 
             // Get our button from the layout resource,
             // and attach an event to it
@@ -87,14 +91,18 @@ namespace PA1
         public void Negate(object sender, EventArgs e)
         {
             TextView to_edit = FindViewById<TextView>(Resource.Id.IOtext);
-            if(to_edit.Text[0] != '-')
+            if(to_edit.Text[0] != '0')
             {
-                to_edit.Text = "-" + to_edit.Text;
+                if (to_edit.Text[0] != '-')
+                {
+                    to_edit.Text = "-" + to_edit.Text;
+                }
+                else
+                {
+                    to_edit.Text = to_edit.Text.Substring(1);
+                }
             }
-            else
-            {
-                to_edit.Text = to_edit.Text.Substring(1);
-            }
+            
             
         }
 
@@ -105,10 +113,29 @@ namespace PA1
             if(cur_math_expr == '=')
             {
                 to_edit.Text = the_button.Text;
+                cur_math_expr = ' ';
             }
             else
             {
-                to_edit.Text = to_edit.Text + the_button.Text;
+                if (to_edit.Text[0] == '0')
+                {
+                    to_edit.Text = the_button.Text;
+                }
+                else
+                {
+                    to_edit.Text = to_edit.Text + the_button.Text;
+                }
+                
+            }
+           
+        }
+
+        public void Backspace(object sender, EventArgs e)
+        {
+            TextView to_edit = FindViewById<TextView>(Resource.Id.IOtext);
+            if(to_edit.Text[0] != '0')
+            {
+                to_edit.Text = to_edit.Text.Substring(0, (to_edit.Text.Length - 1));
             }
            
         }
@@ -123,37 +150,40 @@ namespace PA1
         public void EqualTime(object sender, EventArgs e)
         {
             TextView to_edit = FindViewById<TextView>(Resource.Id.IOtext);
-            to_edit.Text = "";
+            float cur_num = float.Parse(to_edit.Text, CultureInfo.InvariantCulture.NumberFormat);
+            float calc;
+
+            calc = Calculation(last_num, cur_num, cur_math_expr);
+
+            to_edit.Text = calc.ToString();
+            cur_math_expr = '=';
         }
 
         public void StoreMathExpr(object sender, EventArgs e)
         {
             Button expr_button = sender as Button;
             TextView to_edit = FindViewById<TextView>(Resource.Id.IOtext);
+            Char button_expr = expr_button.Text[0];
             float cur_num = float.Parse(to_edit.Text, CultureInfo.InvariantCulture.NumberFormat);
-            //If we are already storing a number we need to calculate
-            if (cur_math_expr != ' ')
+            
+            if (cur_math_expr == button_expr)
             {
-                //we can assume that last_num is also being used
-                //In which case do math
                 float temp = Calculation(last_num, cur_num, cur_math_expr);
+                to_edit.Text = temp.ToString();
             }
             else
             {
                 last_num = cur_num;
                 to_edit.Text = "0";
                 //store the cur_math_expr
-              
+                cur_math_expr = button_expr;
             }
-            cur_math_expr = expr_button.Text[0];
-
-
-
+            
         }
 
         public float Calculation(float num1, float num2, char op)
         {
-            float num_to_return = 0;
+            float num_to_return = num2;
             switch (op)
             {
                 case '+':
@@ -172,9 +202,9 @@ namespace PA1
                     break;
 
             }
+            return num_to_return;
 
-
-            return 0;
+            
         }
 
     }

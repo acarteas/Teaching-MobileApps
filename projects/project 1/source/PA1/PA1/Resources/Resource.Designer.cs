@@ -64,7 +64,7 @@ namespace PA1
 			public const int IOtext = 2131099649;
 			
 			// aapt resource value: 0x7f060011
-			public const int answerbutton = 2131099665;
+			public const int backbutton = 2131099665;
 			
 			// aapt resource value: 0x7f060002
 			public const int clearbutton = 2131099650;
