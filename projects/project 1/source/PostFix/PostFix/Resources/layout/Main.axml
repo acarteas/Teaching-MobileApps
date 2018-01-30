@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <Space
+      android:layout_height="16dp"
+      android:layout_width="wrap_content" />
+  <TextView
+      android:hint="0.00"
+      android:layout_width="match_parent"
+      android:layout_height="53.0dp"
+      android:id="@+id/textView1"
+      android:background="#FFFFFF"
+      android:textColor="#000000"
+      android:gravity="right"
+      android:textAlignment="center"
+      android:textSize="48dp" />
+  <Space
+      android:layout_height="16dp"
+      android:layout_width="wrap_content" />
+  <GridLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:rowCount="4"
+      android:columnCount="4"
+      android:id="@+id/gridLayout1"
+      android:layout_gravity="center"
+      android:layout_marginBottom="0.0dp">
+    <Button
+        android:text="1"
+        android:id="@+id/button_one"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="2"
+        android:id="@+id/button_two"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="3"
+        android:id="@+id/button_three"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="/"
+        android:id="@+id/button_div"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="4"
+        android:id="@+id/button_four"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="5"
+        android:id="@+id/button_five"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="6"
+        android:id="@+id/button_six"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="*"
+        android:id="@+id/button_mult"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="7"
+        android:id="@+id/button_seven"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="8"
+        android:id="@+id/button_eight"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="9"
+        android:id="@+id/button_nine"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="+"
+        android:id="@+id/button_plus"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="0"
+        android:id="@+id/button_zero"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="="
+        android:id="@+id/button_equal"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="-"
+        android:id="@+id/button_sub"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text="."
+        android:id="@+id/button_dec"
+        android:textSize="35dp"
+        android:clickable="true" />
+    <Button
+        android:text=" "
+        android:id="@+id/button_space"
+        android:textSize="20dp"
+        android:clickable="true" />
+    <Button
+        android:text="clear"
+        android:id="@+id/button_clear"
+        android:textSize="20dp"
+        android:clickable="true" />
+  </GridLayout>
+</LinearLayout>
