@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Hangman</string>
-    <string name="Instructions">Welcome to hangman, \n please input a single word to be guessed</string>
-    <string name="word"></string>
-    <string name="guesses"></string>
-    <string name="chances"></string>
-    <string name="buttonText">Press Here</string>
-</resources>
