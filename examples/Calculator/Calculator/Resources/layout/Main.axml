@@ -166,7 +166,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
         <Button
-            android:tag="@string/calculator_number"
+            android:tag="@string/calculator_operation"
             android:id="@+id/calcButtonDecimal"
             android:text="."
             android:layout_weight="1"
