@@ -78,7 +78,6 @@ namespace calculator
             }
         }
 
-
         double thefunct(Stack<string> list)
         {
             for (int i = 0; i < list.Count; i++)
