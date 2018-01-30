@@ -137,10 +137,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/ButtonClear"
-            android:text="CLEAR"
+            android:id="@+id/Buttoneq"
+            android:text="CALCULATE"
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/ButtonClear"
+        android:text="CLEAR"
+        android:layout_weight="1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+  </LinearLayout>
 </LinearLayout>

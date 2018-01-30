@@ -1,8 +1,14 @@
-# APPLICATION NAME
-Complete description and overview.  This is where you describe in a brief, yet clear and concise, manner what your product should do and how you expect it should be used.  Why did you write this application?  What purpose does it serve?  It's okay if the only purpose is to meet the homework requirement (but try to move bedyond just that - be creative!).
+# Calculator
+Simple Postfix calculator. This calculator accepts single digit numbers and performs as a Reverse Polish simple four function calculator. It must be used strictly correctly otherwise it will error. This application serves scientists and other users of post fix notation who can adhere to rigid standards. 
 
 ## System Design 
-This is where you specify all of the system's requirements.  This section should accurately portray the complete operation of your application.  Provide scenarios, use cases, system requirements, and diagrams/screenshots of the system.
+Target: Android 7.1
+Minimum: Android 5.0
+Approx Size: 125 MB
+Notes: System designed to fail with faulty input. Proper input is required for proper functionality.
 
 ## Usage
-This is where you explain how to use your application
+This calculator may only be used with single digit values (0-9). 
+Furthermore, given invalid input (incorrectly formatted or wrong number of operands), application will fail.
+Example: 5 3 2 * + should result in 11
+Example: 3 2 - should result in 1

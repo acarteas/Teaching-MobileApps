@@ -90,11 +90,14 @@ namespace calculator
 			// aapt resource value: 0x7f050004
 			public const int Button9 = 2131034116;
 			
-			// aapt resource value: 0x7f050010
-			public const int ButtonClear = 2131034128;
+			// aapt resource value: 0x7f050011
+			public const int ButtonClear = 2131034129;
 			
 			// aapt resource value: 0x7f05000f
 			public const int Buttondiv = 2131034127;
+			
+			// aapt resource value: 0x7f050010
+			public const int Buttoneq = 2131034128;
 			
 			// aapt resource value: 0x7f05000d
 			public const int Buttonmult = 2131034125;
@@ -141,7 +144,7 @@ namespace calculator
 		{
 			
 			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			public const int Calculator = 2130968577;
 			
 			// aapt resource value: 0x7f040000
 			public const int hello = 2130968576;
