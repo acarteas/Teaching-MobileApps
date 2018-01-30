@@ -10,25 +10,20 @@ namespace Postfix_Calculator
     [Activity(Label = "Postfix Calculator", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
-        //int count = 1;
-
+        int total = 0;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-
-            // Get our button from the layout resource,
-            // and attach an event to it
             
             EditText editInput = FindViewById<EditText>(Resource.Id.edtTextInput);
             TextView textResult = FindViewById<TextView>(Resource.Id.txtResult);
 
             //handle buttons
             Button btnClear = FindViewById<Button>(Resource.Id.btnClear);
-            Button btnCopy = FindViewById<Button>(Resource.Id.btnCopy);
-            Button btnNegative = FindViewById<Button>(Resource.Id.btnNegative);
+            Button btnBackspace = FindViewById<Button>(Resource.Id.btnBackspace);
             Button btnDivide = FindViewById<Button>(Resource.Id.btnDivide);
             Button btnSeven = FindViewById<Button>(Resource.Id.btnSeven);
             Button btnEight = FindViewById<Button>(Resource.Id.btnEight);
@@ -41,10 +36,9 @@ namespace Postfix_Calculator
             Button btnOne = FindViewById<Button>(Resource.Id.btnOne);
             Button btnTwo = FindViewById<Button>(Resource.Id.btnTwo);
             Button btnThree = FindViewById<Button>(Resource.Id.btnThree);
-            Button btnPlus = FindViewById<Button>(Resource.Id.btnPlus);
-            Button btnSpace = FindViewById<Button>(Resource.Id.btnSpace);
+            Button btnPlus = FindViewById<Button>(Resource.Id.btnPlus); 
             Button btnZero= FindViewById<Button>(Resource.Id.btnZero);
-            Button btnDecimal = FindViewById<Button>(Resource.Id.btnDecimal);
+            Button btnSpace = FindViewById<Button>(Resource.Id.btnSpace);
             Button btnEquals = FindViewById<Button>(Resource.Id.btnEquals);
 
             btnClear.Click += delegate
@@ -53,25 +47,27 @@ namespace Postfix_Calculator
                 textResult.Text = "0";
             };
 
-            btnCopy.Click += delegate
+            btnBackspace.Click += delegate
             {
-                //i may not use this button, placeholder for something else
-            };
-
-            btnNegative.Click += delegate
-            {
-                //todo
+                //using append puts the cursor at the end of the edittext box
+                string temp = editInput.Text;
+                if (temp != "")
+                {
+                    temp = temp.Remove(temp.Length - 1);
+                }
+                editInput.Text = "";
+                editInput.Append(temp);
             };
 
             btnDivide.Click += delegate
             {
                 if (TextUtils.IsEmpty(editInput.Text))
                     {
-                    editInput.Append("\\ ");
+                    editInput.Append("/ ");
                 }
                 else
                 {
-                    editInput.Append(" \\ ");
+                    editInput.Append(" / ");
                 }
             };
             
@@ -156,6 +152,11 @@ namespace Postfix_Calculator
                 }
             };
 
+            btnZero.Click += delegate
+            {
+                editInput.Append("0");
+            };
+
             btnSpace.Click += delegate
             {
                 editInput.Append(" ");
@@ -169,19 +170,13 @@ namespace Postfix_Calculator
                 }
             };
 
-
             textResult.Text = "0";
-
-            //button.AfterTextChanged += doSomethingWithButton;
-
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
 
             void calculate()
             {
                 Queue<char> operator_queue = new Queue<char>();
                 Queue<int> number_queue = new Queue<int>();
                 char operator_char = '$';
-                int total = 0;
                 string current_number = "";
 
                 for (int i = 0; i < editInput.Text.Length; i++)
@@ -245,7 +240,10 @@ namespace Postfix_Calculator
                 }
 
                 //have opeartors and numbers, now calculate
-                total = number_queue.Dequeue();
+                if (total == 0)
+                {
+                    total = number_queue.Dequeue();
+                }
 
                 while(number_queue.Count != 0)
                 {

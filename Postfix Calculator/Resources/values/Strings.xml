@@ -2,14 +2,13 @@
 <resources>
 
   <string name="clear">C</string>
-  <string name="copy">CPY</string>
-  <string name="negative">+-</string>
+  <string name="backspace">«</string>
   <string name="divide">÷</string>
 
   <string name="seven">7</string>
   <string name="eight">8</string>
   <string name="nine">9</string>
-  <string name="multiply">x</string>
+  <string name="multiply">*</string>
 
   <string name="four">4</string>
   <string name="five">5</string>
@@ -23,7 +22,6 @@
   
   <string name="space">␣</string>
   <string name="zero">0</string>
-  <string name="decimal">.</string>
   <string name="equals">=</string>
   
   

@@ -20,13 +20,10 @@ F:\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
 F:\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\android\assets\Postfix Calculator.dll.mdb
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.pdb
-C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix_Calculator.Postfix_Calculator.apk
-C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix_Calculator.Postfix_Calculator-Signed.apk
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\Postfix Calculator.csprojResolveAssemblyReference.cache
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\Postfix Calculator.csproj.CoreCompileInputs.cache
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\Postfix Calculator.dll
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\Postfix Calculator.pdb
-C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\android\bin\Postfix_Calculator.Postfix_Calculator.apk
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\res\layout\main.xml
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\res\values\strings.xml
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\res\mipmap-hdpi\icon.png
@@ -38,7 +35,10 @@ C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\R.
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\uploadflags.txt
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll.mdb
 C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\android\assets\Postfix Calculator.dll.mdb
-F:\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
+C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\chrisjohnstone.calculator.apk
+C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\chrisjohnstone.calculator-Signed.apk
+C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\obj\Debug\android\bin\chrisjohnstone.calculator.apk
+C:\Users\chris\Desktop\cs 480\Postfix Calculator\Postfix Calculator\bin\Debug\Postfix Calculator.dll
 bin\Debug\Mono.Android.pdb
 bin\Debug\mscorlib.pdb
 bin\Debug\System.Core.pdb
