@@ -176,11 +176,7 @@ namespace CalculatorApp
                     }
                     else
                     {
-                    final.Text = "Error: No operator found.";
-                      //calc_stack.Clear();
-                      //postfix_stack.Clear();
-
-
+                        final.Text = "Error: No operator found.";                   
                      }
             }
             else
