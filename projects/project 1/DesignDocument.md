@@ -9,7 +9,7 @@ So far, this calculator serves the purpose of meeting the homework requirements.
 
 ## System Design 
 System Requirements: 
-Must have an adroid device that uses Android 7.0 - API Level 24. The device must have available RAM of 700. 
+Must have an adroid device that uses Android 7.1 - API Level 25. The device must have available RAM of 700. 
 Must have android Nouget and above. 
 
 
