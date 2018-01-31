@@ -44,7 +44,8 @@ namespace CameraExample
         {
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             IList<ResolveInfo> availableActivities =
-                PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
+                PackageManager.QueryIntentActivities
+                (intent, PackageInfoFlags.MatchDefaultOnly);
             return availableActivities != null && availableActivities.Count > 0;
         }
 
@@ -97,11 +98,25 @@ namespace CameraExample
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
             Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            if (bitmap != null)
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Alpha8, true);
+            for(int i = 0; i < copyBitmap.Width; i++)
             {
-                imageView.SetImageBitmap(bitmap);
+                for(int j = 0; j < copyBitmap.Height; j++)
+                {
+                    int p = copyBitmap.GetPixel(i, j);
+                    //00000000 00000000 00000000 00000000
+                    //long mask = (long)0xFF00FFFF;
+                    //p = p & (int)mask;
+                    Android.Graphics.Color c = new Android.Graphics.Color(p);
+                    c.R = 0;
+                    copyBitmap.SetPixel(i, j, c);
+                }
+            }
+            if (copyBitmap != null)
+            {
+                imageView.SetImageBitmap(copyBitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
-                bitmap = null;
+                copyBitmap = null;
             }
 
             // Dispose of the Java side bitmap.
