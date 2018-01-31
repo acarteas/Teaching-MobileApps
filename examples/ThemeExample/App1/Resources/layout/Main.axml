@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="This is an example of a theme being used in an android app. Five colors are being defined in variables (not absolutely necessary except for the background, which needs to pass a value by reference or it prints garbage from the framebuffer). In this example, the darkest color is being used for the background, dark value for title and nav bars, neutral used for title bar, light used for buttons and lightest used for text. Look at /values/style.xml for where this is defined and android manifest for where it is set."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" />
+</LinearLayout>
