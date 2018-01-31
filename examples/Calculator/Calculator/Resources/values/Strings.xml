@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="hello">Hello World, Click Me!</string>
+  <string name="app_name">Calculator</string>
+    <string name="calculator_number">Number</string>
+    <string name="calculator_operation">Operation</string>
+    <string name="calculator_row">Row</string>
+</resources>
