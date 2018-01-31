@@ -1,21 +1,5 @@
-# Post Mortem
-Use this page to discuss what you learned from completing this assignment.  It should be completed **after** you finish coding your assignment. Your post mortem must be at least 500 words long.  Note that the focus of the paper should be on your reflection, not on structure (e.g. introductory paragraph, conclusion, etc.).  The essay is graded on content (i.e. it shows deep though) rather than syntax (e.g. spelling) and structure.  
+The most stressful and most time-consuming obstacle of this assignment was the hurdle of understanding C# and it’s differences from C++. I’ve only done coding in C++ thus far, so using a language that’s any different was a giant leap for me to take. Understanding that I had to change my coding mindset towards more object-oriented programming, even when using the “main” part of the program, was overwhelming for a long time. However, this was also the best experience of the assignment. Having to throw ourselves into unknown territory, gave us so many small victories to feel our accomplishments coming to life. It was necessary for us to break through the learning curve of learning another language, to understand what it would be like in the future with languages no where near similar to what we’ve been working with. Ultimately, I learned so much from this assignment and I can’t wait to continue coming closer to encapsulating the nuances of C#.
+	I had a huge problem of finding a place where I could reliably compile my code. My desktop wouldn’t run the emulator correctly and my efforts to fix the problem were futile. I then took my hopes to the Vlab, hoping that it would fix the issue, but it still had its own problems. It wasn’t until the day before the assignment was due, that I found a way to run the emulator on Vlab. However, it took an annoyingly long amount of time to compiler, around 5 minutes to check if my edited code would run correctly. I’m hoping to rid myself of those issues before the next assignment is over. 
+	Personally, the option to choose whatever we wanted to make for our assignment added so much excitement. I think it really cemented the fact that we as programmers have the power to create something of our own design. That we can make our ideas a reality. Into something physical and tangible, that we can interact with our own two hands. The possibilities were endless. However, because of our inexperience in the new language, most of the class decided to make a calculator as you suggested. Which as a first step was fine because it served as more of a stepping stone into this new language. However, I’m really hoping to see some amazing projects in the upcoming assignments. Things that I wish I thought of first. Additionally, I can’t wait until the ideas I do have are in my hands and alive. It sounds exciting to me. 
+Another huge anchor for me was a little more personal. I’ve recently started to have a lot of eye irritation lately. It also brings on a lot of light sensitivity, so I’m not able to retain my focus when staring at any screens. It was tedious to have to look away from my code and lose my train of thought ever 5 minutes. I’m hoping to find a solution to that in the upcoming weeks. 
 
-Below are some prompts that can be used to get you thinking.  Feel free to use these or to make up your own.
-* Describe a particular struggle that you overcame when working on this programming assignment.
-* Conversely, describe an issue with your assignment that you were unable to resolve.
-* Provide advice to a future student on how he or she might succeed on this assignment.
-* Describe the most fun aspect of the assignment.
-* Describe the most challenging aspect of the assignment.
-* Describe the most difficult aspect of the assignment to understand.
-* Provide any suggestions for improving the assignment in the future.
-
-**struggles I overcame: Ther hurlde to understanding C# and android XML. moving from c++ style of compiler language into C#'s object oriented programming. Having a reliable place to debug and run my code.
-
-**The best part about the assignment was being thrown into something completley new and having to gather your own resources and knowledge to complete he assignment.
-
-**I enjoyed the option to create anything that we wanted to. it didnt have to be a calculator, but thats where most of us went for our first steps
-
-** The most difficult part to understand was the new language itself. Sure it's similar to c++ but it's got its definitive differences. 
-
-**dealing with eye irritation and light sensitive has also made this very challenging. 
