@@ -14,4 +14,4 @@ Must have android Nouget and above.
 
 
 ## Usage
-To use this application the Users will have to input their equation one piece at a time. In the process of: "1, then enter, +, then enter, 2, then enter." Which will display "1 + 2". Hitting enter twice in a row will give the result of the equation. The "C" button will clear the text within both TextViews and will clear all of the stacks. The "CE" button will only clear what is in the first TextView. 
+To use this application the Users will have to input their equation one piece at a time. In the process of: "1, then enter, +, then enter, 2, then enter." Which will display "1 + 2". Hitting enter twice in a row will give the result of the equation. To continue your equation, simply  The "C" button will clear the text within both TextViews and will clear all of the stacks. The "CE" button will only clear what is in the first TextView. 
