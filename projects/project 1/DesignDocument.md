@@ -1,6 +1,6 @@
 # APPLICATION NAME
 
-I created a postfix calculator. This calculator displays the input like an infix calculator, but does calculations as a postfix calculator. There are buttons for numbers, operations, entry clears, and entries. This program uses stacks to track it's data. It is not fully functional. 
+I created a postfix calculator. This calculator displays the input like an infix calculator, but does calculations as a postfix calculator. There are buttons for numbers, operations, entry clears, and entries. This program uses stacks to track it's data.
 ==========================================================================================================================================
 I wrote this program to take the first steps into mobile application development. Being able to actually interact with something you've created is amazing. I want to be able to take create something that I can use for myself and for the sake of others. 
 ==========================================================================================================================================
@@ -10,7 +10,7 @@ So far, this calculator serves the purpose of meeting the homework requirements.
 ## System Design 
 System Requirements: 
 Must have an adroid device that uses Android 7.0 - API Level 24. The device must have available RAM of 700. 
-Must have android Noiget and above. 
+Must have android Nouget and above. 
 
 
 ## Usage
