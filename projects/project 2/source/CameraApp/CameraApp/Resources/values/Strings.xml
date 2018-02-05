@@ -2,4 +2,6 @@
 <resources>
   <string name="hello">Hello World, Click Me!</string>
   <string name="app_name">CameraApp</string>
+	<!--Adding new resource here to open camera-->
+  <string name="openCamera">Open Camera</string>
 </resources>

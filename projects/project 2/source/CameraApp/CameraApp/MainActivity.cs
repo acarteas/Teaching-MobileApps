@@ -1,14 +1,36 @@
-﻿using Android.App;
-using Android.Widget;
+﻿using System;
+using System.Collections.Generic;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
+using Android.Provider;
+using Android.Widget;
+using Java.IO;
+using Environment = Android.OS.Environment;
+using Uri = Android.Net.Uri;
 
 namespace CameraApp
-{
+{   
+    //creating a new static class with variables
+    //do no forget to give permission to app to access external memory
+    //and camera in manifest
+    public static class App
+    {
+        public static File _file;
+        public static File _dir;
+        public static Bitmap bitmap;
+
+    }
     [Activity(Label = "CameraApp", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
 
+
+        //after class is created and permissions are given we need to update this OnCreate
+        //function 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
