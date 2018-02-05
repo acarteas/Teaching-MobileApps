@@ -70,7 +70,9 @@ namespace CameraExample
             //android.support.v4.content.FileProvider
             //getUriForFile(getContext(), "com.mydomain.fileprovider", newFile);
             //FileProvider.GetUriForFile
-            intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
+
+            //The line is a problem line for Android 7+ development
+            //intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
             StartActivityForResult(intent, 0);
         }
 
@@ -85,11 +87,12 @@ namespace CameraExample
             base.OnActivityResult(requestCode, resultCode, data);
 
             //Make image available in the gallery
+            /*
             Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
             var contentUri = Android.Net.Uri.FromFile(_file);
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
-
+            */
 
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
@@ -97,7 +100,10 @@ namespace CameraExample
             ImageView imageView = FindViewById<ImageView>(Resource.Id.takenPictureImageView);
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
-            Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
             Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Alpha8, true);
             for(int i = 0; i < copyBitmap.Width; i++)
             {
@@ -112,11 +118,11 @@ namespace CameraExample
                     copyBitmap.SetPixel(i, j, c);
                 }
             }
-            if (copyBitmap != null)
+            if (bitmap != null)
             {
-                imageView.SetImageBitmap(copyBitmap);
+                imageView.SetImageBitmap(bitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
-                copyBitmap = null;
+                bitmap = null;
             }
 
             // Dispose of the Java side bitmap.
