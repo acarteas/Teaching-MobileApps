@@ -114,7 +114,9 @@ namespace CameraExample
                     //long mask = (long)0xFF00FFFF;
                     //p = p & (int)mask;
                     Android.Graphics.Color c = new Android.Graphics.Color(p);
-                    c.R = 0;
+                    
+                    //TODO: fix
+                    //c.R = 0;
                     copyBitmap.SetPixel(i, j, c);
                 }
             }
