@@ -103,28 +103,26 @@ namespace CameraExample
 
             //AC: workaround for not passing actual files
             Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
-            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Alpha8, true);
-            for(int i = 0; i < copyBitmap.Width; i++)
+            Android.Graphics.Bitmap copyBitmap = 
+                bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            //this code removes all red from a picture
+            for(int i = 0; i < bitmap.Width; i++)
             {
-                for(int j = 0; j < copyBitmap.Height; j++)
+                for(int j = 0; j < bitmap.Height; j++)
                 {
-                    int p = copyBitmap.GetPixel(i, j);
-                    //00000000 00000000 00000000 00000000
-                    //long mask = (long)0xFF00FFFF;
-                    //p = p & (int)mask;
+                    int p = bitmap.GetPixel(i, j);
                     Android.Graphics.Color c = new Android.Graphics.Color(p);
-                    
-                    //TODO: fix
-                    //c.R = 0;
+                    c.R = 0;
                     copyBitmap.SetPixel(i, j, c);
                 }
             }
-            if (bitmap != null)
+            if (copyBitmap != null)
             {
-                imageView.SetImageBitmap(bitmap);
+                imageView.SetImageBitmap(copyBitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
                 bitmap = null;
+                copyBitmap = null;
             }
 
             // Dispose of the Java side bitmap.
