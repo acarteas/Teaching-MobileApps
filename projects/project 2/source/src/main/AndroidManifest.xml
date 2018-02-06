@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wmd42.photomanipulation">
-
-    <uses-feature android:name="android.hardware.camera"
-                  android:required="true" />
-
-    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
-    <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    package="com.example.wmd42.picturepractice">
 
     <application
         android:allowBackup="true"
