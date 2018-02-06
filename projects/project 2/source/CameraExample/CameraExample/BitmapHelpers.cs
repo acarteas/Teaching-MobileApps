@@ -11,7 +11,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace ImageApp
+namespace CameraExample
 {
     public static class BitmapHelpers
     {

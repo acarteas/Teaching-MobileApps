@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using Android.Content.PM;
 using Android.Provider;
 
-namespace ImageApp
+namespace CameraExample
 {
-    [Activity(Label = "ImageApp", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "CameraExample", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
         /// <summary>
