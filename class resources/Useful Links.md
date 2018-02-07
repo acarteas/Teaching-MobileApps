@@ -8,3 +8,6 @@
 
 # Misc
 * [Image manipulation](https://xjaphx.wordpress.com/learning/tutorials/)
+
+# Android Basics
+* [Activities](https://developer.xamarin.com/guides/android/application_fundamentals/activity_lifecycle/)
