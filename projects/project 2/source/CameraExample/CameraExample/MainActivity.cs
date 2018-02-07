@@ -33,6 +33,8 @@ namespace CameraExample
                 CreateDirectoryForPictures();
                 FindViewById<Button>(Resource.Id.launchCameraButton).Click += TakePicture;
             }
+
+           // FindViewById<Button>(Resource.Id.btn_editor).Click += imageEdit;
         }
 
         /// <summary>
@@ -83,11 +85,12 @@ namespace CameraExample
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            //Make image available in the gallery
-            Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            var contentUri = Android.Net.Uri.FromFile(_file);
-            mediaScanIntent.SetData(contentUri);
-            SendBroadcast(mediaScanIntent);
+          //  SetContentView(Resource.Layout.Main);
+            // Make image available in the gallery
+            //Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+            //var contentUri = Android.Net.Uri.FromFile(_file);
+            //mediaScanIntent.SetData(contentUri);
+            //SendBroadcast(mediaScanIntent);
 
 
             // Display in ImageView. We will resize the bitmap to fit the display.
@@ -96,17 +99,60 @@ namespace CameraExample
             ImageView imageView = FindViewById<ImageView>(Resource.Id.takenPictureImageView);
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
-            Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            if (bitmap != null)
+
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            //this code removes all red from a picture
+
+            for (int i = 0; i < bitmap.Width; i++)
             {
-                imageView.SetImageBitmap(bitmap);
+                for (int j = 0; j < bitmap.Height; j++)
+                {
+                    int p = bitmap.GetPixel(i, j);
+                    Android.Graphics.Color c = new Android.Graphics.Color(p);
+                    c.R = 0;
+                    copyBitmap.SetPixel(i, j, c);
+                }
+            }
+
+            if (copyBitmap != null)
+            {
+                imageView.SetImageBitmap(copyBitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
                 bitmap = null;
+                copyBitmap = null;
             }
 
             // Dispose of the Java side bitmap.
             System.GC.Collect();
         }
+        /*
+        private void imageEdit(object sender, System.EventArgs e)
+        {
+            Intent editor_intent = new Intent();
+            startActivity(editor_intent);
+        }
+        */
+
+        //Button to move to image view
+        //private void imageEdit(object sender, System.EventArgs e)
+        //{
+        //    SetContentView(Resource.Layout.Editor);
+
+        //    ImageView imageView = FindViewById<ImageView>(Resource.Id.editImage);
+        //    int height = Resources.DisplayMetrics.HeightPixels;
+        //    int width = imageView.Height;
+        //    Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+        //    if (bitmap != null)
+        //    {
+        //        imageView.SetImageBitmap(bitmap);
+        //        imageView.Visibility = Android.Views.ViewStates.Visible;
+        //        bitmap = null;
+        //    }
+
+        //}
     }
 }
 
