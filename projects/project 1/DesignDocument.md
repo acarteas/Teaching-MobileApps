@@ -1,8 +1,8 @@
-# APPLICATION NAME
-Complete description and overview.  This is where you describe in a brief, yet clear and concise, manner what your product should do and how you expect it should be used.  Why did you write this application?  What purpose does it serve?  It's okay if the only purpose is to meet the homework requirement (but try to move bedyond just that - be creative!).
+# Dice Roller
+This application is designed to roll multiple (up to 20 at a time) dice of any number of sides. The primary use case I imagined while making it is during tabletop rpgs such as Dungeons and Dragons or Dark Heresy (a game that I dm). I intend to actually use this app in cases where I've forgotten where I left my dice.
 
 ## System Design 
-This is where you specify all of the system's requirements.  This section should accurately portray the complete operation of your application.  Provide scenarios, use cases, system requirements, and diagrams/screenshots of the system.
+I chose Android 7.1 as my target version of Android mostly arbitrarily. The actual layout of the app and input is based on the common (among tabletop rpgs) abreviation of dice rolls that follows the format "x dy", in which x and y are any two numbers. The first number, x, is the number of dice. The second number, y, is the number of sides on each of the dice. (ex. two ten-sided dice = 2 d10 or just 2d10)
 
 ## Usage
-This is where you explain how to use your application
+The app should be mostly self explanatory but I don't actually know much about ux design. There are two sets of number input buttons. The first decides the number of dice and the second the number of sides on each of them. When you click the button labeled roll the dice inputted will be rolled and you will be shown both the individual rolls and the total of all the rolls. The button below the roll button is the last roll button. This will show the results of the last roll you made.
