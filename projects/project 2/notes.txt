@@ -1,0 +1,18 @@
+run app
+
+app makes space for the camera to take a picture.  pass the area to the camera; camera takes picture.
+
+
+----
+
+An a project would have a preview window instead of a button that would let you see what the image looked like, and when you pressed it it would fill.
+
+or have check boxes that would turn green when you applied that specific effect.
+
+
+
+--
+
+make a new XML for each view.  
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/gridLayout1"
+    p1:layout_gravity="center"
+    p1:columnCount="10"
+    p1:rowCount="5"
+    p1:orientation="horizontal">
+    <EditText
+        p1:inputType="textMultiLine"
+        p1:id="@+id/editText1"
+        p1:layout_column="0"
+        p1:layout_row="0"
+        p1:hint="Type your text here.  We will encrypt it for you!" />
+    <Button
+        p1:text="Translate the Cipher"
+        p1:layout_column="0"
+        p1:layout_row="1"
+        p1:id="@+id/translateButton" />
+    <Button
+        p1:text="@string/Decrypt"
+        p1:layout_column="0"
+        p1:layout_row="2"
+        p1:id="@+id/decryptButton" />
+    <EditText
+        p1:inputType="number"
+        p1:id="@+id/editText2"
+        p1:layout_column="0"
+        p1:layout_row="3"
+        p1:maxLength="1"
+        p1:hint="Cipher OFFSET"/>
+</GridLayout>

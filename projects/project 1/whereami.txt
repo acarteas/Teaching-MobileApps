@@ -1,0 +1,4 @@
+working on addinng resources to the project.  specifically icons!
+
+check aboutresources.txt
+
