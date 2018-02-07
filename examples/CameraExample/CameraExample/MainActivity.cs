@@ -101,10 +101,15 @@ namespace CameraExample
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
 
-            //AC: workaround for not passing actual files
-            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
-            Android.Graphics.Bitmap copyBitmap = 
-                bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+			//throw into try catch block to handle the problem of the cancel button
+			//breaking the app in the emulator.
+			try
+			{
+				//AC: workaround for not passing actual files
+				Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+				Android.Graphics.Bitmap copyBitmap =
+					bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+			
 
             //this code removes all red from a picture
             for(int i = 0; i < bitmap.Width; i++)
@@ -125,8 +130,12 @@ namespace CameraExample
                 copyBitmap = null;
             }
 
-            // Dispose of the Java side bitmap.
-            System.GC.Collect();
+			}
+			catch (System.Exception e) { }
+
+
+			// Dispose of the Java side bitmap.
+			System.GC.Collect();
         }
     }
 }
