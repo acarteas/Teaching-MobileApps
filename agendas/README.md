@@ -1,1 +1,0 @@
-This is where daily course agendas go.
