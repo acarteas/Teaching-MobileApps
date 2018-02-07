@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.willemthewalrus.hangman.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/instructionsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Please enter in a word"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/Input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/instructionsText"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/badGuess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/guessedLetter"
+            android:layout_alignStart="@+id/guessedLetter"
+            android:layout_below="@+id/button"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:text=" "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/guessedLetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/Input"
+            android:layout_alignStart="@+id/Input"
+            android:layout_below="@+id/badGuess"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:text=" "
+            android:textAlignment="center"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/chancesLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/guessedLetter"
+            android:layout_alignStart="@+id/guessedLetter"
+            android:layout_below="@+id/guessedLetter"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:text=" "
+            android:textAlignment="center"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Input"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:onClick="clicked"
+            android:text="Press Here"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chancesLeft"
+            android:layout_centerHorizontal="true"
+            android:onClick="reset"
+            android:text="Reset" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
