@@ -1,0 +1,14 @@
+# Post Mortem 
+Project 1 - Ceasar Cipher
+
+#Jack Kinne
+This was a tough assignment for me.  I started off with the idea that I wanted to make a choose your own adventure style game.  And that was, in retrospect and after two hours research and tutorial hunting, kind of ambitious.  From this turn I learned about setting and making icons and using pictures within the app.
+Then I wanted to challenge myself again, and tried to make a two page application which would have a splash image, and once you clicked on it would take you to the actual app.  And that was another two hours, and again left me with a lot of things learned, but not a lot of application working.  I picked up a lot of information about event listeners and triggers with this dive.
+Finally I settled on something with personal utility; I wanted an app I could use, that would be fun, and could show off in my portfolio.  I created a ceasar cipher that encrypted and decrypted.
+On this last dive I learned about toasts, how to set and get information from textboxes without crashing everything, setting and using a grid layout.  I linked buttons with event listeners and cleaned up and organized a GUI. 
+An issue I wasn't able to resolve within the time limit were appropriately translating spaces.  I specifically did not focus on this logic error -- I was more interested making sure that the application ran and that the features I wanted worked.
+A struggle that I overcame when working on this app was getting and replacing text correctly without breaking the application.  This invovled a convuluted series of documentation dives.  Three attempts, and a few false starts.  But it was cracked!
+The most fun I had on this assignment was watching it come together, piece by piece.  It was actually pretty cool to flip back and forth between a design view and a code view.  And the Emulator was a great way to get real time feedback! 
+The most challenging piece for me was picking the right scope and complexity of a project so that I could complete the requirements in a reasonable deadline.  There was so much to learn that it was hard to get a sense of what was possible.  My third selection was much more targetted because I started to pick up some things I could do-- then apply them towards a full application.
+Suggestions for the future: include some additional project ideas so that more people do more different and interesting applications. That would help a lot with scope problems.  It would also be good to have a few more links to video tutorials as well as documentation.
+If I had to give advice to future students about their projects, I would say don't be afraid to shoot for the moon.  Even if you fail, or don't do everything you want to do, it'll be way more fun that way.  Just make sure to stagger out your features so that you get a minimum viable product, and add from there!

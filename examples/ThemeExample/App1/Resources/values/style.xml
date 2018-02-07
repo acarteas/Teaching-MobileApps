@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <color name="darkest">#3A2308</color>
+    <color name="dark">#776E3E</color>
+    <color name="neutral">#A08A66</color>
+    <color name="light">#A8B7AB</color>
+    <color name="lightest">#AFD6E0</color>
+    <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:colorPrimaryDark">@color/dark</item>
+        <item name="android:colorPrimary">@color/neutral</item>
+        <item name="android:windowBackground">@color/darkest</item>
+        <item name="android:colorBackground">@color/darkest</item>
+        <item name="android:colorButtonNormal">@color/light</item>
+        <item name="android:textColorPrimary">@color/lightest</item>
+        <item name="android:textColorSecondary">@color/lightest</item>
+        <item name="android:navigationBarColor">@color/dark</item>
+    </style>
+</resources>
