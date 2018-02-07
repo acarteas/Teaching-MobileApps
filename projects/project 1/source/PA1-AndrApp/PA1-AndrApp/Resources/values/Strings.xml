@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <!-- <string name="hello"> This is test text for my app </string> -->
+  <string name="app_name">Android App 1</string>
+  <string name="compute_button"> Compute </string>
+</resources>
