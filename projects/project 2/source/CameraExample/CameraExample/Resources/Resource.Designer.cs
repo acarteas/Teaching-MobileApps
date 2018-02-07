@@ -44,14 +44,26 @@ namespace CameraExample
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int imageView1 = 2131099648;
-			
-			// aapt resource value: 0x7f060001
-			public const int launchCameraButton = 2131099649;
+			// aapt resource value: 0x7f060003
+			public const int blueRemoval = 2131099651;
 			
 			// aapt resource value: 0x7f060002
-			public const int takenPictureImageView = 2131099650;
+			public const int greenRemoval = 2131099650;
+			
+			// aapt resource value: 0x7f060004
+			public const int imageRefresh = 2131099652;
+			
+			// aapt resource value: 0x7f060000
+			public const int imageToAlter = 2131099648;
+			
+			// aapt resource value: 0x7f060005
+			public const int launchCameraButton = 2131099653;
+			
+			// aapt resource value: 0x7f060001
+			public const int redRemoval = 2131099649;
+			
+			// aapt resource value: 0x7f060006
+			public const int takenPictureImageView = 2131099654;
 			
 			static Id()
 			{

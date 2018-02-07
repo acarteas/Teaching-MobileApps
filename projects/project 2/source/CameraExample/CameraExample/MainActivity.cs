@@ -11,6 +11,7 @@ namespace CameraExample
     [Activity(Label = "CameraExample", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
+        
         /// <summary>
         /// Used to track the file that we're manipulating between functions
         /// </summary>
@@ -33,7 +34,7 @@ namespace CameraExample
                 CreateDirectoryForPictures();
                 FindViewById<Button>(Resource.Id.launchCameraButton).Click += TakePicture;
             }
-            //Button.onclick += switchView();
+            
         }
 
         /// <summary>
@@ -94,19 +95,24 @@ namespace CameraExample
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
             */
-
+            SetContentView(Resource.Layout.layout1);
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
             // and cause the application to crash.
-            ImageView imageView = FindViewById<ImageView>(Resource.Id.takenPictureImageView);
+            ImageView imageView = FindViewById<ImageView>(Resource.Id.imageToAlter);
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
 
             //AC: workaround for not passing actual files
             Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
             //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Alpha8, true);
-            for(int i = 0; i < copyBitmap.Width; i++)
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            CheckBox redRemoval = FindViewById<CheckBox>(Resource.Id.removeRed);
+            CheckBox greenRemoval = FindViewById<CheckBox>(Resource.Id.removeGreen);
+            CheckBox blueRemoval = FindViewById<CheckBox>(Resource.Id.removeBlue);
+
+            for (int i = 0; i < copyBitmap.Width; i++)
             {
                 for(int j = 0; j < copyBitmap.Height; j++)
                 {
@@ -131,10 +137,7 @@ namespace CameraExample
             // Dispose of the Java side bitmap.
             System.GC.Collect();
         }
-        private void switchViews()
-        {
-            SetContentView(Resource.Layout.layout1);
-        }
+        
     }
 }
 

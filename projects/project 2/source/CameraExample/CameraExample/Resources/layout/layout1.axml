@@ -11,11 +11,9 @@
         android:minWidth="25px"
         android:minHeight="25px">
         <ImageView
-            android:src="@android:drawable/picture"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/imageView1"
-            android:layout_marginRight="353.0dp" />
+            android:layout_width="match_parent"
+            android:layout_height="25px"
+            android:id="@+id/imageToAlter" />
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
