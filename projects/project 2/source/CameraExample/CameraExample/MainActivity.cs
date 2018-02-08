@@ -5,6 +5,7 @@ using Android.Content;
 using System.Collections.Generic;
 using Android.Content.PM;
 using Android.Provider;
+using Android.Graphics;
 
 namespace CameraExample
 {
@@ -21,6 +22,8 @@ namespace CameraExample
         /// </summary>
         public static Java.IO.File _dir;
 
+        public static Bitmap bitmap;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -34,7 +37,8 @@ namespace CameraExample
                 FindViewById<Button>(Resource.Id.launchCameraButton).Click += TakePicture;
             }
 
-           // FindViewById<Button>(Resource.Id.btn_editor).Click += imageEdit;
+           //Starts the function imageEdit
+           FindViewById<Button>(Resource.Id.btn_editor).Click += imageEdit;
         }
 
         /// <summary>
@@ -85,13 +89,11 @@ namespace CameraExample
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-          //  SetContentView(Resource.Layout.Main);
             // Make image available in the gallery
             //Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
             //var contentUri = Android.Net.Uri.FromFile(_file);
             //mediaScanIntent.SetData(contentUri);
             //SendBroadcast(mediaScanIntent);
-
 
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
@@ -101,21 +103,23 @@ namespace CameraExample
             int width = imageView.Height;
 
             //AC: workaround for not passing actual files
-            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
-            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+            bitmap = (Bitmap)data.Extras.Get("data");
+            Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
 
             //this code removes all red from a picture
 
-            for (int i = 0; i < bitmap.Width; i++)
-            {
-                for (int j = 0; j < bitmap.Height; j++)
-                {
-                    int p = bitmap.GetPixel(i, j);
-                    Android.Graphics.Color c = new Android.Graphics.Color(p);
-                    c.R = 0;
-                    copyBitmap.SetPixel(i, j, c);
-                }
-            }
+            //for (int i = 0; i < bitmap.Width; i++)
+            //{
+            //    for (int j = 0; j < bitmap.Height; j++)
+            //    {
+            //        int p = bitmap.GetPixel(i, j);
+            //        Color c = new Color(p);
+            //        c.R = 0;
+            //        copyBitmap.SetPixel(i, j, c);
+            //    }
+            //}
+
+            SetContentView(Resource.Layout.Main);
 
             if (copyBitmap != null)
             {
@@ -128,31 +132,72 @@ namespace CameraExample
             // Dispose of the Java side bitmap.
             System.GC.Collect();
         }
-        /*
+        
+
+        //This function changes our layout to the Editor and opens our image there for editing
         private void imageEdit(object sender, System.EventArgs e)
         {
-            Intent editor_intent = new Intent();
-            startActivity(editor_intent);
+            SetContentView(Resource.Layout.Editor);
+
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            int height = Resources.DisplayMetrics.HeightPixels;
+            int width = editView.Height;
+
+            Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+            // Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            if (copyBitmap != null)
+            {
+                editView.SetImageBitmap(copyBitmap);
+                editView.Visibility = Android.Views.ViewStates.Visible;
+                bitmap = null;
+                copyBitmap = null;
+            }
+
         }
-        */
 
-        //Button to move to image view
-        //private void imageEdit(object sender, System.EventArgs e)
-        //{
-        //    SetContentView(Resource.Layout.Editor);
+        private void removeRed()
+        {
 
-        //    ImageView imageView = FindViewById<ImageView>(Resource.Id.editImage);
-        //    int height = Resources.DisplayMetrics.HeightPixels;
-        //    int width = imageView.Height;
-        //    Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-        //    if (bitmap != null)
-        //    {
-        //        imageView.SetImageBitmap(bitmap);
-        //        imageView.Visibility = Android.Views.ViewStates.Visible;
-        //        bitmap = null;
-        //    }
+        }
 
-        //}
+        private void removeBlue()
+        {
+
+        }
+
+        private void removeGreen()
+        {
+
+        }
+
+        private void negateRed()
+        {
+
+        }
+        private void negateBlue()
+        {
+
+        }
+        private void negateGreen()
+        {
+
+        }
+
+        private void grayScale()
+        {
+
+        }
+
+        private void highContrast()
+        {
+
+        }
+
+        private void addNoise()
+        {
+
+        }
+
     }
 }
 
