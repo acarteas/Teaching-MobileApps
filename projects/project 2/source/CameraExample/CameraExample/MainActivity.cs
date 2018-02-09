@@ -16,15 +16,15 @@ namespace CameraExample
         /// <summary>
         /// Used to track the file that we're manipulating between functions
         /// </summary>
-        public static Java.IO.File _file;
-
-        /// <summary>
+        public static Java.IO.File _file;        /// <summary>
         /// Used to track the directory that we'll be writing to between functions
         /// </summary>
         public static Java.IO.File _dir;
 
         public static Bitmap bitmap;
         public static Bitmap copy_bitmap;
+
+        bool box_checked;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,10 +37,7 @@ namespace CameraExample
             {
                 CreateDirectoryForPictures();
                 FindViewById<Button>(Resource.Id.launchCameraButton).Click += TakePicture;
-            }
-
-           //Starts the function imageEdit
-          // FindViewById<Button>(Resource.Id.btn_editor).Click += imageEdit;
+            }         
         }
 
         /// <summary>
@@ -115,7 +112,7 @@ namespace CameraExample
 
             //this code removes all red from a picture
 
-            //for (int i = 0; i < bitmap.Width; i++)
+            //for (int i = 0; i < bitmap.Width; i++)n 
             //{
             //    for (int j = 0; j < bitmap.Height; j++)
             //    {
@@ -150,6 +147,13 @@ namespace CameraExample
 
             // Dispose of the Java side bitmap.
             System.GC.Collect();
+
+            FindViewById<Button>(Resource.Id.remRed).Click += removeRed;
+            FindViewById<Button>(Resource.Id.remBlue).Click += removeBlue;
+            FindViewById<Button>(Resource.Id.remGreen).Click += removeGreen;
+            FindViewById<Button>(Resource.Id.negRed).Click += negateRed;
+            FindViewById<Button>(Resource.Id.negBlue).Click += negateBlue;
+            FindViewById<Button>(Resource.Id.negGreen).Click += negateGreen;
         }
         
 
@@ -171,23 +175,35 @@ namespace CameraExample
         //    }
 
         //}
-
-        private void removeRed()
+        private void removeRed(object sender, System.EventArgs e)
         {
-            for (int i = 0; i < bitmap.Width; i++)
+            CheckBox effect_btn = sender as CheckBox;
+           
+            if (box_checked == false)
             {
-                for (int j = 0; j < bitmap.Height; j++)
+                box_checked = true;
+                for (int i = 0; i < bitmap.Width; i++)
                 {
-                    int p = bitmap.GetPixel(i, j);
-                    Color c = new Color(p);
-                    c.R = 0;
-                    copy_bitmap.SetPixel(i, j, c);
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        c.R = 0;
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
                 }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked = false;
             }
         }
 
-        private void removeBlue()
+        private void removeBlue(object sender, System.EventArgs e)
         {
+            Button effect_btn = sender as Button;
+
             for (int i = 0; i < bitmap.Width; i++)
             {
                 for (int j = 0; j < bitmap.Height; j++)
@@ -200,8 +216,10 @@ namespace CameraExample
             }
         }
 
-        private void removeGreen()
+        private void removeGreen(object sender, System.EventArgs e)
         {
+            Button effect_btn = sender as Button;
+
             for (int i = 0; i < bitmap.Width; i++)
             {
                 for (int j = 0; j < bitmap.Height; j++)
@@ -214,30 +232,30 @@ namespace CameraExample
             }
         }
 
-        private void negateRed()
+        private void negateRed(object sender, System.EventArgs e)
         {
 
         }
-        private void negateBlue()
+        private void negateBlue(object sender, System.EventArgs e)
         {
 
         }
-        private void negateGreen()
-        {
-
-        }
-
-        private void grayScale()
+        private void negateGreen(object sender, System.EventArgs e)
         {
 
         }
 
-        private void highContrast()
+        private void grayScale(object sender, System.EventArgs e)
         {
 
         }
 
-        private void addNoise()
+        private void highContrast(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void addNoise(object sender, System.EventArgs e)
         {
 
         }
