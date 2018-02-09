@@ -91,11 +91,11 @@ namespace CameraExample
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            //Make image available in the gallery
-            Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            var contentUri = Android.Net.Uri.FromFile(_file);
-            mediaScanIntent.SetData(contentUri);
-            SendBroadcast(mediaScanIntent);
+            ////Make image available in the gallery
+            //Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+            //var contentUri = Android.Net.Uri.FromFile(_file);
+            //mediaScanIntent.SetData(contentUri);
+            //SendBroadcast(mediaScanIntent);
 
             
             // Display in ImageView. We will resize the bitmap to fit the display.
@@ -104,17 +104,16 @@ namespace CameraExample
             ImageView imageView = FindViewById<ImageView>(Resource.Id.takenPictureImageView);
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
-            bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+            //bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            //copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
 
 
 
-            //if (data.Extras.Get("data") != null)
-            //{
-            //    //AC: workaround for not passing actual files
-            //    bitmap = (Bitmap)data.Extras.Get("data");
-            //    Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-            //}
+           
+                //AC: workaround for not passing actual files
+                bitmap = (Bitmap)data.Extras.Get("data");
+                Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+            
 
             //this code removes all red from a picture
 
@@ -129,7 +128,19 @@ namespace CameraExample
             //    }
             //}
 
-            SetContentView(Resource.Layout.Main);
+            SetContentView(Resource.Layout.Editor);
+
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            int height2 = Resources.DisplayMetrics.HeightPixels;
+            int width2 = editView.Height;
+
+            // Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+            // Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            if (copy_bitmap != null)
+            {
+                editView.SetImageBitmap(copy_bitmap);
+                // editView.Visibility = Android.Views.ViewStates.Visible;
+            }
 
             //if (copy_bitmap != null)
             //{
