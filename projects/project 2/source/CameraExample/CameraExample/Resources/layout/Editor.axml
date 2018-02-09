@@ -18,25 +18,20 @@
         android:layout_height="50dp"
         android:id="@+id/linearLayout1">
         <CheckBox
-            android:text="Effect1"
+            android:text="Remove Red"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:id="@+id/checkBox1" />
+            android:id="@+id/remRed" />
         <CheckBox
-            android:text="Effect2"
+            android:text="Remove Blue"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:id="@+id/checkBox2" />
+            android:id="@+id/remBlue" />
         <CheckBox
-            android:text="Effect3"
+            android:text="Remove Green"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:id="@+id/checkBox3" />
-        <CheckBox
-            android:text="Effect4"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:id="@+id/checkBox4" />
+            android:id="@+id/remGreen" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -46,25 +41,22 @@
         android:layout_height="50dp"
         android:id="@+id/linearLayout2">
         <CheckBox
-            android:text="Effect5"
+            android:text="Negate Red"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox5" />
+            android:id="@+id/negRed" />
         <CheckBox
-            android:text="Effect6"
+            android:text="Negate Blue"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox6" />
+            android:id="@+id/negBlue"
+            android:translationX="4dp" />
         <CheckBox
-            android:text="Effect7"
+            android:text="Negate Green"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox7" />
-        <CheckBox
-            android:text="Effect8"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/checkBox8" />
+            android:id="@+id/negGreen"
+            android:translationX="12dp" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -74,24 +66,21 @@
         android:layout_height="50dp"
         android:id="@+id/linearLayout3">
         <CheckBox
-            android:text="Effect9"
+            android:text="Gray Scale"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox9" />
+            android:id="@+id/grayScale" />
         <CheckBox
-            android:text="Effect10"
+            android:text="Add Noise"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox10" />
+            android:id="@+id/addNoise"
+            android:translationX="10dp" />
         <CheckBox
-            android:text="Effect11"
+            android:text="High Contrast"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/checkBox11" />
-        <CheckBox
-            android:text="Effect12"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/checkBox12" />
+            android:id="@+id/highContrast"
+            android:translationX="30dp" />
     </LinearLayout>
 </LinearLayout>

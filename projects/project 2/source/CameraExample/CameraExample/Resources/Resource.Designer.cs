@@ -44,62 +44,53 @@ namespace CameraExample
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060011
-			public const int btn_editor = 2131099665;
-			
-			// aapt resource value: 0x7f060002
-			public const int checkBox1 = 2131099650;
-			
-			// aapt resource value: 0x7f06000d
-			public const int checkBox10 = 2131099661;
+			// aapt resource value: 0x7f06000b
+			public const int addNoise = 2131099659;
 			
 			// aapt resource value: 0x7f06000e
-			public const int checkBox11 = 2131099662;
-			
-			// aapt resource value: 0x7f06000f
-			public const int checkBox12 = 2131099663;
-			
-			// aapt resource value: 0x7f060003
-			public const int checkBox2 = 2131099651;
-			
-			// aapt resource value: 0x7f060004
-			public const int checkBox3 = 2131099652;
-			
-			// aapt resource value: 0x7f060005
-			public const int checkBox4 = 2131099653;
-			
-			// aapt resource value: 0x7f060007
-			public const int checkBox5 = 2131099655;
-			
-			// aapt resource value: 0x7f060008
-			public const int checkBox6 = 2131099656;
-			
-			// aapt resource value: 0x7f060009
-			public const int checkBox7 = 2131099657;
-			
-			// aapt resource value: 0x7f06000a
-			public const int checkBox8 = 2131099658;
-			
-			// aapt resource value: 0x7f06000c
-			public const int checkBox9 = 2131099660;
+			public const int btn_editor = 2131099662;
 			
 			// aapt resource value: 0x7f060000
 			public const int editImage = 2131099648;
 			
-			// aapt resource value: 0x7f060010
-			public const int launchCameraButton = 2131099664;
+			// aapt resource value: 0x7f06000a
+			public const int grayScale = 2131099658;
+			
+			// aapt resource value: 0x7f06000c
+			public const int highContrast = 2131099660;
+			
+			// aapt resource value: 0x7f06000d
+			public const int launchCameraButton = 2131099661;
 			
 			// aapt resource value: 0x7f060001
 			public const int linearLayout1 = 2131099649;
 			
+			// aapt resource value: 0x7f060005
+			public const int linearLayout2 = 2131099653;
+			
+			// aapt resource value: 0x7f060009
+			public const int linearLayout3 = 2131099657;
+			
+			// aapt resource value: 0x7f060007
+			public const int negBlue = 2131099655;
+			
+			// aapt resource value: 0x7f060008
+			public const int negGreen = 2131099656;
+			
 			// aapt resource value: 0x7f060006
-			public const int linearLayout2 = 2131099654;
+			public const int negRed = 2131099654;
 			
-			// aapt resource value: 0x7f06000b
-			public const int linearLayout3 = 2131099659;
+			// aapt resource value: 0x7f060003
+			public const int remBlue = 2131099651;
 			
-			// aapt resource value: 0x7f060012
-			public const int takenPictureImageView = 2131099666;
+			// aapt resource value: 0x7f060004
+			public const int remGreen = 2131099652;
+			
+			// aapt resource value: 0x7f060002
+			public const int remRed = 2131099650;
+			
+			// aapt resource value: 0x7f06000f
+			public const int takenPictureImageView = 2131099663;
 			
 			static Id()
 			{
