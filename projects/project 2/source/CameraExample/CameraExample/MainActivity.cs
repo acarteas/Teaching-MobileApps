@@ -40,7 +40,7 @@ namespace CameraExample
             }
 
            //Starts the function imageEdit
-           FindViewById<Button>(Resource.Id.btn_editor).Click += imageEdit;
+          // FindViewById<Button>(Resource.Id.btn_editor).Click += imageEdit;
         }
 
         /// <summary>
@@ -102,17 +102,15 @@ namespace CameraExample
             // Loading the full sized image will consume too much memory
             // and cause the application to crash.
             ImageView imageView = FindViewById<ImageView>(Resource.Id.takenPictureImageView);
-            int height = Resources.DisplayMetrics.HeightPixels;
-            int width = imageView.Height;
-            //bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            //copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-
-
+            int height = imageView.Height;
+            int width = imageView.Width;
+            bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
 
            
                 //AC: workaround for not passing actual files
-                bitmap = (Bitmap)data.Extras.Get("data");
-                Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+               // bitmap = (Bitmap)data.Extras.Get("data");
+               // copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
             
 
             //this code removes all red from a picture
@@ -156,23 +154,23 @@ namespace CameraExample
         
 
         //This function changes our layout to the Editor and opens our image there for editing
-        private void imageEdit(object sender, System.EventArgs e)
-        {
-            SetContentView(Resource.Layout.Editor);
+        //private void imageEdit(object sender, System.EventArgs e)
+        //{
+        //    SetContentView(Resource.Layout.Editor);
 
-            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
-            int height = Resources.DisplayMetrics.HeightPixels;
-            int width = editView.Height;
+        //    ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+        //    int height = Resources.DisplayMetrics.HeightPixels;
+        //    int width = editView.Height;
 
-            // Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-            // Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            if (copy_bitmap != null)
-            {
-                editView.SetImageBitmap(copy_bitmap);
-                // editView.Visibility = Android.Views.ViewStates.Visible;
-            }
+        //    // Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+        //    // Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+        //    if (copy_bitmap != null)
+        //    {
+        //        editView.SetImageBitmap(copy_bitmap);
+        //        // editView.Visibility = Android.Views.ViewStates.Visible;
+        //    }
 
-        }
+        //}
 
         private void removeRed()
         {
