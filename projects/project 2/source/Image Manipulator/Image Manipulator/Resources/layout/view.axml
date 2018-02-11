@@ -11,23 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:id="@+id/view_image" />
-    <ScrollView
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/scrollView1"
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
-        android:scrollbars="horizontal">
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbarStyle="insideInset">
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="810dp"
-            android:layout_height="wrap_content">
-            <Button
-                android:text="Button"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:id="@+id/button5" />
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
             <Button
                 android:text="Button"
                 android:layout_width="90dp"
@@ -68,6 +59,12 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:id="@+id/button3" />
+          <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button5" />
         </LinearLayout>
-    </ScrollView>
+        
+    </HorizontalScrollView>
 </LinearLayout>
