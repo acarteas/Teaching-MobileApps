@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Android.Content.PM;
 using Android.Provider;
 using Android.Graphics;
-using System.IO;
+using System;
 
 namespace CameraExample
 {
@@ -24,7 +24,16 @@ namespace CameraExample
         public static Bitmap bitmap;
         public static Bitmap copy_bitmap;
 
-        bool box_checked;
+        bool box_checked = false;
+        bool box_checked2 = false;
+        bool box_checked3 = false;
+        bool box_checked4 = false;
+        bool box_checked5 = false;
+        bool box_checked7 = false;
+        bool box_checked8 = false;
+        bool box_checked9 = false;
+        bool box_checked6 = false;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -59,8 +68,8 @@ namespace CameraExample
         private void CreateDirectoryForPictures()
         {
             _dir = new Java.IO.File(
-                Environment.GetExternalStoragePublicDirectory(
-                    Environment.DirectoryPictures), "CameraExample");
+                Android.OS.Environment.GetExternalStoragePublicDirectory(
+                    Android.OS.Environment.DirectoryPictures), "CameraExample");
             if (!_dir.Exists())
             {
                 _dir.Mkdirs();
@@ -176,9 +185,7 @@ namespace CameraExample
 
         //}
         private void removeRed(object sender, System.EventArgs e)
-        {
-            CheckBox effect_btn = sender as CheckBox;
-           
+        {           
             if (box_checked == false)
             {
                 box_checked = true;
@@ -202,62 +209,232 @@ namespace CameraExample
 
         private void removeBlue(object sender, System.EventArgs e)
         {
-            Button effect_btn = sender as Button;
-
-            for (int i = 0; i < bitmap.Width; i++)
+            if (box_checked2 == false)
             {
-                for (int j = 0; j < bitmap.Height; j++)
+                for (int i = 0; i < bitmap.Width; i++)
                 {
-                    int p = bitmap.GetPixel(i, j);
-                    Color c = new Color(p);
-                    c.B = 0;
-                    copy_bitmap.SetPixel(i, j, c);
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        c.B = 0;
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
                 }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked2 = false;
             }
         }
 
         private void removeGreen(object sender, System.EventArgs e)
         {
-            Button effect_btn = sender as Button;
-
-            for (int i = 0; i < bitmap.Width; i++)
+            if (box_checked3 == false)
             {
-                for (int j = 0; j < bitmap.Height; j++)
+                for (int i = 0; i < bitmap.Width; i++)
                 {
-                    int p = bitmap.GetPixel(i, j);
-                    Color c = new Color(p);
-                    c.G = 0;
-                    copy_bitmap.SetPixel(i, j, c);
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        c.G = 0;
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
                 }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked3 = false;
             }
         }
 
         private void negateRed(object sender, System.EventArgs e)
         {
-
+            if (box_checked4 == false)
+            {
+                for (int i = 0; i < bitmap.Width; i++)
+                {
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        c.R = Convert.ToByte(255 - c.R);
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
+                }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked4 = false;
+            }
         }
         private void negateBlue(object sender, System.EventArgs e)
         {
-
+            if (box_checked5 == false)
+            {
+                for (int i = 0; i < bitmap.Width; i++)
+                {
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        c.B = Convert.ToByte(255 - c.B);
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
+                }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked5 = false;
+            }
         }
         private void negateGreen(object sender, System.EventArgs e)
         {
-
+            if (box_checked6 == false)
+            {
+                for (int i = 0; i < bitmap.Width; i++)
+                {
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        c.G = Convert.ToByte(255 - c.G);
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
+                }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked6 = false;
+            }
         }
 
         private void grayScale(object sender, System.EventArgs e)
         {
-
+            if (box_checked7 == false)
+            {
+                for (int i = 0; i < bitmap.Width; i++)
+                {
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        int clr_gray = (c.R + c.G + c.B) / 3;
+                        c.R = Convert.ToByte(clr_gray);
+                        c.B = Convert.ToByte(clr_gray);
+                        c.G = Convert.ToByte(clr_gray);
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
+                }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked7 = false;
+            }
         }
 
         private void highContrast(object sender, System.EventArgs e)
         {
+            if (box_checked8 == false)
+            {
+                for (int i = 0; i < bitmap.Width; i++)
+                {
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        
+                        if(c.R > 150)
+                        {
+                            c.R = 255;
+                        }
+                        else
+                        {
+                            c.R = 0;
+                        }
+                        if (c.B > 150)
+                        {
+                            c.B = 255;
+                        }
+                        else
+                        {
+                            c.B = 0;
+                        }
+                        if (c.G > 150)
+                        {
+                            c.G = 255;
+                        }
+                        else
+                        {
+                            c.G = 0;
+                        }
 
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
+                }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked8 = false;
+            }
         }
 
         private void addNoise(object sender, System.EventArgs e)
         {
+            if (box_checked9 == false)
+            {
+                for (int i = 0; i < bitmap.Width; i++)
+                {
+                    for (int j = 0; j < bitmap.Height; j++)
+                    {
+                        int p = bitmap.GetPixel(i, j);
+                        Color c = new Color(p);
+                        Random add_to_color = new Random();
+                        c.R = Convert.ToByte(add_to_color.Next(-10, 10) + c.R);
+                        c.B = Convert.ToByte(add_to_color.Next(-10, 10) + c.B);
+                        c.G = Convert.ToByte(add_to_color.Next(-10, 10) + c.G);
 
+                        if (c.R > 255)
+                        {
+                            c.R = 255;
+                        }
+                        else if(c.R < 0)
+                        {
+                            c.R = 0;
+                        }
+                        if (c.B > 255)
+                        {
+                            c.B = 255;
+                        }
+                        else if (c.B < 0)
+                        {
+                            c.B = 0;
+                        }
+                        if (c.G > 255)
+                        {
+                            c.G = 255;
+                        }
+                        else if (c.G < 0)
+                        {
+                            c.G = 0;
+                        }
+                        copy_bitmap.SetPixel(i, j, c);
+                    }
+                }
+            }
+            else
+            {
+                copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+                box_checked9 = false;
+            }
         }
 
     }
