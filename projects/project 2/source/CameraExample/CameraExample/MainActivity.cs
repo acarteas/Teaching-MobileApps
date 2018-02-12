@@ -8,6 +8,12 @@ using Android.Provider;
 using Android.Graphics;
 using System;
 
+
+/*
+ TODO: 
+ Save bitmap to files and into gallery
+ Get High Contrast to work
+*/
 namespace CameraExample
 {
     [Activity(Label = "CameraExample", MainLauncher = true, Icon = "@mipmap/icon")]
@@ -131,6 +137,14 @@ namespace CameraExample
      
         private void done(object sender, System.EventArgs e)
         {
+            Java.IO.OutputStream outStream = null;
+
+            try
+            {
+                Bitmap saving_bitmap = BitmapFactory.DecodeFile(_file.ToString());
+                outStream = new Java.IO.FileOutputStream(_file);
+                bitmap.Compress(Bitmap.CompressFormat.Png, 100, outStream);
+            }
             //Make image available in the gallery
             Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
             var contentUri = Android.Net.Uri.FromFile(_file);
