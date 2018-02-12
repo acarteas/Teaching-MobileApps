@@ -55,15 +55,6 @@ public class MainActivity extends AppCompatActivity {
         catch  (Exception e){}
     }
 
-    /*
-    //trying to save a picture to a place -- compile success!  can we access?
-    public String getPictureName() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-        String timestamp = sdf.format(new Date());
-        return "Pic" + timestamp + ".jpg";
-    }
-    */
-
     //take a photo
     class btnTakePhotoClicker implements  Button.OnClickListener{
 
@@ -71,14 +62,6 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, CAM_REQUEST);
-            /*
-            //trying to save a picture to a place -- compile success!  can we access?
-            File pictureDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-            String pictureName = getPictureName();
-            File imageFile = new File(pictureDirectory,pictureName);
-            Uri pictureUri = Uri.fromFile(imageFile);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT,pictureUri);
-            */
         }
     }
 

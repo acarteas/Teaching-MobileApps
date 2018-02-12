@@ -1,5 +1,6 @@
 package com.kinne.jack.jkp2;
 //Jack Daniel Kinne.  Project 2.  Mobile Apps CS 480.
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
@@ -8,13 +9,23 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.net.Uri;
+import android.os.Environment;
+import android.os.Vibrator;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 import java.util.Random;
 
 public class Activity2 extends AppCompatActivity {
@@ -26,6 +37,8 @@ public class Activity2 extends AppCompatActivity {
     Bitmap bitmap;
     //button for applying filters
     Button applyFilterButton;
+    //button for saving file
+    Button saveButton;
 
     //switches
     Switch highlightSwitch;
@@ -34,6 +47,9 @@ public class Activity2 extends AppCompatActivity {
     Switch sepiaSwitch;
     Switch flipVSwitch;
     Switch flipHSwitch;
+
+    //vibrate
+    //Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +64,10 @@ public class Activity2 extends AppCompatActivity {
         bitmap = getIntent().getParcelableExtra("bitmap");
         savedPic = (ImageView)findViewById(R.id.imageView2);
         savedPic.setImageBitmap(bitmap);
+
+        //save a file
+        saveButton = (Button) findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new Activity2.saveAPic());
 
         //apply filters
         applyFilterButton = (Button) findViewById(R.id.applyFilterButton);
@@ -256,11 +276,14 @@ public class Activity2 extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
+            //vibrate on button click
+            //v.vibrate(300);
+
             //mutable bitmapping, so we can change colors.  placed here to only apply selected effects.
             Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
             //Canvas canvas = new Canvas(mutableBitmap);
 
-            //TODO: implement color manipulations as multiple
+            //photo manipulations
             if ( highlightSwitch.isChecked() ){
                 //highlight the image
                 mutableBitmap = doHighlightImage(bitmap);
@@ -286,13 +309,13 @@ public class Activity2 extends AppCompatActivity {
                 savedPic.setImageBitmap(mutableBitmap);
             }
             if ( flipVSwitch.isChecked() ){
-                //sepia the image
+                //flip vertical the image
                 mutableBitmap = flip(mutableBitmap, 1);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
                 savedPic.setImageBitmap(mutableBitmap);
             }
             if ( flipHSwitch.isChecked() ){
-                //sepia the image
+                //flip horizontal the image
                 mutableBitmap = flip(mutableBitmap, 2);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
                 savedPic.setImageBitmap(mutableBitmap);
@@ -301,13 +324,74 @@ public class Activity2 extends AppCompatActivity {
         }
     }
 
-    //change activity
+
+    //save a file
+    private static void saveImage(Bitmap finalBitmap) {
+
+        String root = Environment.getExternalStorageDirectory().getAbsolutePath();
+        File myDir = new File(root + "/saved_images");
+        myDir.mkdirs();
+
+        //date string
+        SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yy");
+        String currentDateandTime = sdf1.format(new Date());
+
+        String fname = "Image-"+ currentDateandTime +".jpg";
+        File file = new File (myDir, fname);
+        if (file.exists ()) file.delete ();
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    class saveAPic implements  Button.OnClickListener{
+        @Override
+        public void onClick(View view) {
+
+            //vibrate on button click
+            //v.vibrate(300);
+
+            //TODO: SAVE A FILE!
+
+            Bitmap saveMe = savedPic.getDrawingCache();
+            saveImage(saveMe);
+
+
+            Toast.makeText(getApplicationContext(), "Picture Saved!", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+
+
+
+
+
+    //revert image
     class changeActivity implements  Button.OnClickListener{
         @Override
         public void onClick(View view) {
-            //to go back to the first activity.
-            //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            //revert image back to original
             savedPic.setImageBitmap(bitmap);
+
+            //vibrate on button click
+            //v.vibrate(300);
+
+            //reset all switches!  (switches get stitches)
+            highlightSwitch.setChecked(false);
+            grayscaleSwitch.setChecked(false);
+            doGammaSwitch.setChecked(false);
+            sepiaSwitch.setChecked(false);
+            flipVSwitch.setChecked(false);
+            flipHSwitch.setChecked(false);
+
+
         }
     }
 
