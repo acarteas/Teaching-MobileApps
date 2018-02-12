@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kinne.jack.jkp2.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Press button to open camera"
-        android:id="@+id/textView" />
-
     <Button
         android:id="@+id/takePhotoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="26dp"
+        android:layout_alignParentTop="true"
         android:text="Take Picture" />
+
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:scaleType="centerCrop"
         android:layout_below="@+id/takePhotoButton"
-        />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ra2" />
 
     <Button
         android:id="@+id/editPhotoButton"
@@ -38,6 +30,15 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:text="Edit Photo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/takePhotoButton"
+        android:layout_alignBottom="@+id/takePhotoButton"
+        android:layout_toEndOf="@+id/takePhotoButton"
+        android:text="Take a pic, then Edit!" />
 
 </RelativeLayout>
 

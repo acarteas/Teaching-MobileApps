@@ -260,47 +260,42 @@ public class Activity2 extends AppCompatActivity {
             Bitmap mutableBitmap = bitmap.copy(Bitmap.Config.ARGB_8888, true);
             //Canvas canvas = new Canvas(mutableBitmap);
 
-            //TODO: implement color manipulations
+            //TODO: implement color manipulations as multiple
             if ( highlightSwitch.isChecked() ){
-                //remove red.  actually makes everything red.
-                //mutableBitmap.eraseColor(Color.RED);
-                //savedPic =(ImageView)  findViewById(R.id.imageView2);
-                //savedPic.setImageBitmap(mutableBitmap);
-
                 //highlight the image
-                Bitmap outputMap = doHighlightImage(mutableBitmap);
+                mutableBitmap = doHighlightImage(bitmap);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
-                savedPic.setImageBitmap(outputMap);
+                savedPic.setImageBitmap(mutableBitmap);
             }
             if ( grayscaleSwitch.isChecked() ){
                 //grayscale the image
-                Bitmap outputMap = doGreyscale(mutableBitmap);
+                mutableBitmap = doGreyscale(mutableBitmap);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
-                savedPic.setImageBitmap(outputMap);
+                savedPic.setImageBitmap(mutableBitmap);
             }
             if ( doGammaSwitch.isChecked() ){
                 //gamma the image
-                Bitmap outputMap = doGamma(mutableBitmap, 1.8, 1.8, 1.8);
+                mutableBitmap = doGamma(mutableBitmap, 1.8, 1.8, 1.8);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
-                savedPic.setImageBitmap(outputMap);
+                savedPic.setImageBitmap(mutableBitmap);
             }
             if ( sepiaSwitch.isChecked() ){
                 //sepia the image
-                Bitmap outputMap = createSepiaToningEffect(mutableBitmap, 4, 4, 4, 4);
+                mutableBitmap = createSepiaToningEffect(mutableBitmap, 4, 4, 4, 4);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
-                savedPic.setImageBitmap(outputMap);
+                savedPic.setImageBitmap(mutableBitmap);
             }
             if ( flipVSwitch.isChecked() ){
                 //sepia the image
-                Bitmap outputMap = flip(mutableBitmap, 1);
+                mutableBitmap = flip(mutableBitmap, 1);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
-                savedPic.setImageBitmap(outputMap);
+                savedPic.setImageBitmap(mutableBitmap);
             }
             if ( flipHSwitch.isChecked() ){
                 //sepia the image
-                Bitmap outputMap = flip(mutableBitmap, 2);
+                mutableBitmap = flip(mutableBitmap, 2);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
-                savedPic.setImageBitmap(outputMap);
+                savedPic.setImageBitmap(mutableBitmap);
             }
 
         }
@@ -310,7 +305,9 @@ public class Activity2 extends AppCompatActivity {
     class changeActivity implements  Button.OnClickListener{
         @Override
         public void onClick(View view) {
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            //to go back to the first activity.
+            //startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            savedPic.setImageBitmap(bitmap);
         }
     }
 
