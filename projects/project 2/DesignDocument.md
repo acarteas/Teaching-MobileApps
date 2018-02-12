@@ -1,10 +1,14 @@
 # APPLICATION NAME
-Complete description and overview.  This is where you describe in a brief, yet clear and concise, manner what your product should do and how you expect it should be used.  Why did you write this application?  What purpose does it serve?  It's okay if the only purpose is to meet the homework requirement (but try to move bedyond just that - be creative!).
-
-My application was designed to add effects to captured images. It includes these image effects: Remove Red, Remove Blue, remove Green, Negate Red, Negate Blue, Negate Green, Grey Scale, Add Noise, and High Contrast.
+  My application was designed to add effects to captured images. It includes these image effects: Remove Red, Remove Blue, remove Green, Negate Red, Negate Blue, Negate Green, Grey Scale, Add Noise, and High Contrast. I expect this program to be used for good, and good alone. I wrote it as the beginnings of a larger image manipulation program. Hopefully I can evolve it into something powerful enough to fix my friends selfies. 
 
 ## System Design 
-This is where you specify all of the system's requirements.  This section should accurately portray the complete operation of your application.  Provide scenarios, use cases, system requirements, and diagrams/screenshots of the system.
+System Requirments:
+  -Android 7.1 (Nougat)
+  -x86
+Uses:
+  -Can be used to add image effects to pictures captured within the app. 
+Scenario:
+  -If you would like to see what the world would look like with different colors, then you can use this app to test it out!
 
 ## Usage
-This is where you explain how to use your application
+  To use this application, you will first click the "Open Camera" button. This will open the default camera app, where you can take a photo of your choosing. You will be prompted to with a selection screen, clicking the check mark will take you to the editor, while pressing the "X" will allow you to retake the photo. After accepting your image, you'll be in the editor where you can check the image effects you would like to apply. You can check as many as you would like, however unchecking one will uncheck all of them. When you are finished, click the done button to return to the main page and have your image saved within the phones gallery. 
