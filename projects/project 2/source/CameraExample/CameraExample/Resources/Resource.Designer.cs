@@ -44,11 +44,11 @@ namespace CameraExample
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f06000d
+			public const int Done = 2131099661;
+			
 			// aapt resource value: 0x7f06000b
 			public const int addNoise = 2131099659;
-			
-			// aapt resource value: 0x7f06000e
-			public const int btn_editor = 2131099662;
 			
 			// aapt resource value: 0x7f060000
 			public const int editImage = 2131099648;
@@ -59,8 +59,8 @@ namespace CameraExample
 			// aapt resource value: 0x7f06000c
 			public const int highContrast = 2131099660;
 			
-			// aapt resource value: 0x7f06000d
-			public const int launchCameraButton = 2131099661;
+			// aapt resource value: 0x7f06000e
+			public const int launchCameraButton = 2131099662;
 			
 			// aapt resource value: 0x7f060001
 			public const int linearLayout1 = 2131099649;

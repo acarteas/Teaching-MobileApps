@@ -8,11 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Open Camera" />
-    <Button
-        android:text="Editor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_editor" />
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="300.0dp"

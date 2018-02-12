@@ -8,7 +8,7 @@
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="match_parent"
-        android:layout_height="381.0dp"
+        android:layout_height="300dp"
         android:id="@+id/editImage" />
     <LinearLayout
         android:orientation="horizontal"
@@ -83,4 +83,9 @@
             android:id="@+id/highContrast"
             android:translationX="30dp" />
     </LinearLayout>
+    <Button
+        android:text="Done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Done" />
 </LinearLayout>

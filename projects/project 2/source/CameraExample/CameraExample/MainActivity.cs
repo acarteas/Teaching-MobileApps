@@ -24,15 +24,8 @@ namespace CameraExample
         public static Bitmap bitmap;
         public static Bitmap copy_bitmap;
 
-        bool box_checked = false;
-        bool box_checked2 = false;
-        bool box_checked3 = false;
-        bool box_checked4 = false;
-        bool box_checked5 = false;
-        bool box_checked7 = false;
-        bool box_checked8 = false;
-        bool box_checked9 = false;
-        bool box_checked6 = false;
+        bool[] box_checked = new bool[10];
+       
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -97,13 +90,6 @@ namespace CameraExample
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            ////Make image available in the gallery
-            //Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            //var contentUri = Android.Net.Uri.FromFile(_file);
-            //mediaScanIntent.SetData(contentUri);
-            //SendBroadcast(mediaScanIntent);
-
-            
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
             // and cause the application to crash.
@@ -111,106 +97,104 @@ namespace CameraExample
             int height = imageView.Height;
             int width = imageView.Width;
             bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
+            copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);      
 
-           
-                //AC: workaround for not passing actual files
-               // bitmap = (Bitmap)data.Extras.Get("data");
-               // copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-            
-
-            //this code removes all red from a picture
-
-            //for (int i = 0; i < bitmap.Width; i++)n 
-            //{
-            //    for (int j = 0; j < bitmap.Height; j++)
-            //    {
-            //        int p = bitmap.GetPixel(i, j);
-            //        Color c = new Color(p);
-            //        c.R = 0;
-            //        copyBitmap.SetPixel(i, j, c);
-            //    }
-            //}
-
+            //change layout to the editor
             SetContentView(Resource.Layout.Editor);
 
+            //grab imageview and display bitmap
             ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
-            int height2 = Resources.DisplayMetrics.HeightPixels;
-            int width2 = editView.Height;
-
-            // Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-            // Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+        
             if (copy_bitmap != null)
             {
                 editView.SetImageBitmap(copy_bitmap);
-                // editView.Visibility = Android.Views.ViewStates.Visible;
             }
-
-            //if (copy_bitmap != null)
-            //{
-            //    imageView.SetImageBitmap(copy_bitmap);
-            //    imageView.Visibility = Android.Views.ViewStates.Visible;
-            //    bitmap = null;
-            //    copy_bitmap = null;
-            //}
-
+          
             // Dispose of the Java side bitmap.
             System.GC.Collect();
 
+
+            //Set button clicks to functions
             FindViewById<Button>(Resource.Id.remRed).Click += removeRed;
             FindViewById<Button>(Resource.Id.remBlue).Click += removeBlue;
             FindViewById<Button>(Resource.Id.remGreen).Click += removeGreen;
             FindViewById<Button>(Resource.Id.negRed).Click += negateRed;
             FindViewById<Button>(Resource.Id.negBlue).Click += negateBlue;
             FindViewById<Button>(Resource.Id.negGreen).Click += negateGreen;
+            FindViewById<Button>(Resource.Id.grayScale).Click += grayScale;
+            FindViewById<Button>(Resource.Id.highContrast).Click += highContrast;
+            FindViewById<Button>(Resource.Id.addNoise).Click += addNoise;
+            FindViewById<Button>(Resource.Id.Done).Click += done;
+            
         }
-        
 
-        //This function changes our layout to the Editor and opens our image there for editing
-        //private void imageEdit(object sender, System.EventArgs e)
-        //{
-        //    SetContentView(Resource.Layout.Editor);
+     
+        private void done(object sender, System.EventArgs e)
+        {
+            //Make image available in the gallery
+            Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+            var contentUri = Android.Net.Uri.FromFile(_file);
+            mediaScanIntent.SetData(contentUri);
+            SendBroadcast(mediaScanIntent);
 
-        //    ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
-        //    int height = Resources.DisplayMetrics.HeightPixels;
-        //    int width = editView.Height;
+            SetContentView(Resource.Layout.Main);
+        }
 
-        //    // Bitmap copyBitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-        //    // Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-        //    if (copy_bitmap != null)
-        //    {
-        //        editView.SetImageBitmap(copy_bitmap);
-        //        // editView.Visibility = Android.Views.ViewStates.Visible;
-        //    }
-
-        //}
         private void removeRed(object sender, System.EventArgs e)
-        {           
-            if (box_checked == false)
+        {
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+
+            //checks if the button is checked
+            if (box_checked[0] == false)
             {
-                box_checked = true;
+                box_checked[0] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
                     {
                         int p = bitmap.GetPixel(i, j);
                         Color c = new Color(p);
-                        c.R = 0;
+                        c.R = 0;                       
                         copy_bitmap.SetPixel(i, j, c);
+
                     }
                 }
             }
             else
             {
+                //undoes all other color effects
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
+
+                //grabs the original bitmap and sets it as the image
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked = false;
+                editView.SetImageBitmap(copy_bitmap);                
             }
         }
 
         private void removeBlue(object sender, System.EventArgs e)
         {
-            if (box_checked2 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+
+            if (box_checked[1] == false)
             {
+                box_checked[1] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -222,17 +206,38 @@ namespace CameraExample
                     }
                 }
             }
-            else
+           else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked2 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
 
         private void removeGreen(object sender, System.EventArgs e)
         {
-            if (box_checked3 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+
+            if (box_checked[2] == false)
             {
+                box_checked[2] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -246,15 +251,34 @@ namespace CameraExample
             }
             else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked3 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
 
         private void negateRed(object sender, System.EventArgs e)
         {
-            if (box_checked4 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            if (box_checked[3] == false)
             {
+                box_checked[3] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -268,14 +292,33 @@ namespace CameraExample
             }
             else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked4 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
         private void negateBlue(object sender, System.EventArgs e)
         {
-            if (box_checked5 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            if (box_checked[4] == false)
             {
+                box_checked[4] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -285,18 +328,37 @@ namespace CameraExample
                         c.B = Convert.ToByte(255 - c.B);
                         copy_bitmap.SetPixel(i, j, c);
                     }
-                }
+                }              
             }
             else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked5 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
         private void negateGreen(object sender, System.EventArgs e)
         {
-            if (box_checked6 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            if (box_checked[5] == false)
             {
+                box_checked[5] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -306,44 +368,82 @@ namespace CameraExample
                         c.G = Convert.ToByte(255 - c.G);
                         copy_bitmap.SetPixel(i, j, c);
                     }
-                }
+                }               
             }
             else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked6 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
 
         private void grayScale(object sender, System.EventArgs e)
         {
-            if (box_checked7 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            if (box_checked[6] == false)
             {
+                box_checked[6] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
                     {
                         int p = bitmap.GetPixel(i, j);
                         Color c = new Color(p);
-                        int clr_gray = (c.R + c.G + c.B) / 3;
-                        c.R = Convert.ToByte(clr_gray);
-                        c.B = Convert.ToByte(clr_gray);
-                        c.G = Convert.ToByte(clr_gray);
+                       
+                        c.R = Convert.ToByte((c.R + c.G + c.B) / 3);
+                        c.B = Convert.ToByte((c.R + c.G + c.B) / 3);
+                        c.G = Convert.ToByte((c.R + c.G + c.B) / 3);
                         copy_bitmap.SetPixel(i, j, c);
                     }
                 }
             }
             else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked7 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
 
         private void highContrast(object sender, System.EventArgs e)
         {
-            if (box_checked8 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            if (box_checked[7] == false)
             {
+                box_checked[7] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
@@ -382,25 +482,46 @@ namespace CameraExample
             }
             else
             {
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
+                bttn7.Checked = false;
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked8 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
 
         private void addNoise(object sender, System.EventArgs e)
         {
-            if (box_checked9 == false)
+            CheckBox effect = sender as CheckBox;
+            ImageView editView = FindViewById<ImageView>(Resource.Id.editImage);
+            if (box_checked[8] == false)
             {
+                box_checked[8] = true;
                 for (int i = 0; i < bitmap.Width; i++)
                 {
                     for (int j = 0; j < bitmap.Height; j++)
                     {
                         int p = bitmap.GetPixel(i, j);
                         Color c = new Color(p);
-                        Random add_to_color = new Random();
-                        c.R = Convert.ToByte(add_to_color.Next(-10, 10) + c.R);
-                        c.B = Convert.ToByte(add_to_color.Next(-10, 10) + c.B);
-                        c.G = Convert.ToByte(add_to_color.Next(-10, 10) + c.G);
+                        Random rand_num = new Random();
+                        int add_to_color = Convert.ToInt32(rand_num.Next(-10, 10));
+                        c.R = Convert.ToByte(add_to_color + c.R);
+                        c.B = Convert.ToByte(add_to_color + c.B);
+                        c.G = Convert.ToByte(add_to_color + c.G);
 
                         if (c.R > 255)
                         {
@@ -432,8 +553,26 @@ namespace CameraExample
             }
             else
             {
+
+                CheckBox bttn0 = FindViewById<CheckBox>(Resource.Id.remBlue);
+                bttn0.Checked = false;
+                CheckBox bttn1 = FindViewById<CheckBox>(Resource.Id.remGreen);
+                bttn1.Checked = false;
+                CheckBox bttn2 = FindViewById<CheckBox>(Resource.Id.negRed);
+                bttn2.Checked = false;
+                CheckBox bttn3 = FindViewById<CheckBox>(Resource.Id.negBlue);
+                bttn3.Checked = false;
+                CheckBox bttn4 = FindViewById<CheckBox>(Resource.Id.negGreen);
+                bttn4.Checked = false;
+                CheckBox bttn5 = FindViewById<CheckBox>(Resource.Id.grayScale);
+                bttn5.Checked = false;
+                CheckBox bttn6 = FindViewById<CheckBox>(Resource.Id.highContrast);
+                bttn6.Checked = false;
+                CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.remRed);
+                bttn7.Checked = false;
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
-                box_checked9 = false;
+                editView.SetImageBitmap(copy_bitmap);
             }
         }
 
