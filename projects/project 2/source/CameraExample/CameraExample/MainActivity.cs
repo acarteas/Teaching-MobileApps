@@ -108,22 +108,35 @@ namespace CameraExample
             //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
             Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
 
-            CheckBox redRemoval = FindViewById<CheckBox>(Resource.Id.removeRed);
-            CheckBox greenRemoval = FindViewById<CheckBox>(Resource.Id.removeGreen);
-            CheckBox blueRemoval = FindViewById<CheckBox>(Resource.Id.removeBlue);
+            CheckBox redRemoval = FindViewById<CheckBox>(Resource.Id.redRemoval);
+            CheckBox greenRemoval = FindViewById<CheckBox>(Resource.Id.greenRemoval);
+            CheckBox blueRemoval = FindViewById<CheckBox>(Resource.Id.blueRemoval);
+            CheckBox negativeCheck = FindViewById<CheckBox>(Resource.Id.negative);
+
+            redRemoval.CheckedChange += negateRed();
+            greenRemoval.CheckedChange += negateGreen();
+            blueRemoval.CheckedChange += negateBlue();
+            negativeCheck.CheckedChange += negateImage();
+
+        }
+
+       private void negateRed(object sender, System.EventArgs e)
+        {
+            ImageView imageView = FindViewById<ImageView>(Resource.Id.imageToAlter);
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
 
             for (int i = 0; i < copyBitmap.Width; i++)
             {
-                for(int j = 0; j < copyBitmap.Height; j++)
+                for (int j = 0; j < copyBitmap.Height; j++)
                 {
                     int p = copyBitmap.GetPixel(i, j);
-                    //00000000 00000000 00000000 00000000
-                    //long mask = (long)0xFF00FFFF;
-                    //p = p & (int)mask;
+                    
                     Android.Graphics.Color c = new Android.Graphics.Color(p);
                     
-                    //TODO: fix
-                    //c.R = 0;
+                    c.R = 0;
                     copyBitmap.SetPixel(i, j, c);
                 }
             }
@@ -137,7 +150,111 @@ namespace CameraExample
             // Dispose of the Java side bitmap.
             System.GC.Collect();
         }
-        
+
+        private void negateGreen(object sender, System.EventArgs e)
+        {
+            ImageView imageView = FindViewById<ImageView>(Resource.Id.imageToAlter);
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            for (int i = 0; i < copyBitmap.Width; i++)
+            {
+                for (int j = 0; j < copyBitmap.Height; j++)
+                {
+                    int p = copyBitmap.GetPixel(i, j);
+
+                    Android.Graphics.Color c = new Android.Graphics.Color(p);
+
+                    c.G = 0;
+                    copyBitmap.SetPixel(i, j, c);
+                }
+            }
+            if (bitmap != null)
+            {
+                imageView.SetImageBitmap(bitmap);
+                imageView.Visibility = Android.Views.ViewStates.Visible;
+                bitmap = null;
+            }
+
+            // Dispose of the Java side bitmap.
+            System.GC.Collect();
+        }
+
+        private void negateBlue(object sender, System.EventArgs e)
+        {
+            ImageView imageView = FindViewById<ImageView>(Resource.Id.imageToAlter);
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            for (int i = 0; i < copyBitmap.Width; i++)
+            {
+                for (int j = 0; j < copyBitmap.Height; j++)
+                {
+                    int p = copyBitmap.GetPixel(i, j);
+
+                    Android.Graphics.Color c = new Android.Graphics.Color(p);
+
+                    c.B = 0;
+                    copyBitmap.SetPixel(i, j, c);
+                }
+            }
+            if (bitmap != null)
+            {
+                imageView.SetImageBitmap(bitmap);
+                imageView.Visibility = Android.Views.ViewStates.Visible;
+                bitmap = null;
+            }
+
+            // Dispose of the Java side bitmap.
+            System.GC.Collect();
+        }
+
+        private void negateImage(object sender, System.EventArgs e)
+        {
+            ImageView imageView = FindViewById<ImageView>(Resource.Id.imageToAlter);
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
+            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            int r, g, b;
+            //code found here: https://www.dyclassroom.com/csharp-project/how-to-convert-a-color-image-into-a-negative-image-in-csharp-using-visual-studio
+            //needed to refresh memory on negating an image
+            for (int i = 0; i < copyBitmap.Width; i++)
+            {
+                for (int j = 0; j < copyBitmap.Height; j++)
+                {
+                    int p = copyBitmap.GetPixel(i, j);
+
+                    Android.Graphics.Color c = new Android.Graphics.Color(p);
+
+                    r = c.R;
+                    g = c.G;
+                    b = c.B;
+
+                    r = 255 - r;
+                    g = 255 - g;
+                    b = 255 - b;
+
+                    copyBitmap.SetPixel(i, j, c.FromArgb(a, r, g, b));
+                }
+            }
+            if (bitmap != null)
+            {
+                imageView.SetImageBitmap(bitmap);
+                imageView.Visibility = Android.Views.ViewStates.Visible;
+                bitmap = null;
+            }
+
+            // Dispose of the Java side bitmap.
+            System.GC.Collect();
+        }
+
+
     }
 }
 

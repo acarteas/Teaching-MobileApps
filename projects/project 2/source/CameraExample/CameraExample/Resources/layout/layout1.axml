@@ -35,6 +35,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/blueRemoval" />
+		<CheckBox
+            android:text="Negative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/negative" />
         <Button
             android:text="Clear"
             android:layout_width="match_parent"
