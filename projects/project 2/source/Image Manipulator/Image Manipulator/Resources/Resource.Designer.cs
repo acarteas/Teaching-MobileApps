@@ -150,6 +150,9 @@ namespace Image_Manipulator
 			// aapt resource value: 0x7f050002
 			public const int app_name = 2131034114;
 			
+			// aapt resource value: 0x7f050003
+			public const int description = 2131034115;
+			
 			// aapt resource value: 0x7f050001
 			public const int load_gallery = 2131034113;
 			

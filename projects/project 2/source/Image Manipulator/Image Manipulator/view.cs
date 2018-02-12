@@ -22,21 +22,11 @@ namespace Image_Manipulator
             }
         }
 
-        void revert_to_original (Bitmap original, Bitmap bitmap)
+        Bitmap remove_red (Bitmap image)
         {
-            for (int i = 0; i < original.Width; i++)
-            {
-                for (int j = 0; j < original.Height; j++)
-                {
-                    int p = original.GetPixel(i, j);
-                    Color c = new Color(p);
-                    bitmap.SetPixel(i, j, c);
-                }
-            }
-        }
+            Bitmap mutable_copy = Bitmap.CreateBitmap(image.Width, image.Height, image.GetConfig());
+            copy_bitmap(image, mutable_copy);
 
-        void remove_red (Bitmap image)
-        {
             for (int i = 0; i < image.Width; i++)
             {
                 for (int j = 0; j < image.Height; j++)
@@ -44,9 +34,10 @@ namespace Image_Manipulator
                     int p = image.GetPixel(i, j);
                     Color c = new Color(p);
                     c.R = 0;
-                    image.SetPixel(i, j, c);
+                    mutable_copy.SetPixel(i, j, c);
                 }
             }
+            return mutable_copy;
         }
 
         void remove_green(Bitmap image)
@@ -110,7 +101,7 @@ namespace Image_Manipulator
 
             btn_remove_red.Click += delegate
             {
-                remove_red(bitmap);
+                bitmap = remove_red(bitmap);
                 imageView.SetImageBitmap(bitmap);
             };
 
