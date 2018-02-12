@@ -3,4 +3,5 @@
   <string name="take_picture">Take New Picture</string>
   <string name="load_gallery">Load From Gallery</string>
   <string name="app_name">Image Manipulator</string>
+  <string name="description">No Effect</string>
 </resources>
