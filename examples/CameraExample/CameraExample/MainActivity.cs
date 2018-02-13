@@ -44,7 +44,8 @@ namespace CameraExample
         {
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             IList<ResolveInfo> availableActivities =
-                PackageManager.QueryIntentActivities(intent, PackageInfoFlags.MatchDefaultOnly);
+                PackageManager.QueryIntentActivities
+                (intent, PackageInfoFlags.MatchDefaultOnly);
             return availableActivities != null && availableActivities.Count > 0;
         }
 
@@ -69,7 +70,9 @@ namespace CameraExample
             //android.support.v4.content.FileProvider
             //getUriForFile(getContext(), "com.mydomain.fileprovider", newFile);
             //FileProvider.GetUriForFile
-            intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
+
+            //The line is a problem line for Android 7+ development
+            //intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
             StartActivityForResult(intent, 0);
         }
 
@@ -84,11 +87,12 @@ namespace CameraExample
             base.OnActivityResult(requestCode, resultCode, data);
 
             //Make image available in the gallery
+            /*
             Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
             var contentUri = Android.Net.Uri.FromFile(_file);
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
-
+            */
 
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
@@ -96,10 +100,28 @@ namespace CameraExample
             ImageView imageView = FindViewById<ImageView>(Resource.Id.takenPictureImageView);
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
-            Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            if (bitmap != null)
+
+            //AC: workaround for not passing actual files
+            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+
+            //scale image to make manipulation easier
+            Android.Graphics.Bitmap smallBitmap =
+                Android.Graphics.Bitmap.CreateScaledBitmap(bitmap, 1024, 768, true);
+
+            //this code removes all red from a picture
+            for(int i = 0; i < smallBitmap.Width; i++)
             {
-                imageView.SetImageBitmap(bitmap);
+                for(int j = 0; j < smallBitmap.Height; j++)
+                {
+                    int p = smallBitmap.GetPixel(i, j);
+                    Android.Graphics.Color c = new Android.Graphics.Color(p);
+                    c.R = 0;
+                    smallBitmap.SetPixel(i, j, c);
+                }
+            }
+            if (smallBitmap != null)
+            {
+                imageView.SetImageBitmap(smallBitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
                 bitmap = null;
             }
