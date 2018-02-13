@@ -50,20 +50,23 @@ namespace CameraExample
 			// aapt resource value: 0x7f060002
 			public const int greenRemoval = 2131099650;
 			
-			// aapt resource value: 0x7f060004
-			public const int imageRefresh = 2131099652;
+			// aapt resource value: 0x7f060005
+			public const int imageRefresh = 2131099653;
 			
 			// aapt resource value: 0x7f060000
 			public const int imageToAlter = 2131099648;
 			
-			// aapt resource value: 0x7f060005
-			public const int launchCameraButton = 2131099653;
+			// aapt resource value: 0x7f060006
+			public const int launchCameraButton = 2131099654;
+			
+			// aapt resource value: 0x7f060004
+			public const int negative = 2131099652;
 			
 			// aapt resource value: 0x7f060001
 			public const int redRemoval = 2131099649;
 			
-			// aapt resource value: 0x7f060006
-			public const int takenPictureImageView = 2131099654;
+			// aapt resource value: 0x7f060007
+			public const int takenPictureImageView = 2131099655;
 			
 			static Id()
 			{
