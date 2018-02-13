@@ -108,8 +108,15 @@ namespace CameraExample
             Android.Graphics.Bitmap smallBitmap =
                 Android.Graphics.Bitmap.CreateScaledBitmap(bitmap, 1024, 768, true);
 
+            //write file to phone
+            //Java.IO.FileOutputStream outputStream = new Java.IO.FileOutputStream(_file);  //for java, for C# use below
+            System.IO.FileStream fs = new System.IO.FileStream(_file.Path, System.IO.FileMode.OpenOrCreate);
+            bitmap.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 85, fs);
+            fs.Flush();
+            fs.Close();
+
             //this code removes all red from a picture
-            for(int i = 0; i < smallBitmap.Width; i++)
+            for (int i = 0; i < smallBitmap.Width; i++)
             {
                 for(int j = 0; j < smallBitmap.Height; j++)
                 {
