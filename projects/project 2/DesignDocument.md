@@ -14,5 +14,5 @@ This application will prompt you to either take a picture or load from gallery. 
 *High contrast
 *Add noise
 
-After choosing manipulations press “Apply” to apply the manipulation and save it to your phone.
+After choosing manipulations press "Apply" to apply the manipulation and save it to your phone.
 
