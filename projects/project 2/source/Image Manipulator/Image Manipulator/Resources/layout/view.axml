@@ -132,10 +132,11 @@
                 android:layout_marginRight="5dp" />
         </LinearLayout>
     </HorizontalScrollView>
+
     <StackView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-    <!--
+      <!--
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
