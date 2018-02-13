@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),Activity2.class);
             // to pass bitmap across!
             intent.putExtra("bitmap", bitmap );
+            //TODO: if the bitmap is null, put the ra2.png in the image view.OR add
             startActivity(intent);
         }
     }
