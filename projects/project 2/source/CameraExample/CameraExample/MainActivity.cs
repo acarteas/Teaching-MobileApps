@@ -113,7 +113,6 @@ namespace CameraExample
             // Dispose of the Java side bitmap.
             System.GC.Collect();
 
-
             //Set button clicks to functions
             FindViewById<Button>(Resource.Id.remRed).Click += removeRed;
             FindViewById<Button>(Resource.Id.remBlue).Click += removeBlue;
@@ -124,18 +123,18 @@ namespace CameraExample
             FindViewById<Button>(Resource.Id.grayScale).Click += grayScale;
             FindViewById<Button>(Resource.Id.highContrast).Click += highContrast;
             FindViewById<Button>(Resource.Id.addNoise).Click += addNoise;
-            FindViewById<Button>(Resource.Id.Done).Click += done;
-            
+            FindViewById<Button>(Resource.Id.Done).Click += done;           
         }
 
      
         private void done(object sender, System.EventArgs e)
         {
-            //Make image available in the gallery
-            Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            var contentUri = Android.Net.Uri.FromFile(_file);
-            mediaScanIntent.SetData(contentUri);
-            SendBroadcast(mediaScanIntent);
+            ////Make image available in the gallery
+            //Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
+            //var contentUri = Android.Net.Uri.FromFile(_file);
+            //mediaScanIntent.SetData(contentUri);
+            //SendBroadcast(mediaScanIntent);
+            MediaStore.Images.Media.InsertImage(getContentResolver(), copy_bitmap, "map", "This is a map");
 
             SetContentView(Resource.Layout.Main);
         }
@@ -157,7 +156,6 @@ namespace CameraExample
                         Color c = new Color(p);
                         c.R = 0;                       
                         copy_bitmap.SetPixel(i, j, c);
-
                     }
                 }
             }
@@ -181,6 +179,10 @@ namespace CameraExample
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
 
+                for(int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
                 //grabs the original bitmap and sets it as the image
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);                
@@ -225,6 +227,11 @@ namespace CameraExample
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
 
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -267,6 +274,12 @@ namespace CameraExample
                 bttn6.Checked = false;
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
+
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -308,6 +321,12 @@ namespace CameraExample
                 bttn6.Checked = false;
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
+
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -348,6 +367,12 @@ namespace CameraExample
                 bttn6.Checked = false;
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
+
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -388,6 +413,12 @@ namespace CameraExample
                 bttn6.Checked = false;
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
+
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -432,6 +463,12 @@ namespace CameraExample
                 bttn6.Checked = false;
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
+
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -499,6 +536,11 @@ namespace CameraExample
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.addNoise);
                 bttn7.Checked = false;
 
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
+
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
             }
@@ -518,10 +560,26 @@ namespace CameraExample
                         int p = bitmap.GetPixel(i, j);
                         Color c = new Color(p);
                         Random rand_num = new Random();
-                        int add_to_color = Convert.ToInt32(rand_num.Next(-10, 10));
-                        c.R = Convert.ToByte(add_to_color + c.R);
-                        c.B = Convert.ToByte(add_to_color + c.B);
-                        c.G = Convert.ToByte(add_to_color + c.G);
+                        int add_to_color = rand_num.Next(100);
+                        int r = add_to_color + c.R;
+                        if(r > 255)
+                        {
+                            r = 255;
+                        }
+                        int b = add_to_color + c.B;
+                        if (b > 255)
+                        {
+                            b = 255;
+                        }
+                        int g = add_to_color + c.G;
+                        if (g > 255)
+                        {
+                            g = 255;
+                        }
+
+                        c.R = Convert.ToByte(r);
+                        c.B = Convert.ToByte(b);
+                        c.G = Convert.ToByte(g);
 
                         if (c.R > 255)
                         {
@@ -570,6 +628,11 @@ namespace CameraExample
                 bttn6.Checked = false;
                 CheckBox bttn7 = FindViewById<CheckBox>(Resource.Id.remRed);
                 bttn7.Checked = false;
+
+                for (int i = 0; i < box_checked.Length; i++)
+                {
+                    box_checked[i] = false;
+                }
 
                 copy_bitmap = bitmap.Copy(Bitmap.Config.Argb8888, true);
                 editView.SetImageBitmap(copy_bitmap);
