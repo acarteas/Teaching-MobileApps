@@ -68,11 +68,6 @@ namespace Image_Manipulator
             }
         }
 
-
-
-
-
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -85,16 +80,15 @@ namespace Image_Manipulator
             Bitmap original_copy = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, bitmap.GetConfig());
             copy_bitmap(bitmap, original_copy);
 
-
             //buttons
             ImageButton btn_no_effect = FindViewById<ImageButton>(Resource.Id.button_no_effect);
             ImageButton btn_remove_red = FindViewById<ImageButton>(Resource.Id.button_remove_red);
             ImageButton btn_remove_green = FindViewById<ImageButton>(Resource.Id.button_remove_green);
             ImageButton btn_remove_blue = FindViewById<ImageButton>(Resource.Id.button_remove_blue);
+            Button btn_apply = FindViewById<Button>(Resource.Id.btn_apply);
 
             btn_no_effect.Click += delegate
             {
-                //bitmap = Bitmap.CreateBitmap(original.Width, original.Height, original.GetConfig());
                 copy_bitmap(original_copy, bitmap);
                 imageView.SetImageBitmap(bitmap);
             };
@@ -117,31 +111,6 @@ namespace Image_Manipulator
                 imageView.SetImageBitmap(bitmap);
             };
 
-
-            /*
-            Android.Graphics.Bitmap copyBitmap =
-                bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
-
-
-            for (int i = 0; i < bitmap.Width; i++)
-            {
-                for (int j = 0; j < bitmap.Height; j++)
-                {
-                    int p = bitmap.GetPixel(i, j);
-                    Android.Graphics.Color c = new Android.Graphics.Color(p);
-                    c.R = 0;
-                    copyBitmap.SetPixel(i, j, c);
-                }
-            }
-            if (copyBitmap != null)
-            {
-                imageView.SetImageBitmap(copyBitmap);
-                imageView.Visibility = Android.Views.ViewStates.Visible;
-                bitmap = null;
-                copyBitmap = null;
-            }
-            */
-            // Dispose of the Java side bitmap.
             System.GC.Collect();
         }
     }

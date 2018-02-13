@@ -47,6 +47,15 @@ namespace Image_Manipulator
 			// aapt resource value: 0x7f020000
 			public const int button_skin = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int remove_blue = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int remove_green = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int remove_red = 2130837507;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -59,6 +68,9 @@ namespace Image_Manipulator
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f06000d
+			public const int btn_apply = 2131099661;
 			
 			// aapt resource value: 0x7f060001
 			public const int btn_load_gallery = 2131099649;

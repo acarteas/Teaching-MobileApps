@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/button_skin"
+                android:src="@drawable/remove_red"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:paddingTop="0dp"
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/button_skin"
+                android:src="@drawable/remove_green"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:paddingTop="0dp"
@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:src="@drawable/button_skin"
+                android:src="@drawable/remove_blue"
                 android:paddingStart="0dp"
                 android:paddingEnd="0dp"
                 android:paddingTop="0dp"
@@ -132,18 +132,9 @@
                 android:layout_marginRight="5dp" />
         </LinearLayout>
     </HorizontalScrollView>
-
-    <StackView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-      <!--
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal">
-            <Button
-                android:width="250dp"
-                android:height="100dp" />
-        0<./LinearLayout>-->
-    </StackView>
+    <Button
+        android:id="@+id/btn_apply"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Apply" />
 </LinearLayout>

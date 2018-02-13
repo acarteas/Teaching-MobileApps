@@ -7,8 +7,6 @@ using Android.Content.PM;
 using Android.Provider;
 using Android.Graphics;
 using Uri = Android.Net.Uri;
-using System.IO;
-using Java.IO;
 
 namespace Image_Manipulator
 {
@@ -29,13 +27,6 @@ namespace Image_Manipulator
             }
         }
 
-        
-            
-
-
-
-
-
         public static readonly int PickImageId = 1000;
         public static readonly int TakeImageId = 2000;
         string filepath;
@@ -45,14 +36,11 @@ namespace Image_Manipulator
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             Button btn_load_gallery = FindViewById<Button>(Resource.Id.btn_load_gallery);
             btn_load_gallery.Click += delegate
             {
-                //load_gallery();
                 Intent = new Intent();
                 Intent.SetType("image/*");
                 Intent.SetAction(Intent.ActionGetContent);
@@ -112,48 +100,13 @@ namespace Image_Manipulator
             if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null))
             {
                 Uri uri = data.Data;
-                //_imageView.SetImageURI(uri);
-                //Android.Graphics.Bitmap gallery_bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
-
-
-
-
-
-
-                //Stream stream = ContentResolver.OpenInputStream(data.Data);
-                //imageView1.SetImageBitmap(DecodeBitmapFromStream(data.Data, 150, 150));
-                //Bitmap bitmap = BitmapFactory.DecodeStream(stream);
-                //MemoryStream memStream = new MemoryStream();
-                //you can change 60 (100 big size reduce to less >>>>
-                //bitmap.Compress(Bitmap.CompressFormat.Jpeg, 60, memStream);
-
-
-
-                
                 Bitmap bitmap = null;
                 bitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
-
-
-                //Bitmap bitmap_copy = Bitmap.CreateBitmap(bitmap.Width, bitmap.Height, bitmap.GetConfig());
-                //copy_bitmap(bitmap, bitmap_copy); 
 
                 var to_send = new Intent(this, typeof(ViewImage));
                 to_send.PutExtra("image", bitmap); //gallery bitmap should be uri? not sure
                 StartActivity(to_send);
             }
-
-
-
-
-            //Make image available in the gallery
-            /*
-            Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-            var contentUri = Android.Net.Uri.FromFile(_file);
-            mediaScanIntent.SetData(contentUri);
-            SendBroadcast(mediaScanIntent);
-            */
-
-
         }
     }
 }
