@@ -103,26 +103,34 @@ namespace CameraExample
 
             //AC: workaround for not passing actual files
             Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
-            Android.Graphics.Bitmap copyBitmap = 
-                bitmap.Copy(Android.Graphics.Bitmap.Config.Argb8888, true);
+
+            //scale image to make manipulation easier
+            Android.Graphics.Bitmap smallBitmap =
+                Android.Graphics.Bitmap.CreateScaledBitmap(bitmap, 1024, 768, true);
+
+            //write file to phone
+            //Java.IO.FileOutputStream outputStream = new Java.IO.FileOutputStream(_file);  //for java, for C# use below
+            System.IO.FileStream fs = new System.IO.FileStream(_file.Path, System.IO.FileMode.OpenOrCreate);
+            bitmap.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 85, fs);
+            fs.Flush();
+            fs.Close();
 
             //this code removes all red from a picture
-            for(int i = 0; i < bitmap.Width; i++)
+            for (int i = 0; i < smallBitmap.Width; i++)
             {
-                for(int j = 0; j < bitmap.Height; j++)
+                for(int j = 0; j < smallBitmap.Height; j++)
                 {
-                    int p = bitmap.GetPixel(i, j);
+                    int p = smallBitmap.GetPixel(i, j);
                     Android.Graphics.Color c = new Android.Graphics.Color(p);
                     c.R = 0;
-                    copyBitmap.SetPixel(i, j, c);
+                    smallBitmap.SetPixel(i, j, c);
                 }
             }
-            if (copyBitmap != null)
+            if (smallBitmap != null)
             {
-                imageView.SetImageBitmap(copyBitmap);
+                imageView.SetImageBitmap(smallBitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
                 bitmap = null;
-                copyBitmap = null;
             }
 
             // Dispose of the Java side bitmap.
