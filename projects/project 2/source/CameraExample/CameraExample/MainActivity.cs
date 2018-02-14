@@ -30,8 +30,6 @@ namespace CameraExample
         public static Bitmap copy_bitmap;
 
         bool[] box_checked = new bool[10];
-       
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
