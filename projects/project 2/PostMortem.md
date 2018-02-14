@@ -19,7 +19,7 @@ Loading from camera stopped working on the emulator and only works on phones. No
 ## Issues I had while working on this programming assignment
 Finding information was very hard. When learning C++ or data structures I could find tutorials or videos on the internet to learn. There seems to be very little of that when dealing with android programming, and especially when using Xamarin. What I do find is often outdated or just bad information. The documentation itself is hard to read and understand, and it offers no examples. This was my biggest issue.
 
-Xamarin and the Android Studio components, like the emulator, are also very buggy. I had the designer crash often and I would lose my xml file. The Android emulator had constant issues and seems very buggy too. Coming from C++ with Visual Studio this was quite a different experience, using C++ with Visual Studio seems very stable. Using the lab computers were much worse than my home pcs, there was constant problems and I rarely got work done at school in lab.
+Xamarin and the Android Studio components, like the emulator, are also very buggy. I had the designer crash often and I would lose my xml file. The Android emulator had constant issues and seems very buggy too. Using the lab computers were much worse than my home pcs, there was constant problems and I rarely got work done at school in lab.
 
 An emulator would “bug out” and stop working correctly. I would think it was my code, but creating a new copy of the emulator would make my code work. Emulators also became super zoomed in, and there was no fixing it besides making a new emulator. I must have tripped some setting but I don’t know where.
 
