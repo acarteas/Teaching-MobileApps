@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/editImage" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout1">
+        <CheckBox
+            android:text="Remove Red"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/remRed" />
+        <CheckBox
+            android:text="Remove Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/remBlue" />
+        <CheckBox
+            android:text="Remove Green"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/remGreen" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout2">
+        <CheckBox
+            android:text="Negate Red"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/negRed" />
+        <CheckBox
+            android:text="Negate Blue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/negBlue"
+            android:translationX="4dp" />
+        <CheckBox
+            android:text="Negate Green"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/negGreen"
+            android:translationX="12dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/linearLayout3">
+        <CheckBox
+            android:text="Gray Scale"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/grayScale" />
+        <CheckBox
+            android:text="Add Noise"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/addNoise"
+            android:translationX="10dp" />
+        <CheckBox
+            android:text="High Contrast"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/highContrast"
+            android:translationX="30dp" />
+    </LinearLayout>
+    <Button
+        android:text="Done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Done" />
+</LinearLayout>
