@@ -5,7 +5,12 @@ Photo manipulation!  Two activities have been made, with six different full phot
 I wrote this application twice; once in Xamarin, and I wasn't happy with it.  So I made it again in Android Studio, and I'm pleased with the result.
 
 #System Design
-the two buttons are: 
+FIRST ACTIVITY PAGE:
+the two buttons are:
+1. "take photo" take a photo with the camera
+2. "edit photo" pass a photo into the second activity
+
+SECOND ACTIVITY PAGE: 
 1. "apply effects" with apply any currently chosen switches.  
 2. "revert photo" which returns the image to its original format.
 3. "save" which saves photo to external storage.

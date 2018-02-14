@@ -286,7 +286,7 @@ public class Activity2 extends AppCompatActivity {
             //photo manipulations
             if ( highlightSwitch.isChecked() ){
                 //highlight the image
-                mutableBitmap = doHighlightImage(mutableBitmap);
+                mutableBitmap = doHighlightImage(bitmap);
                 savedPic =(ImageView)  findViewById(R.id.imageView2);
                 savedPic.setImageBitmap(mutableBitmap);
             }
