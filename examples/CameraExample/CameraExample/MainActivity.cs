@@ -103,26 +103,32 @@ namespace CameraExample
 
             //AC: workaround for not passing actual files
             Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
-            //Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
-            Android.Graphics.Bitmap copyBitmap = bitmap.Copy(Android.Graphics.Bitmap.Config.Alpha8, true);
-            for(int i = 0; i < copyBitmap.Width; i++)
+
+            //scale image to make manipulation easier
+            Android.Graphics.Bitmap smallBitmap =
+                Android.Graphics.Bitmap.CreateScaledBitmap(bitmap, 1024, 768, true);
+
+            //write file to phone
+            //Java.IO.FileOutputStream outputStream = new Java.IO.FileOutputStream(_file);  //for java, for C# use below
+            System.IO.FileStream fs = new System.IO.FileStream(_file.Path, System.IO.FileMode.OpenOrCreate);
+            bitmap.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 85, fs);
+            fs.Flush();
+            fs.Close();
+
+            //this code removes all red from a picture
+            for (int i = 0; i < smallBitmap.Width; i++)
             {
-                for(int j = 0; j < copyBitmap.Height; j++)
+                for(int j = 0; j < smallBitmap.Height; j++)
                 {
-                    int p = copyBitmap.GetPixel(i, j);
-                    //00000000 00000000 00000000 00000000
-                    //long mask = (long)0xFF00FFFF;
-                    //p = p & (int)mask;
+                    int p = smallBitmap.GetPixel(i, j);
                     Android.Graphics.Color c = new Android.Graphics.Color(p);
-                    
-                    //TODO: fix
-                    //c.R = 0;
-                    copyBitmap.SetPixel(i, j, c);
+                    c.R = 0;
+                    smallBitmap.SetPixel(i, j, c);
                 }
             }
-            if (bitmap != null)
+            if (smallBitmap != null)
             {
-                imageView.SetImageBitmap(bitmap);
+                imageView.SetImageBitmap(smallBitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
                 bitmap = null;
             }
