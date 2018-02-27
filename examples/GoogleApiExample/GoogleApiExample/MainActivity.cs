@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using Android.Content.PM;
 using Android.Provider;
 
-namespace CameraExample
+namespace GoogleApiExample
 {
-    [Activity(Label = "CameraExample", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "GoogleApiExample", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
+
         /// <summary>
         /// Used to track the file that we're manipulating between functions
         /// </summary>
@@ -23,6 +24,10 @@ namespace CameraExample
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //see https://forums.xamarin.com/discussion/97273/launch-camera-activity-with-saving-file-in-external-storage-crashes-the-app
+            //I'm not sure if doing the two lines below is a great idea, but it does seem to fix passing files around
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.SetVmPolicy(builder.Build());
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
@@ -56,7 +61,7 @@ namespace CameraExample
         {
             _dir = new Java.IO.File(
                 Android.OS.Environment.GetExternalStoragePublicDirectory(
-                    Android.OS.Environment.DirectoryPictures), "CameraExample");
+                    Android.OS.Environment.DirectoryPictures), "GoogleApiExample");
             if (!_dir.Exists())
             {
                 _dir.Mkdirs();
@@ -67,12 +72,7 @@ namespace CameraExample
         {
             Intent intent = new Intent(MediaStore.ActionImageCapture);
             _file = new Java.IO.File(_dir, string.Format("myPhoto_{0}.jpg", System.Guid.NewGuid()));
-            //android.support.v4.content.FileProvider
-            //getUriForFile(getContext(), "com.mydomain.fileprovider", newFile);
-            //FileProvider.GetUriForFile
-
-            //The line is a problem line for Android 7+ development
-            //intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
+            intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(_file));
             StartActivityForResult(intent, 0);
         }
 
@@ -86,13 +86,11 @@ namespace CameraExample
         {
             base.OnActivityResult(requestCode, resultCode, data);
 
-            //Make image available in the gallery
-            /*
+            //send to image gallery
             Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
             var contentUri = Android.Net.Uri.FromFile(_file);
             mediaScanIntent.SetData(contentUri);
             SendBroadcast(mediaScanIntent);
-            */
 
             // Display in ImageView. We will resize the bitmap to fit the display.
             // Loading the full sized image will consume too much memory
@@ -101,34 +99,59 @@ namespace CameraExample
             int height = Resources.DisplayMetrics.HeightPixels;
             int width = imageView.Height;
 
-            //AC: workaround for not passing actual files
-            Android.Graphics.Bitmap bitmap = (Android.Graphics.Bitmap)data.Extras.Get("data");
+            //load picture from file
+            Android.Graphics.Bitmap bitmap = _file.Path.LoadAndResizeBitmap(width, height);
 
-            //scale image to make manipulation easier
-            Android.Graphics.Bitmap smallBitmap =
-                Android.Graphics.Bitmap.CreateScaledBitmap(bitmap, 1024, 768, true);
-
-            //write file to phone
-            //Java.IO.FileOutputStream outputStream = new Java.IO.FileOutputStream(_file);  //for java, for C# use below
-            System.IO.FileStream fs = new System.IO.FileStream(_file.Path, System.IO.FileMode.OpenOrCreate);
-            bitmap.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 85, fs);
-            fs.Flush();
-            fs.Close();
-
-            //this code removes all red from a picture
-            for (int i = 0; i < smallBitmap.Width; i++)
+            //convert bitmap into stream to be sent to Google API
+            string bitmapString = "";
+            using (var stream = new System.IO.MemoryStream())
             {
-                for(int j = 0; j < smallBitmap.Height; j++)
-                {
-                    int p = smallBitmap.GetPixel(i, j);
-                    Android.Graphics.Color c = new Android.Graphics.Color(p);
-                    c.R = 0;
-                    smallBitmap.SetPixel(i, j, c);
-                }
+                bitmap.Compress(Android.Graphics.Bitmap.CompressFormat.Jpeg, 100, stream);
+
+                var bytes = stream.ToArray();
+                bitmapString = System.Convert.ToBase64String(bytes);
             }
-            if (smallBitmap != null)
+
+            //credential is stored in "assets" folder
+            string credPath = "google_api.json";
+            Google.Apis.Auth.OAuth2.GoogleCredential cred;
+
+            //Load credentials into object form
+            using (var stream = Assets.Open(credPath))
             {
-                imageView.SetImageBitmap(smallBitmap);
+                cred = Google.Apis.Auth.OAuth2.GoogleCredential.FromStream(stream);
+            }
+            cred = cred.CreateScoped(Google.Apis.Vision.v1.VisionService.Scope.CloudPlatform);
+
+            // By default, the library client will authenticate 
+            // using the service account file (created in the Google Developers 
+            // Console) specified by the GOOGLE_APPLICATION_CREDENTIALS 
+            // environment variable. We are specifying our own credentials via json file.
+            var client = new Google.Apis.Vision.v1.VisionService(new Google.Apis.Services.BaseClientService.Initializer()
+            {
+                ApplicationName = "subtle-isotope-190917",
+                HttpClientInitializer = cred
+            });
+
+            //set up request
+            var request = new Google.Apis.Vision.v1.Data.AnnotateImageRequest();
+            request.Image = new Google.Apis.Vision.v1.Data.Image();
+            request.Image.Content = bitmapString;
+
+            //tell google that we want to perform label detection
+            request.Features = new List<Google.Apis.Vision.v1.Data.Feature>();
+            request.Features.Add(new Google.Apis.Vision.v1.Data.Feature() { Type = "LABEL_DETECTION" });
+            var batch = new Google.Apis.Vision.v1.Data.BatchAnnotateImagesRequest();
+            batch.Requests = new List<Google.Apis.Vision.v1.Data.AnnotateImageRequest>();
+            batch.Requests.Add(request);
+
+            //send request.  Note that I'm calling execute() here, but you might want to use
+            //ExecuteAsync instead
+            var apiResult = client.Images.Annotate(batch).Execute();
+
+            if (bitmap != null)
+            {
+                imageView.SetImageBitmap(bitmap);
                 imageView.Visibility = Android.Views.ViewStates.Visible;
                 bitmap = null;
             }
