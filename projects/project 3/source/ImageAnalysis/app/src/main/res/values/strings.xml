@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Image Analysis</string>
+    <string name="user_input"></string>
+    <string name="text_results" />
+</resources>
