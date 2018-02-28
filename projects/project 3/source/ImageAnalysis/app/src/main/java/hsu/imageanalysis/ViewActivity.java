@@ -23,7 +23,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -48,12 +51,14 @@ public class ViewActivity extends AppCompatActivity
     Button button_new_photo;
     private static final int REQUEST_CODE_CAMERA = 1;
     String message = "";
-    List<EntityAnnotation> labels;
+    HashMap<String, Float> response_map;
+    Intent to_send;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+
         view_image = (ImageView) findViewById(R.id.imageView);
         text_output = (TextView) findViewById(R.id.txt_output);
         button_yes = (Button) findViewById(R.id.btn_yes);
@@ -88,20 +93,7 @@ public class ViewActivity extends AppCompatActivity
     }
     
     private void wrong() {
-        //send over labels
-        //Intent send_intent = new Intent();
-        //send_intent.putExtra("labels", (Parcelable) labels);
-        //startActivity(send_intent);
-
-        Intent intent = new Intent(this, ResultsActivity.class);
-        Bundle args = new Bundle();
-        args.putSerializable("LIST",(Serializable)labels);
-        intent.putExtra("BUNDLE",args);
-        startActivity(intent);
-
-        //go to ResultsActivity
-        Intent go_intent = new Intent(this, ResultsActivity.class);
-        startActivity(go_intent);
+        startActivity(to_send);
     }
     
     private void start_over() {
@@ -151,7 +143,7 @@ public class ViewActivity extends AppCompatActivity
                 JsonFactory jsonFactory = GsonFactory.getDefaultInstance();
 
                 VisionRequestInitializer requestInitializer =
-                        new VisionRequestInitializer("AIzaSyAHh9mpEizjniRnB2V9-pd4ZG93Gn1znCM");
+                        new VisionRequestInitializer("AIzaSyD3XwssniRl2uGmDrHcMSenY1kG2PC3vss");
 
                 Vision.Builder builder = new Vision.Builder(httpTransport, jsonFactory, null);
                 builder.setVisionRequestInitializer(requestInitializer);
@@ -204,35 +196,55 @@ public class ViewActivity extends AppCompatActivity
                 }
 
                 float highest_score = 0;
-                String highest_label = "";
-                labels = response.getResponses().get(0).getLabelAnnotations();
-                if (labels != null) {
-                    for (EntityAnnotation label : labels) {
-                        if (label.getScore() > highest_score)
-                        {
-                            highest_score = label.getScore();
-                            highest_label = label.getDescription();
-                        }
+                String highest_label = "nothing";
+                //labels = response.getResponses().get(0).getLabelAnnotations();
+                response_map = convertResponseToMap(response);
+
+                for (String key : response_map.keySet()) {
+                    if (response_map.get(key) > highest_score)
+                    {
+                        highest_score = response_map.get(key);
+                        highest_label = key;
                     }
-                    message = "Is This A Picture Of: \n" + highest_label;
-                } else {
-                    message += "nothing";
                 }
+                message = "Is this a picture of: \n" + highest_label;
 
                 //can't update the ui in an alternate thread
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        text_output.setText(message);
-                        button_yes.setVisibility(View.VISIBLE);
-                        button_no.setVisibility(View.VISIBLE);
+                //runOnUiThread(new Runnable() {
+                   // @Override
+                 //   public void run() {
+                //        text_output.setText(message);
+               //         button_yes.setVisibility(View.VISIBLE);
+               //         button_no.setVisibility(View.VISIBLE);
 
-                    }
-                });
+                  //  }
+             //   });
                 return message;
+            }
+            protected void onPostExecute(String messages)
+            {
+                to_send = new Intent(ViewActivity.this, ResultsActivity.class);
+                to_send.putExtra("map", response_map);
+                text_output.setText(message);
+                button_yes.setVisibility(View.VISIBLE);
+                button_no.setVisibility(View.VISIBLE);
             }
         }
                 .execute();
+    }
+
+    private HashMap<String, Float> convertResponseToMap(BatchAnnotateImagesResponse response) {
+        HashMap<String, Float> annotations = new HashMap<>();
+
+        // Convert response into a readable collection of annotations
+        List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
+        if (labels != null) {
+            for (EntityAnnotation label : labels) {
+                annotations.put(label.getDescription(), label.getScore());
+            }
+        }
+
+        return annotations;
     }
 
     @Override

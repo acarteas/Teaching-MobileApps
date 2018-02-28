@@ -10,20 +10,30 @@ import android.widget.TextView;
 
 import com.google.api.services.vision.v1.model.EntityAnnotation;
 
+import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static java.lang.Math.round;
 
 public class ResultsActivity extends AppCompatActivity {
 
     EditText text_input;
     TextView text_response;
+    HashMap<String, Float> response_map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        Intent intent = getIntent();
+        response_map = (HashMap<String, Float>)intent.getSerializableExtra("map");
+
         Button button_submit = (Button) findViewById(R.id.btn_submit_button);
         Button button_start_over = (Button) findViewById(R.id.btn_start_over_2);
+        Button button_all = (Button) findViewById(R.id.btn_all);
         text_input = (EditText) findViewById(R.id.input_label);
         text_response = (TextView) findViewById(R.id.text_response);
 
@@ -40,6 +50,16 @@ public class ResultsActivity extends AppCompatActivity {
                 start_over();
             }
         });
+
+        button_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text_response.setText("");
+                for (String key : response_map.keySet()) {
+                    text_response.setText(text_response.getText() + "The chances of it being " + key + " were " + String.format("%.0f%%", response_map.get(key) * 100) + "\n");
+                }
+            }
+        });
     }
 
     private void start_over() {
@@ -50,21 +70,18 @@ public class ResultsActivity extends AppCompatActivity {
     private void submit() {
         //List<EntityAnnotation> labels;// = (List<EntityAnnotation>) getIntent().getSerializableExtra("labels");
 
-        Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
-        List<EntityAnnotation> labels = (List<EntityAnnotation>) args.getSerializable("LIST");
+
+        //List<EntityAnnotation> labels = (List<EntityAnnotation>) args.getSerializable("LIST");
+        //Map<String, Float> response_map = (Map<String, Float>) args.getSerializable("MAP");
 
         int found_flag = 0;
-        if (labels != null) {
-            for (EntityAnnotation label : labels) {
-                if (label.getDescription().contains((text_input.getText().toString().toLowerCase()))) /// not working
-                {
-                    text_response.setText("There was a " + label.getScore() + "% chance it was a " + label.getDescription() + "\n");
-                    found_flag = 1;
-                }
+        text_response.setText("");
+        for (String key : response_map.keySet()) {
+            if (key.contains(text_input.getText().toString().toLowerCase()))
+            {
+                text_response.setText(text_response.getText() + "The chances of it being " + key + " were " + String.format("%.0f%%", response_map.get(key) * 100) + "\n");
+                found_flag = 1;
             }
-        } else {
-            text_response.setText("nothing");
         }
         if (found_flag == 0)
         {
