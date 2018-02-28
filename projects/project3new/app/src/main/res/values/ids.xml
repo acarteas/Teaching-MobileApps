@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="targeturi" type="id" />
+    <item name="targetimage" type="id" />
+</resources>
