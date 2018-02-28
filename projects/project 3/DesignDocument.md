@@ -3,7 +3,7 @@ This application uses the Google Cloud Vision API to detect the subject of an im
 
 ## System Design 
 This application will run on Android API 23 (Android 6.0, Marshmallow) or above. It uses the camera to take pictures and the internet to communicate with Google. Real-world usage would be for entertainment or to evaluate the Google Cloud Vision API's label detection.
-<img src = "screen1.png"><img src = "screen2.png"><img src = "screen3.png">
+<img src = "screen1.png" height = "30%" width = "30%><img src = "screen2.png" height = "30%" width = "30%><img src = "screen3.png" height = "30%" width = "30%>
 ## Usage
 Start the application and press "Take Picture". You will then be taken to your phone's camera. Take a picture and submit it. The application will then send your request to Google. The application will display its best guess of what the picture is. Choosing "Yes" will celebrate success while choosing "No" will take you to another screen. Choosing "Take new photo" will allow you to retake your photo.
 
