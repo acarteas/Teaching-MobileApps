@@ -41,7 +41,7 @@ import com.google.api.services.vision.v1.model.Image;
 
 public class ViewActivity extends AppCompatActivity
 {
-    String api_key = "AIzaSyCxdOnnYByiulDCw7bUiCec6lfaBICfLNo";
+    String api_key = "AIzaSyBY0l127k8XkHsAK8AbIn_eOu6fnVDqjqo";
     ImageView view_image;
     TextView text_output;
     File image_file;

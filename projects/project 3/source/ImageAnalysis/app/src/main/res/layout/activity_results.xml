@@ -6,12 +6,14 @@
     android:layout_height="match_parent"
     tools:context="hsu.imageanalysis.ResultsActivity"
     tools:layout_editor_absoluteY="81dp">
+
     <View
-        android:id="@+id/fucused"
+        android:id="@+id/focused"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        android:focusableInTouchMode="true" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="181dp"
@@ -27,13 +29,14 @@
 
     <EditText
         android:id="@+id/input_label"
-        android:layout_width="370dp"
+        android:layout_width="350dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="46dp"
         android:ems="10"
+        android:imeOptions="actionGo"
         android:inputType="textPersonName"
         android:text="@string/user_input"
         android:textSize="25sp"
@@ -42,8 +45,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:imeOptions="actionGo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_submit_button"
@@ -66,22 +68,23 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="88dp"
+        android:text="View All"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="View All" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_response"
-        android:layout_width="361dp"
+        android:layout_width="350dp"
         android:layout_height="317dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/text_results"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/focused"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/focused"
         app:layout_constraintTop_toTopOf="@+id/textView"
         app:layout_constraintVertical_bias="0.696" />
 
