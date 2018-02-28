@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context="hsu.imageanalysis.ResultsActivity"
     tools:layout_editor_absoluteY="81dp">
-
+    <View
+        android:id="@+id/fucused"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"/>
     <TextView
         android:id="@+id/textView"
         android:layout_width="181dp"
@@ -37,7 +42,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:imeOptions="actionGo" />
 
     <Button
         android:id="@+id/btn_submit_button"
@@ -67,7 +73,7 @@
 
     <TextView
         android:id="@+id/text_response"
-        android:layout_width="370dp"
+        android:layout_width="361dp"
         android:layout_height="317dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
