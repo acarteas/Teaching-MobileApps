@@ -5,10 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.support.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
@@ -21,11 +22,9 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.http.HttpTransport;
@@ -135,6 +134,7 @@ public class ViewActivity extends AppCompatActivity
     //Lots of the code below was borrowed from or modified from the official Google Cloud Vision Android Sample
     @SuppressLint("StaticFieldLeak")
     private void callCloudVision(final Bitmap bitmap) throws IOException {
+
         // Do the real work in an async task, because we need to use the network anyway
         new AsyncTask<Object, Void, String>() {
             @Override
@@ -157,8 +157,9 @@ public class ViewActivity extends AppCompatActivity
 
                     // Add the image
                     Image base64EncodedImage = new Image();
+
                     // Convert the bitmap to a JPEG
-                    // Just in case it's a format that Android understands but Cloud Vision
+                    // Just in case it's a format that Android understands but Cloud Vision does not
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream);
                     byte[] imageBytes = byteArrayOutputStream.toByteArray();
@@ -186,7 +187,6 @@ public class ViewActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
 
-                //assert annotateRequest != null;
                 annotateRequest.setDisableGZipContent(true);
                 BatchAnnotateImagesResponse response = null;
                 try {
@@ -197,7 +197,6 @@ public class ViewActivity extends AppCompatActivity
 
                 float highest_score = 0;
                 String highest_label = "nothing";
-                //labels = response.getResponses().get(0).getLabelAnnotations();
                 response_map = convertResponseToMap(response);
 
                 for (String key : response_map.keySet()) {
@@ -208,17 +207,6 @@ public class ViewActivity extends AppCompatActivity
                     }
                 }
                 message = "Is this a picture of: \n" + highest_label;
-
-                //can't update the ui in an alternate thread
-                //runOnUiThread(new Runnable() {
-                   // @Override
-                 //   public void run() {
-                //        text_output.setText(message);
-               //         button_yes.setVisibility(View.VISIBLE);
-               //         button_no.setVisibility(View.VISIBLE);
-
-                  //  }
-             //   });
                 return message;
             }
             protected void onPostExecute(String messages)
@@ -243,7 +231,6 @@ public class ViewActivity extends AppCompatActivity
                 annotations.put(label.getDescription(), label.getScore());
             }
         }
-
         return annotations;
     }
 
@@ -252,11 +239,40 @@ public class ViewActivity extends AppCompatActivity
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_CODE_CAMERA) {
 
-                // image_file now holds the photo
+                // image_file now holds the photo. create bitmap from it
                 Bitmap bitmap = BitmapFactory.decodeFile(image_file.getAbsolutePath());
-                view_image.setImageBitmap(bitmap);
+
+                //get exif information to later write file in correct orientation
+                ExifInterface exif = null;
                 try {
-                    callCloudVision(bitmap);
+                    exif = new ExifInterface(image_file.getPath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                assert exif != null;
+                int rotation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+                int rotation_degrees = 0;
+                if (rotation == ExifInterface.ORIENTATION_ROTATE_90)
+                {
+                    rotation_degrees = 90;
+                }
+                else if (rotation == ExifInterface.ORIENTATION_ROTATE_180)
+                {
+                    rotation_degrees = 180;
+                }
+                else if (rotation == ExifInterface.ORIENTATION_ROTATE_270)
+                {
+                    rotation_degrees = 270;
+                }
+
+                Matrix matrix = new Matrix();
+                if (rotation != 0f) {matrix.preRotate(rotation_degrees);}
+                Bitmap adjusted_bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+                view_image.setImageBitmap(adjusted_bitmap);
+                try {
+                    callCloudVision(adjusted_bitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
