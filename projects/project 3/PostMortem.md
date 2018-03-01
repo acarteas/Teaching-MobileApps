@@ -1,11 +1,16 @@
 # Post Mortem
-Use this page to discuss what you learned from completing this assignment.  It should be completed **after** you finish coding your assignment. Your post mortem must be at least 500 words long.  Note that the focus of the paper should be on your reflection, not on structure (e.g. introductory paragraph, conclusion, etc.).  The essay is graded on content (i.e. it shows deep though) rather than syntax (e.g. spelling) and structure.  
+Overall I am happier with this assignment than the last two. It was complicated and I had a lot of issues, but in the end I was able to complete the assignment and its kind of a neat app.
 
-Below are some prompts that can be used to get you thinking.  Feel free to use these or to make up your own.
-* Describe a particular struggle that you overcame when working on this programming assignment.
-* Conversely, describe an issue with your assignment that you were unable to resolve.
-* Provide advice to a future student on how he or she might succeed on this assignment.
-* Describe the most fun aspect of the assignment.
-* Describe the most challenging aspect of the assignment.
-* Describe the most difficult aspect of the assignment to understand.
-* Provide any suggestions for improving the assignment in the future.
+I had trouble completing the last two assignments so I stuck to the assignment instructions. I tried to replicate them completely, then if I had enough time afterward I would make the “I spy” app or go above and beyond in some way. I was able to barely complete the minimum requirements. That said I am still very happy to have made that goal.
+
+The only change I made to the original assignment was I put a “Success!” toast rather than switching to another activity that says “Success!”. It seemed better that way and I had just learned how to use Toast, so I wanted to implement it somewhere.
+
+I learned quite a bit in this assignment. I got better with intents and creating layouts. I also learned how async tasks work, and saw why it was necessary to use one. Without the async task the app would freeze until after the app was done using the network. I also learned to deal with an item’s focus. By creating an empty view that was focusable I was able to take the focus off an EditText box and retract the touch keyboard. So after pressing submit I could remove the keyboard from view. I also learned about Exif data and why images were not loading in the correct orientation, then corrected that problem. I noticed when images were sent with their rotation off the results were less accurate.
+
+The biggest struggle by far was authenticating with Google’s servers. Nearly all the documentation would tell you to create a service account then modify your operating system’s environmental variables. I had done that and still could not authenticate. I even installed Google Cloud SDK shell and authenticated through that. I could confirm I was authenticated but Android Studio would give me an error that I was not authenticated. I tried different code and struggled with this for about a week. Finally I had found an older example that used an API key (I think it was designed for IoT projects). That worked and everything was much easier from there.
+
+This was a very hard assignment because Google’s documentation is a mess. They host outdated documentation and don’t specify version numbers so you never know if you are looking at something old or new. Different versions had entirely different methods to work with so it was constant trial and error. When I have trouble I have found that working through the documentation my own way, even if I don’t understand it, results in working code far more often than using examples of things I don’t understand. This was not the case with the Google Vision API. Their documentation was very hard to follow, incomplete, and was a pain to work with.
+
+This was a very cool assignment but I wouldn’t recommend it for future students. The documentation just isn’t there. I’d rather concentrate on learning about more universal Android development concepts, like intents, the camera, and most of all designing layouts. Using constraint layout really made my app’s design a lot better, but it still didn’t look right on my girlfriends Note 8. I’d really like to get making perfect layouts down at this point.
+
+Finally, I should comment on my switch to Android Studio from Xamarin. It was a much, much better environment to work in. I wasn’t learning to do any iOS stuff anyway and Xamarin was just a lot more buggy. While Java and C# are pretty similar, they are still different enough that finding documentation was even harder when I was programming in C#. The only downside is that all your examples are in C#, so I lose out on those. However, I gain so much more documentation and tutorials from the internet and there are far less bugs in Android Studio.
