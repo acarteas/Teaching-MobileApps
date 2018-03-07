@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Project3</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="photo_analysis">Photo Analysis</string>
+</resources>
