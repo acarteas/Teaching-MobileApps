@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case RequestCameraPermissionID:
-            {
+        if (requestCode == RequestCameraPermissionID) {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         return;
@@ -47,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-            }
-
         }
     }
 
@@ -60,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.text_view);
         input_to_search = findViewById(R.id.to_search);
         button_search = findViewById(R.id.btn_search);
+
         button_search.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -80,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
             Log.w("MainActivity", "textRecognizer.isOperational() returned false");
         } else {
             cameraSource = new CameraSource.Builder(getApplicationContext(), textRecognizer)
-                    .setFacing(CameraSource.CAMERA_FACING_BACK)
-                    .setRequestedPreviewSize(1280, 1024)
-                    .setRequestedFps(2.0f)
                     .setAutoFocusEnabled(true)
+                    .setFacing(CameraSource.CAMERA_FACING_BACK)
+                    .setRequestedFps(2.0f)
+                    .setRequestedPreviewSize(1280, 1024)
                     .build();
             cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
                 @Override
@@ -116,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
                 @Override
                 public void release() {
+
                 }
 
                 @Override
