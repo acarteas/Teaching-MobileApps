@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">photoproject</string>
+    <string name="load_image">Load Image</string>
+    <string name="todo">TODO</string>
+    <string name="camera">Camera</string>
+    <string name="load">Load</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="button">Button</string>
+    <string name="linearlayout_2">LinearLayout 2</string>
+    <string name="button_2">- Button 2 -</string>
+    <string name="grey">Grey</string>
+
+</resources>
