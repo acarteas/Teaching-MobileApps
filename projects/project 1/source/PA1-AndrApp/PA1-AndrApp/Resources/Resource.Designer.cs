@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("PA1_AndrApp.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("PA1_ConversionCalc.Resource", IsApplication=true)]
 
-namespace PA1_AndrApp
+namespace PA1_ConversionCalc
 {
 	
 	
@@ -26,6 +26,22 @@ namespace PA1_AndrApp
 		
 		public static void UpdateIdValues()
 		{
+		}
+		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int unit_array = 2131034112;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
 		}
 		
 		public partial class Attribute
@@ -44,8 +60,29 @@ namespace PA1_AndrApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int firstValue = 2131099648;
+			
+			// aapt resource value: 0x7f060004
+			public const int resultButton = 2131099652;
+			
+			// aapt resource value: 0x7f060006
+			public const int scrollPastConversions = 2131099654;
+			
+			// aapt resource value: 0x7f060002
+			public const int secondValue = 2131099650;
+			
+			// aapt resource value: 0x7f060001
+			public const int spinnerOne = 2131099649;
+			
+			// aapt resource value: 0x7f060003
+			public const int spinnerTwo = 2131099651;
+			
+			// aapt resource value: 0x7f060007
+			public const int textPastConversions = 2131099655;
+			
+			// aapt resource value: 0x7f060005
+			public const int textPastTitle = 2131099653;
 			
 			static Id()
 			{
@@ -92,14 +129,23 @@ namespace PA1_AndrApp
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040000
+			public const int app_name = 2130968576;
+			
+			// aapt resource value: 0x7f040003
+			public const int calculator_number = 2130968579;
+			
+			// aapt resource value: 0x7f040005
+			public const int calculator_operation = 2130968581;
+			
+			// aapt resource value: 0x7f040004
+			public const int calculator_row = 2130968580;
+			
 			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			public const int compute_button = 2130968577;
 			
 			// aapt resource value: 0x7f040002
-			public const int compute_button = 2130968578;
-			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			public const int unit_prompt = 2130968578;
 			
 			static String()
 			{

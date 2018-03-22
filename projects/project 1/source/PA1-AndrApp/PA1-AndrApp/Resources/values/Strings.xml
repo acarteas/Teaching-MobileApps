@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
- <!-- <string name="hello"> This is test text for my app </string> -->
-  <string name="app_name">Android App 1</string>
+  <string name="app_name">PA1-ConversionCalc</string>
   <string name="compute_button"> Compute </string>
+  <string name="unit_prompt">Choose a unit </string>
+  <string name="calculator_number"> Number </string>
+  <string name="calculator_row"> Row </string>
+  <string name="calculator_operation"> Operation </string>
+  <string-array name="unit_array">
+    <item> Select One </item>
+    <item> inches (in) </item>
+    <item> feet (ft) </item>
+    <item> centimeter/s (cm) </item>
+  </string-array>
 </resources>
