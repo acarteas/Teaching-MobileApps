@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarFadeDuration="0"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:layout_alignParentTop="true">
+            <Button
+                android:id="@+id/launchCameraButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Take Picture"
+                android:layout_alignParentTop="true" />
+            <Button
+                android:id="@+id/filterOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove Red"
+                android:background="@drawable/RedButton"
+                style="@style/button_format"
+                android:layout_alignParentTop="true" />
+            <Button
+                android:id="@+id/filterTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove Blue"
+                android:background="@drawable/BlueButton"
+                style="@style/button_format"
+                android:layout_alignParentTop="true" />
+            <Button
+                android:id="@+id/filterThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove Green"
+                android:background="@drawable/GreenButton"
+                style="@style/button_format"
+                android:layout_alignParentTop="true" />
+            <Button
+                android:id="@+id/filterFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Grayscale"
+                android:background="@drawable/GreyButton"
+                style="@style/button_format"
+                android:layout_alignParentTop="true" />
+            <Button
+                android:id="@+id/filterFive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="High Contrast"
+                android:background="@drawable/HighContrastButton"
+                style="@style/button_format"
+                android:layout_alignParentTop="true" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Noise"
+                android:background="@drawable/AddNoiseButton"
+                style="@style/button_format" />
+        </LinearLayout>
+    </HorizontalScrollView>
+<!-- Note: Doing this with RelativeLayout makes the ImageView layout separate from HorizontalScrollView -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <ImageView
+            android:visibility="invisible"
+            android:layout_width="fill_parent"
+            android:layout_height="300.00dp"
+            android:id="@+id/takenPictureImageView"
+            android:adjustViewBounds="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textColor="#000000"
+            android:gravity="center_vertical"
+            android:id="@+id/speechText" />
+        <Button
+            android:text="Record Voice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRecord"
+			/>
+    </LinearLayout>
+</RelativeLayout>

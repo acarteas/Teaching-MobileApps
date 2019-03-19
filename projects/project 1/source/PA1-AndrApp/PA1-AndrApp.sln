@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PA1-AndrApp", "PA1-AndrApp\PA1-AndrApp.csproj", "{59B5679F-9F18-4F16-91CA-D9CF6779825A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59B5679F-9F18-4F16-91CA-D9CF6779825A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B5679F-9F18-4F16-91CA-D9CF6779825A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B5679F-9F18-4F16-91CA-D9CF6779825A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{59B5679F-9F18-4F16-91CA-D9CF6779825A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B5679F-9F18-4F16-91CA-D9CF6779825A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B5679F-9F18-4F16-91CA-D9CF6779825A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C1B66E4-2CD3-4F2B-ADF9-91770BCCB93A}
+	EndGlobalSection
+EndGlobal
