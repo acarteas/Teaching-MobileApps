@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/launchCameraButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Take Picture" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300.00dp"
+        android:id="@+id/takenPictureImageView"
+        android:adjustViewBounds="true" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="#FFFFFF"
+        android:id="@+id/textInput"
+        android:layout_marginTop="19.5dp" />
+    <Space
+        android:layout_gravity="match_parent"
+        android:layout_height="20dp" />
+    <Button
+        android:text="Record Speech"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:gravity="center_vertical"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rndButton"
+        android:id="@+id/recordButton" />
+</LinearLayout>

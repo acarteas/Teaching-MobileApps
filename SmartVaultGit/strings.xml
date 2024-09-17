@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SmartVaultApp2</string>
+    <string name="title_activity_password">PasswordActivity</string>
+</resources>
